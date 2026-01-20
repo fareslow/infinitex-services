@@ -1,0 +1,12 @@
+{
+  "name": "infinitex-services",
+  "version": "1.0.0",
+  "private": true,
+  "description": "INFINITEX services site with live admin dashboard",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@netlify/blobs": "*",
+    "bcryptjs": "*",
+    "jsonwebtoken": "*"
+  }
+}
