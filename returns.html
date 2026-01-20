@@ -1,475 +1,180 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>الاسترجاع | InfiniteX</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>INFINITEX — الاسترجاع</title>
 
-    <style>
-      :root {
-        --bg: #0b0d0f;
-        --panel: #0f1216;
-        --stroke: rgba(255, 255, 255, 0.08);
-        --text: rgba(255, 255, 255, 0.92);
-        --muted: rgba(255, 255, 255, 0.65);
-        --accent: #27ff4a; /* InfiniteX neon green */
-        --yamm: #9e6cff; /* Yamm purple */
-        --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
-      }
+  <style>
+    :root{
+      --bg:#050607;--bg2:#0a0c0d;--text:#eef2f3;--muted:#a7b0b5;--line:rgba(255,255,255,.10);
+      --accent:#39ff14;--shadow:0 24px 80px rgba(0,0,0,.55);
+      --radius:18px;--yamm:#9E6CFF;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;color:var(--text);
+      background:radial-gradient(1100px 560px at 80% -10%, rgba(57,255,20,.18), transparent 60%),
+                 linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+      font-family: system-ui,-apple-system,"Segoe UI",Tahoma,Arial,"Noto Sans Arabic",sans-serif;
+    }
+    a{color:inherit}
+    .wrap{max-width:760px;margin:0 auto;padding:16px 14px 110px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:16px;overflow:hidden;
+    }
+    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);
+      background:rgba(255,255,255,.03);border-radius:999px;color:var(--muted);font-size:13px}
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 18px rgba(57,255,20,.6)}
+    h1{margin:12px 0 8px;font-size:28px;line-height:1.15}
+    p{margin:0;color:var(--muted);line-height:1.9;font-size:14px}
+    .sep{height:1px;background:rgba(255,255,255,.08);margin:14px 0}
 
-      * {
-        box-sizing: border-box;
-      }
+    /* Yamm form styles */
+    .yamm-card{--primary-color: var(--yamm);border-radius:18px;border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));overflow:hidden}
+    .yamm-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 14px;
+      border-bottom:1px solid rgba(255,255,255,.08)}
+    .yamm-title{display:flex;align-items:center;gap:10px}
+    .yamm-header-icon{width:22px;height:22px;color:var(--primary-color)}
+    .yamm-header-text{font-weight:900;font-size:14px}
+    .yamm-apply-method-button{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.02);
+      color:var(--text);border-radius:12px;padding:10px 12px;font-weight:900;cursor:pointer;font-size:12px}
+    #yamm-card-content{padding:14px}
+    .yamm-input-group{display:grid;grid-template-columns:1fr;gap:10px}
+    .yamm-input-wrapper{display:flex;flex-direction:column;gap:8px}
+    .yamm-label{color:var(--muted);font-size:12px}
+    .yamm-input{width:100%;padding:14px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.25);color:var(--text);outline:none;font-weight:800}
+    .yamm-input:focus{border-color:rgba(158,108,255,.55);box-shadow:0 0 0 3px rgba(158,108,255,.14)}
+    .yamm-phone-input{position:relative}
+    .yamm-prefix{position:absolute;left:12px;top:50%;transform:translateY(-50%);
+      color:rgba(255,255,255,.65);font-weight:900}
+    .yamm-phone-input .yamm-input{padding-left:78px}
+    .yamm-submit-button{width:100%;margin-top:10px;padding:14px 12px;border-radius:14px;
+      border:1px solid rgba(158,108,255,.65);
+      background:linear-gradient(180deg, rgba(158,108,255,.95), rgba(124,72,255,.86));
+      color:#0b0612;font-weight:900;cursor:pointer}
+    .yamm-footer{padding:12px 14px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .yamm-footer p{margin:0;color:var(--muted);font-size:12px}
+    .note{margin-top:10px;color:rgba(255,255,255,.55);font-size:12px;line-height:1.8}
+  </style>
+</head>
 
-      body {
-        margin: 0;
-        background: radial-gradient(
-            1200px 700px at 50% -20%,
-            rgba(39, 255, 74, 0.08),
-            transparent 60%
-          ),
-          radial-gradient(
-            900px 600px at 110% 10%,
-            rgba(158, 108, 255, 0.12),
-            transparent 55%
-          ),
-          var(--bg);
-        color: var(--text);
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
-        line-height: 1.55;
-      }
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="chip"><span class="dot"></span> الاسترجاع والضمان الذهبي</div>
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+      <!-- ====== النص التسويقي (كما طلبت: صفحة تسويقية أكثر) ====== -->
+      <h1>استرجع فلوسك بأسرع وقت</h1>
+      <p>
+        عندك راحة بال كاملة. إذا المنتج ما ناسبك، تقدر تبدأ طلب الاسترجاع بسهولة — وخلال
+        <b style="color:#fff">14 يوم</b> وفق <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">سياسة الضمان الذهبي</a>.
+        الفكرة: خطوات أقل، وقت أقل، ووضوح أكثر.
+      </p>
 
-      .wrap {
-        max-width: 560px;
-        margin: 0 auto;
-        padding: 18px 14px 40px;
-      }
+      <div class="sep"></div>
 
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 8px 18px;
-      }
+      <p>
+        اكتب رقم الطلب ورقم جوالك، وبنحوّلك مباشرة لبوابة <b style="color:#fff">Yamm</b>
+        مع نفس البيانات اللي دخلتها هنا.
+      </p>
 
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .brand .dot {
-        width: 10px;
-        height: 10px;
-        background: var(--accent);
-        border-radius: 999px;
-        box-shadow: 0 0 18px rgba(39, 255, 74, 0.55);
-      }
-
-      .brand h1 {
-        font-size: 14px;
-        margin: 0;
-        letter-spacing: 0.2px;
-        font-weight: 800;
-      }
-
-      .sub {
-        color: var(--muted);
-        font-size: 12px;
-        margin: 2px 0 0;
-      }
-
-      .card {
-        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-        border: 1px solid var(--stroke);
-        border-radius: 18px;
-        box-shadow: var(--shadow);
-        overflow: hidden;
-      }
-
-      .cardTop {
-        padding: 16px 16px 10px;
-      }
-
-      .title {
-        font-size: 18px;
-        margin: 0 0 6px;
-        font-weight: 900;
-      }
-
-      .desc {
-        margin: 0;
-        color: var(--muted);
-        font-size: 13px;
-      }
-
-      /* Yamm UI block */
-      .yamm-card {
-        --primary-color: var(--yamm);
-        padding: 0;
-      }
-
-      .yamm-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 14px 14px;
-        border-top: 1px solid var(--stroke);
-        border-bottom: 1px solid var(--stroke);
-        background: rgba(0,0,0,0.18);
-      }
-
-      .yamm-title {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        min-width: 0;
-      }
-
-      .yamm-header-icon {
-        width: 22px;
-        height: 22px;
-        color: var(--primary-color);
-        flex: 0 0 auto;
-      }
-
-      .yamm-header-text {
-        font-weight: 900;
-        font-size: 14px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .yamm-apply-method-button {
-        border: 1px solid rgba(158,108,255,0.35);
-        color: rgba(255,255,255,0.92);
-        background: rgba(158,108,255,0.12);
-        padding: 8px 10px;
-        border-radius: 12px;
-        font-size: 12px;
-        font-weight: 800;
-        cursor: pointer;
-      }
-
-      .yamm-apply-method-button:active {
-        transform: translateY(1px);
-      }
-
-      #yamm-card-content {
-        padding: 14px;
-      }
-
-      .yamm-video-container {
-        border: 1px solid var(--stroke);
-        border-radius: 14px;
-        padding: 12px;
-        background: rgba(0,0,0,0.18);
-        margin-bottom: 12px;
-        color: var(--muted);
-        font-size: 13px;
-      }
-
-      .yamm-hide {
-        display: none;
-      }
-
-      .yamm-input-group {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .yamm-input-wrapper {
-        display: grid;
-        gap: 8px;
-      }
-
-      .yamm-label {
-        font-size: 12px;
-        color: rgba(255,255,255,0.75);
-        font-weight: 800;
-      }
-
-      .yamm-input {
-        width: 100%;
-        padding: 12px 12px;
-        border-radius: 14px;
-        border: 1px solid var(--stroke);
-        background: rgba(0,0,0,0.25);
-        color: var(--text);
-        outline: none;
-        font-size: 14px;
-      }
-
-      .yamm-input:focus {
-        border-color: rgba(39,255,74,0.35);
-        box-shadow: 0 0 0 4px rgba(39,255,74,0.08);
-      }
-
-      .yamm-phone-input {
-        position: relative;
-      }
-
-      .yamm-prefix {
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 13px;
-        color: rgba(255,255,255,0.7);
-        background: rgba(255,255,255,0.06);
-        border: 1px solid var(--stroke);
-        padding: 6px 8px;
-        border-radius: 10px;
-        pointer-events: none;
-      }
-
-      .yamm-phone-input input {
-        padding-left: 86px; /* space for prefix */
-      }
-
-      .yamm-submit-button {
-        width: 100%;
-        margin-top: 12px;
-        padding: 13px 14px;
-        border: 0;
-        border-radius: 16px;
-        background: linear-gradient(90deg, rgba(39,255,74,1), rgba(158,108,255,0.85));
-        color: #07110a;
-        font-weight: 1000;
-        font-size: 14px;
-        cursor: pointer;
-      }
-
-      .yamm-submit-button:active {
-        transform: translateY(1px);
-      }
-
-      .helper {
-        margin-top: 12px;
-        color: var(--muted);
-        font-size: 12px;
-      }
-
-      .error {
-        margin-top: 10px;
-        color: #ffb2b2;
-        font-size: 12px;
-        display: none;
-      }
-
-      .yamm-footer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 12px 14px 16px;
-        border-top: 1px solid var(--stroke);
-        color: rgba(255,255,255,0.7);
-        font-size: 12px;
-        background: rgba(0,0,0,0.16);
-      }
-
-      .yamm-logo {
-        width: 82px;
-        height: auto;
-      }
-
-      .navRow {
-        margin-top: 14px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-
-      .ghostBtn {
-        padding: 12px 12px;
-        border-radius: 14px;
-        border: 1px solid var(--stroke);
-        background: rgba(255,255,255,0.03);
-        color: rgba(255,255,255,0.9);
-        text-align: center;
-        font-weight: 900;
-        font-size: 13px;
-      }
-
-      .ghostBtn:hover {
-        background: rgba(255,255,255,0.05);
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="wrap">
-      <header>
-        <div class="brand">
-          <div class="dot" aria-hidden="true"></div>
-          <div>
-            <h1>INFINITEX Services</h1>
-            <p class="sub">الاسترجاع السهل عبر منصة يم</p>
-          </div>
-        </div>
-      </header>
-
-      <main class="card yamm-card" dir="rtl" style="--primary-color: #9E6CFF;">
-        <div class="cardTop">
-          <h2 class="title">طلب استرجاع</h2>
-          <p class="desc">
-            اكتب رقم الطلب ورقم جوالك، وبنوجّهك مباشرة لبوابة يم لإكمال طلب الاسترجاع.
-          </p>
-        </div>
-
-        <div class="yamm-header">
-          <div class="yamm-title">
-            <svg class="yamm-header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-              <rect width="256" height="256" fill="none"></rect>
-              <polyline points="176 104 176 136 80 136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
-              <polyline points="104 112 80 136 104 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
-              <rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect>
-            </svg>
-            <div class="yamm-header-text">نموذج طلب استرجاع</div>
-          </div>
-          <button id="applyMethodBtn" class="yamm-apply-method-button" type="button">طريقة التقديم</button>
-        </div>
-
-        <div id="yamm-card-content">
-          <div id="yamm-tutorial-video" class="yamm-video-container yamm-hide">
-            <strong>طريقة التقديم:</strong>
-            <ol style="margin: 8px 0 0; padding-right: 18px; color: rgba(255,255,255,0.7);">
-              <li>اكتب رقم الطلب ورقم الجوال.</li>
-              <li>اضغط “استرجع الآن”.</li>
-              <li>بتنتقل تلقائيًا إلى بوابة يم لإكمال الطلب.</li>
-            </ol>
+      <!-- ====== فورم Yamm تحت الكلام التسويقي ====== -->
+      <div style="margin-top:12px">
+        <div class="yamm-card" dir="rtl" style="--primary-color:#9E6CFF;">
+          <div class="yamm-header">
+            <div class="yamm-title">
+              <svg class="yamm-header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <rect width="256" height="256" fill="none"></rect>
+                <polyline points="176 104 176 136 80 136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+                <polyline points="104 112 80 136 104 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+                <rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect>
+              </svg>
+              <div class="yamm-header-text">نموذج طلب استرجاع</div>
+            </div>
+            <button class="yamm-apply-method-button" type="button"
+              onclick="window.open('https://infinitex.sa/blogs/gold-warranty-policy','_blank','noopener')">
+              طريقة التقديم
+            </button>
           </div>
 
-          <form id="yammForm" class="yamm-form">
-            <div class="yamm-input-group">
-              <div class="yamm-input-wrapper yamm-order-number-wrapper">
-                <label for="order_number" class="yamm-label">رقم الطلب</label>
-                <input
-                  id="yamm-order-number-input"
-                  name="order_number"
-                  dir="ltr"
-                  type="text"
-                  inputmode="numeric"
-                  autocomplete="off"
-                  oninput="this.value = this.value.replace(/[^0-9٠-٩]/g, '')"
-                  class="yamm-input"
-                  placeholder="12345678"
-                  required
-                />
-              </div>
+          <div id="yamm-card-content">
+            <form class="yamm-form" id="returnsForm">
+              <div class="yamm-input-group">
+                <div class="yamm-input-wrapper yamm-order-number-wrapper">
+                  <label class="yamm-label">رقم الطلب</label>
+                  <input id="order_number" name="order_number" dir="ltr" type="text" inputmode="numeric"
+                    oninput="this.value=this.value.replace(/[^0-9٠-٩]/g,'')" class="yamm-input" placeholder="12345678" />
+                </div>
 
-              <div class="yamm-input-wrapper yamm-phone-number-wrapper">
-                <label for="phone_number" class="yamm-label">رقم الجوال</label>
-                <div dir="rtl" id="yamm-phone-number-input" class="yamm-phone-input">
-                  <input
-                    dir="ltr"
-                    id="phone_number"
-                    name="phone_number"
-                    type="text"
-                    inputmode="numeric"
-                    autocomplete="tel"
-                    oninput="this.value = this.value.replace(/[^0-9٠-٩]/g, '')"
-                    class="yamm-input"
-                    placeholder="551234567"
-                    required
-                  />
-                  <div class="yamm-prefix">966+</div>
+                <div class="yamm-input-wrapper yamm-phone-number-wrapper">
+                  <label class="yamm-label">رقم الجوال</label>
+                  <div class="yamm-phone-input">
+                    <input id="phone_number" name="phone_number" dir="ltr" type="text" inputmode="numeric"
+                      oninput="this.value=this.value.replace(/[^0-9٠-٩]/g,'')" class="yamm-input" placeholder="5xxxxxxxx" />
+                    <div class="yamm-prefix">966+</div>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <button type="submit" class="yamm-submit-button">استرجع الآن</button>
+              <button type="submit" class="yamm-submit-button">استرجع الآن</button>
 
-            <div id="err" class="error"></div>
-            <div class="helper">
-              سيتم توجيهك إلى: <span style="color: rgba(255,255,255,0.9); font-weight: 800;">yamm.sa</span>
-            </div>
-          </form>
+              <div class="note">
+                سيتم توجيهك إلى بوابة يم. الشروط الرسمية موجودة داخل سياسة الضمان الذهبي.
+              </div>
+            </form>
+          </div>
+
+          <div class="yamm-footer">
+            <p>هذه الخدمة مقدمة من منصة</p>
+            <a href="https://yamm.sa" target="_blank" rel="noopener">yamm.sa</a>
+          </div>
         </div>
-
-        <div class="yamm-footer">
-          <p>هذه الخدمة مقدمة من منصة</p>
-          <a href="https://yamm.sa" target="_blank" rel="noopener noreferrer" aria-label="Yamm">
-            <!-- Logo placeholder: You can replace this SVG with Yamm official SVG if desired -->
-            <svg class="yamm-logo" viewBox="0 0 140 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M43.7913 14.0384L37.1821 36.1472C35.7047 41.0647 30.5728 43.8633 25.7908 42.384L21.2809 40.9448C17.3542 39.7054 14.8271 35.9473 14.8271 31.9094C15.8769 31.8694 16.8877 31.5495 17.8597 31.0298L23.4581 27.9514C27.0737 25.9924 28.4345 21.3947 26.5295 17.6766L21.5142 8.00149L21.7863 7.12193C23.2637 2.20443 28.3956 -0.594151 33.1776 0.885099L37.6875 2.32437C42.5473 3.8436 45.2687 9.12092 43.7913 14.0384Z" fill="#9E6CFF"></path>
-              <path d="M23.5353 27.9521L17.9368 31.0305C16.9649 31.5503 15.9151 31.8301 14.9043 31.9101C14.9043 31.0305 15.0209 30.111 15.2931 29.2314L21.6302 8.0022L26.6455 17.6773C28.5117 21.3954 27.1121 25.9931 23.5353 27.9521Z" fill="#FF8389"></path>
-              <path d="M21.5436 8.00117L15.2064 29.2304C14.9343 30.1099 14.8176 31.0295 14.8176 31.909C12.0184 32.0689 9.25806 30.5897 7.89733 27.8711L0.860398 14.238C-1.04463 10.5199 0.316114 5.92222 3.93178 3.96322L9.53024 0.884779C13.1459 -1.07423 17.6169 0.325062 19.5219 4.04318L21.5436 8.00117Z" fill="#FFCD2E"></path>
-            </svg>
-          </a>
-        </div>
-      </main>
-
-      <div class="navRow">
-        <a class="ghostBtn" href="index.html">الرئيسية</a>
-        <a class="ghostBtn" href="track.html">تتبع الطلب</a>
       </div>
     </div>
+  </div>
 
-    <script>
-      // Toggle "طريقة التقديم"
-      const applyBtn = document.getElementById("applyMethodBtn");
-      const tutorial = document.getElementById("yamm-tutorial-video");
-      applyBtn?.addEventListener("click", () => {
-        tutorial.classList.toggle("yamm-hide");
-      });
+  <script>
+    // تحويل أرقام عربية لأرقام إنجليزية
+    function normalizeDigits(s){
+      const map={'٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9'};
+      return String(s||'').replace(/[٠-٩]/g, d => map[d] || d).trim();
+    }
 
-      // Helpers
-      function normalizeDigits(str) {
-        // Convert Arabic-Indic digits to Western digits
-        const map = { "٠": "0", "١": "1", "٢": "2", "٣": "3", "٤": "4", "٥": "5", "٦": "6", "٧": "7", "٨": "8", "٩": "9" };
-        return String(str || "").replace(/[٠-٩]/g, (d) => map[d] || d).trim();
-      }
+    document.getElementById('returnsForm').addEventListener('submit', function(e){
+      e.preventDefault();
 
-      function showError(msg) {
-        const el = document.getElementById("err");
-        el.textContent = msg;
-        el.style.display = "block";
-      }
+      const order = normalizeDigits(document.getElementById('order_number').value).replace(/[^0-9]/g,'');
+      let phone = normalizeDigits(document.getElementById('phone_number').value).replace(/[^0-9]/g,'');
 
-      function clearError() {
-        const el = document.getElementById("err");
-        el.textContent = "";
-        el.style.display = "none";
-      }
+      if(!order || !phone){ alert('فضلاً اكتب رقم الطلب ورقم الجوال.'); return; }
 
-      // Redirect to Yamm with query params
-      const form = document.getElementById("yammForm");
-      form?.addEventListener("submit", (e) => {
-        e.preventDefault();
-        clearError();
+      // عادة العميل يكتب 5xxxxxxxx؛ نحذف أي صفر بالبداية إن وجد
+      phone = phone.replace(/^0+/, '');
 
-        const orderRaw = document.getElementById("yamm-order-number-input")?.value || "";
-        const phoneRaw = document.getElementById("phone_number")?.value || "";
+      const base = 'https://yamm.sa/store';
+      const params = new URLSearchParams();
 
-        const order = normalizeDigits(orderRaw);
-        let phone = normalizeDigits(phoneRaw);
+      // الرابط الأساسي المطلوب منك
+      params.set('hostname','infinitex.sa');
 
-        if (!order || order.length < 3) return showError("فضلاً أدخل رقم طلب صحيح.");
-        if (!phone || phone.length < 8) return showError("فضلاً أدخل رقم جوال صحيح بدون 966.");
+      // تمرير البيانات (أسماء محتملة — لأننا ما عندنا توثيق يم هنا)
+      params.set('order_number', order);
+      params.set('orderNumber', order);
+      params.set('order', order);
 
-        // If user typed leading 0, remove it (common in KSA local numbers)
-        phone = phone.replace(/^0+/, "");
+      // رقم الجوال: نخزن المحلي + الكامل
+      params.set('phone_number', phone);
+      params.set('phoneNumber', phone);
+      params.set('mobile', '966' + phone);
+      params.set('phone', '966' + phone);
 
-        // Build redirect URL
-        const base = "https://yamm.sa/store";
-        const params = new URLSearchParams({
-          hostname: "infinitex.sa",
-          order_number: order,
-          phone_number: "966" + phone,
-        });
-
-        window.location.href = `${base}?${params.toString()}`;
-      });
-    </script>
-  </body>
+      window.location.href = base + '?' + params.toString();
+    });
+  </script>
+</body>
 </html>
