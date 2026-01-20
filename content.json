@@ -14,11 +14,11 @@
       "store": "المتجر"
     },
     "mobileNav": {
-      "services": "خدمات",
-      "track": "تتبع",
-      "returns": "استرجاع",
-      "products": "منتجات",
-      "store": "متجر"
+      "services": "الرئيسية",
+      "track": "تتبع طلبك",
+      "returns": "الاسترجاع",
+      "products": "المنتجات",
+      "store": "المتجر الرسمي"
     },
     "media": {
       "infinitexLogo": "assets/brands/infinitex-logo.png",
