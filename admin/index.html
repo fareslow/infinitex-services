@@ -3,76 +3,67 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>لوحة التحكم — نصوص صفحات INFINITEX</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <title>INFINITEX — لوحة التحكم (Live)</title>
   <link rel="icon" href="../assets/icons/icon-192.png" />
   <style>
     :root{
-      --bg:#0b0f0c;
-      --card:#0e1511;
-      --stroke:rgba(255,255,255,.10);
-      --text:#eaf3ec;
-      --muted:rgba(234,243,236,.75);
-      --muted2:rgba(234,243,236,.55);
-      --green:#38ff7b;
-      --green2:#1ef063;
-      --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius:20px;
+      --bg:#050607;
+      --bg2:#0a0c0d;
+      --text:#eef2f3;
+      --muted:rgba(238,242,243,.72);
+      --muted2:rgba(238,242,243,.52);
+      --line:rgba(255,255,255,.10);
+      --accent:#39ff14;
+      --card:rgba(255,255,255,.03);
+      --shadow:0 24px 90px rgba(0,0,0,.60);
+      --r:18px;
+      --r2:24px;
+      --max:1200px;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+    body{margin:0;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;
       background:
-        radial-gradient(1200px 600px at 70% 10%, rgba(56,255,123,.14), transparent 60%),
-        radial-gradient(900px 500px at 20% 20%, rgba(56,255,123,.10), transparent 60%),
-        linear-gradient(180deg, #050807, #0b0f0c 30%, #060806);
-      color:var(--text);
+        radial-gradient(1100px 560px at 80% -10%, rgba(57,255,20,.18), transparent 60%),
+        radial-gradient(800px 440px at 20% 0%, rgba(57,255,20,.10), transparent 60%),
+        linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+      min-height:100vh;
     }
     a{color:inherit}
-    .wrap{max-width:1200px;margin:0 auto;padding:24px 18px 80px}
-    .top{
-      display:flex;align-items:center;justify-content:space-between;gap:14px;
-      padding:18px 18px;border:1px solid var(--stroke);border-radius:24px;
-      background:linear-gradient(180deg, rgba(20,34,26,.78), rgba(10,14,12,.45));
-      box-shadow: var(--shadow);
-      position:sticky;top:14px;z-index:10;
-      backdrop-filter: blur(14px);
-    }
-    .brand{display:flex;align-items:center;gap:12px;min-width:240px}
-    .brand img{height:22px}
-    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;
-      border:1px solid rgba(56,255,123,.22);background:rgba(56,255,123,.06);color:var(--muted);
-      font-weight:700;white-space:nowrap}
-    .dot{width:10px;height:10px;border-radius:999px;background:var(--green);box-shadow:0 0 26px rgba(56,255,123,.7)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:18px 16px 90px}
 
-    .actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+    .top{position:sticky;top:12px;z-index:50;backdrop-filter: blur(14px);
+      background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.08);border-radius:22px;
+      padding:14px 14px;box-shadow:var(--shadow)}
+    .topRow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:22px}
+    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border-radius:999px;border:1px solid rgba(57,255,20,.28);
+      background:rgba(57,255,20,.08);color:var(--muted);font-weight:800;font-size:13px}
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 18px rgba(57,255,20,.6)}
+
+    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
     .btn{appearance:none;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--text);
-      padding:10px 14px;border-radius:14px;cursor:pointer;font-weight:800}
+      padding:10px 14px;border-radius:14px;cursor:pointer;font-weight:900}
     .btn:hover{transform:translateY(-1px)}
-    .btn.primary{border-color:rgba(56,255,123,.4);background:linear-gradient(180deg, rgba(56,255,123,.95), rgba(30,200,90,.85));color:#061008}
+    .btn.primary{background:linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85));border-color:rgba(57,255,20,.65);color:#061006}
+    .btn.danger{border-color:rgba(255,80,80,.40);background:rgba(255,80,80,.10)}
     .btn.ghost{background:transparent}
 
-    .grid{display:grid;grid-template-columns: 280px 1fr;gap:16px;margin-top:16px}
+    .grid{display:grid;grid-template-columns: 300px 1fr;gap:16px;margin-top:16px}
     @media (max-width:980px){.grid{grid-template-columns:1fr}}
 
-    .side{
-      border:1px solid var(--stroke);border-radius:var(--radius);
-      background:rgba(255,255,255,.03);box-shadow:var(--shadow);overflow:hidden
-    }
-    .sideHead{padding:14px 14px;border-bottom:1px solid var(--stroke);color:var(--muted);font-weight:900}
-    .nav{display:flex;flex-direction:column}
-    .nav button{
-      width:100%;text-align:right;border:0;border-bottom:1px solid rgba(255,255,255,.06);
-      background:transparent;color:var(--text);padding:12px 14px;cursor:pointer;font-weight:800
-    }
-    .nav button.active{background:rgba(56,255,123,.10);border-right:3px solid var(--green)}
-    .nav small{color:var(--muted2);font-weight:700}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.10);border-radius:var(--r2);box-shadow:var(--shadow);overflow:hidden}
 
-    .panel{
-      border:1px solid var(--stroke);border-radius:var(--radius);
-      background:rgba(255,255,255,.03);box-shadow:var(--shadow);overflow:hidden
-    }
-    .panelHead{padding:16px 16px;border-bottom:1px solid var(--stroke)}
+    .sideHead{padding:14px 14px;border-bottom:1px solid rgba(255,255,255,.08);color:var(--muted);font-weight:900}
+    .nav{display:flex;flex-direction:column}
+    .nav button{width:100%;text-align:right;border:0;border-bottom:1px solid rgba(255,255,255,.06);
+      background:transparent;color:var(--text);padding:12px 14px;cursor:pointer;font-weight:900}
+    .nav button.active{background:rgba(57,255,20,.10);border-right:3px solid var(--accent)}
+    .nav small{color:var(--muted2);font-weight:800}
+
+    .panelHead{padding:16px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
     .panelHead h1{margin:0;font-size:18px}
     .panelHead p{margin:6px 0 0;color:var(--muted);line-height:1.8}
 
@@ -82,295 +73,462 @@
 
     .field{border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.18);border-radius:16px;padding:12px}
     .field label{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-weight:900;font-size:13px;margin-bottom:8px}
-    .field label code{color:rgba(56,255,123,.9);font-weight:900;font-size:12px}
-    input, textarea{
+    .field label code{color:rgba(57,255,20,.9);font-weight:900;font-size:12px}
+    input, textarea, select{
       width:100%;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);color:var(--text);
       padding:12px 12px;border-radius:14px;outline:none;font-size:14px
     }
     textarea{min-height:92px;resize:vertical;line-height:1.9}
     .hint{margin-top:8px;color:var(--muted2);font-size:12px;line-height:1.8}
 
-    .notice{margin-top:12px;padding:12px 14px;border-radius:16px;border:1px solid rgba(56,255,123,.22);background:rgba(56,255,123,.06);color:var(--muted);display:none}
+    .notice{margin-top:10px;padding:12px 14px;border-radius:16px;border:1px solid rgba(57,255,20,.22);background:rgba(57,255,20,.06);color:var(--muted);display:none}
     .notice.show{display:block}
 
-    .foot{padding:12px 16px;border-top:1px solid var(--stroke);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-    .foot .mini{color:var(--muted2);font-size:12px;line-height:1.7}
+    .loginBox{max-width:520px;margin:10vh auto 0}
+    .loginBox .form{padding:18px}
+
+    .mediaPrev{display:flex;gap:10px;align-items:center}
+    .mediaPrev img{width:64px;height:64px;border-radius:14px;object-fit:cover;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.02)}
+    .mediaPrev .meta{color:var(--muted2);font-size:12px;line-height:1.7}
+    .tiny{font-size:12px;color:var(--muted2)}
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="top">
-      <div class="brand">
-        <img src="../assets/brands/infinitex-logo.png" alt="INFINITEX" />
-        <span class="chip"><span class="dot"></span> لوحة التحكم — النصوص</span>
-      </div>
-      <div class="actions">
-        <button class="btn ghost" id="btnPreview">حفظ معاينة (Local)</button>
-        <button class="btn" id="btnClear">إلغاء المعاينة</button>
-        <button class="btn primary" id="btnDownload">تنزيل content.json</button>
+      <div class="topRow">
+        <div class="brand">
+          <img src="../assets/brands/infinitex-logo.png" alt="INFINITEX" />
+          <span class="chip"><span class="dot"></span> لوحة التحكم — Live</span>
+        </div>
+        <div class="actions" id="topActions" style="display:none">
+          <button class="btn" id="btnRefresh">جلب آخر نسخة</button>
+          <button class="btn" id="btnOpenReturns">فتح الاسترجاع</button>
+          <button class="btn" id="btnOpenTrack">فتح التتبع</button>
+          <button class="btn" id="btnOpenIndex">فتح الرئيسية</button>
+          <button class="btn primary" id="btnSave">حفظ ونشر (فوري)</button>
+          <button class="btn danger" id="btnLogout">تسجيل خروج</button>
+        </div>
       </div>
     </div>
 
-    <div class="grid">
-      <aside class="side">
-        <div class="sideHead">الأقسام</div>
-        <div class="nav" id="nav">
-          <button data-tab="global" class="active">عام <small>روابط + تنقل</small></button>
-          <button data-tab="returns">صفحة الاسترجاع <small>الشارة/العنوان/الوصف</small></button>
-          <button data-tab="yamm">إعدادات يم (Yamm) <small>الرابط + البراميترز</small></button>
-          <button data-tab="track">صفحة تتبع الطلب <small>نصوص الواجهة</small></button>
-          <button data-tab="index">الصفحة الرئيسية <small>نصوص الهيرو</small></button>
-          <button data-tab="products">صفحة المنتجات <small>نصوص الواجهة</small></button>
+    <!-- Login -->
+    <div id="loginView" class="loginBox card">
+      <div class="panelHead">
+        <h1>تسجيل الدخول</h1>
+        <p>الدخول إلى لوحة التحكم يتطلب كلمة مرور. يتم التحقق من كلمة المرور عبر دالة Netlify (مشفرة/Hash) ولا يتم حفظها في المتصفح.</p>
+        <div class="notice" id="loginNotice"></div>
+      </div>
+      <div class="form">
+        <div class="field">
+          <label>كلمة المرور</label>
+          <input id="password" type="password" autocomplete="current-password" placeholder="Password" />
+          <div class="hint">ملاحظة: إذا لم يتم ضبط متغيرات البيئة في Netlify ستفشل عملية الدخول.</div>
         </div>
-      </aside>
-
-      <section class="panel">
-        <div class="panelHead">
-          <h1 id="panelTitle">عام</h1>
-          <p id="panelDesc">عدّل النصوص ثم احفظ المعاينة أو نزّل ملف content.json للاستبدال في المشروع ثم ارفع التحديث إلى Netlify.</p>
-          <div class="notice" id="notice"></div>
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
+          <button class="btn primary" id="btnLogin">دخول</button>
         </div>
+        <div class="tiny" style="margin-top:10px">تلميح إعداد: يجب ضبط ADMIN_PASSWORD_HASH و JWT_SECRET في Netlify.</div>
+      </div>
+    </div>
 
-        <div class="form" id="panelBody"></div>
-
-        <div class="foot">
-          <div class="mini">
-            نصيحة تشغيل: بعد حفظ المعاينة، افتح الصفحات من نفس الدومين لتشاهد التغييرات فوراً.
+    <!-- App -->
+    <div id="appView" style="display:none">
+      <div class="grid">
+        <aside class="card">
+          <div class="sideHead">الأقسام</div>
+          <div class="nav" id="nav">
+            <button data-tab="global" class="active">عام <small>روابط + تنقل + شعارات</small></button>
+            <button data-tab="returns">صفحة الاسترجاع <small>النصوص + الأزرار</small></button>
+            <button data-tab="track">صفحة تتبع الطلب <small>النصوص</small></button>
+            <button data-tab="index">الصفحة الرئيسية <small>الهيرو + صورة</small></button>
+            <button data-tab="products">صفحة المنتجات <small>نصوص عامة</small></button>
+            <button data-tab="yamm">إعدادات يم (Yamm) <small>الرابط + البراميترز</small></button>
           </div>
-          <div class="actions">
-            <a class="btn" href="../returns.html" target="_blank" rel="noopener">فتح الاسترجاع</a>
-            <a class="btn" href="../track.html" target="_blank" rel="noopener">فتح التتبع</a>
-            <a class="btn" href="../index.html" target="_blank" rel="noopener">فتح الرئيسية</a>
+        </aside>
+
+        <section class="card">
+          <div class="panelHead">
+            <h1 id="panelTitle">عام</h1>
+            <p id="panelDesc">عدّل النصوص والوسائط ثم اضغط “حفظ ونشر” لتنعكس فوراً على الموقع (بدون رفع ملفات JSON).</p>
+            <div class="notice" id="notice"></div>
           </div>
-        </div>
-      </section>
+
+          <div class="form" id="panelBody"></div>
+        </section>
+      </div>
     </div>
   </div>
 
-  <script>
-    // Lightweight JSON editor (no backend). Stores preview in localStorage.
-    const STORAGE_KEY = 'ix_content_override';
+<script>
+(function(){
+  const API = {
+    auth: '/api/auth',
+    content: '/api/content',
+    media: '/api/media'
+  };
 
-    const panels = {
-      global: {
-        title: 'عام',
-        desc: 'روابط المتجر/السياسة + عناوين التنقل.',
-        fields: [
-          { type:'url', path:'global.links.store', label:'رابط المتجر', hint:'يستخدم في زر "المتجر" وفي التنقل السفلي.' },
-          { type:'url', path:'global.links.warrantyPolicy', label:'رابط سياسة الضمان الذهبي', hint:'زر السياسة الرسمية.' },
-          { type:'text', path:'global.chipAfterSales', label:'شريط أعلى الصفحة (خدمات ما بعد البيع)' },
-          { type:'text', path:'global.nav.home', label:'تنقل (ديسكتوب): الرئيسية' },
-          { type:'text', path:'global.nav.track', label:'تنقل (ديسكتوب): تتبع الطلب' },
-          { type:'text', path:'global.nav.returns', label:'تنقل (ديسكتوب): الاسترجاع' },
-          { type:'text', path:'global.nav.products', label:'تنقل (ديسكتوب): المنتجات' },
-          { type:'text', path:'global.mobileNav.services', label:'تنقل (جوال): خدمات' },
-          { type:'text', path:'global.mobileNav.track', label:'تنقل (جوال): تتبع' },
-          { type:'text', path:'global.mobileNav.returns', label:'تنقل (جوال): استرجاع' },
-          { type:'text', path:'global.mobileNav.products', label:'تنقل (جوال): منتجات' },
-          { type:'text', path:'global.mobileNav.store', label:'تنقل (جوال): متجر' }
-        ]
-      },
-      returns: {
-        title: 'صفحة الاسترجاع',
-        desc: 'النصوص الظاهرة في أعلى صفحة الاسترجاع + زر السياسة الرسمية.',
-        fields: [
-          { type:'text', path:'pages.returns.badge', label:'الشارة (Chip)' },
-          { type:'html', path:'pages.returns.title', label:'العنوان (يدعم <br/>)', hint:'يمكنك استخدام <br/> للنزول سطر.' },
-          { type:'textarea', path:'pages.returns.desc', label:'الوصف' },
-          { type:'text', path:'pages.returns.formTitle', label:'عنوان النموذج' },
-          { type:'text', path:'pages.returns.orderLabel', label:'ليبل: رقم الطلب' },
-          { type:'text', path:'pages.returns.orderPlaceholder', label:'Placeholder: رقم الطلب' },
-          { type:'text', path:'pages.returns.phoneLabel', label:'ليبل: رقم الجوال' },
-          { type:'text', path:'pages.returns.phonePlaceholder', label:'Placeholder: رقم الجوال' },
-          { type:'text', path:'pages.returns.cta', label:'زر الإرسال' },
-          { type:'text', path:'pages.returns.policyCta', label:'زر فتح السياسة' },
-          { type:'text', path:'pages.returns.helper', label:'ملاحظة مختصرة فوق النموذج' }
-        ]
-      },
-      yamm: {
-        title: 'إعدادات يم (Yamm)',
-        desc: 'تحدد كيف يتم إرسال رقم الطلب والجوال إلى يم. إذا لم تنعكس القيم داخل يم، عدّل أسماء البراميترز هنا ثم جرّب.',
-        fields: [
-          { type:'url', path:'yamm.baseUrl', label:'Base URL لبوابة يم' },
-          { type:'text', path:'yamm.hostname', label:'Hostname (دومين المتجر)' },
-          { type:'text', path:'yamm.params.hostname', label:'اسم براميتر الدومين (hostname param)' },
-          { type:'text', path:'yamm.params.order', label:'اسم براميتر رقم الطلب' },
-          { type:'text', path:'yamm.params.phone', label:'اسم براميتر رقم الجوال' },
-          { type:'text', path:'yamm.params.countryCode', label:'اسم براميتر كود الدولة (اختياري)' , hint:'اتركه فارغاً إذا يم لا يحتاجه.' },
-          { type:'text', path:'yamm.phone.countryCode', label:'كود الدولة (للسعودية: 966)' },
-          { type:'text', path:'yamm.phone.showPrefix', label:'النص الظاهر بجانب رقم الجوال (مثال: +966)' }
-        ]
-      },
-      track: {
-        title: 'صفحة تتبع الطلب',
-        desc: 'نصوص صفحة التتبع (العنوان/الوصف/زر التتبع...).',
-        fields: [
-          { type:'text', path:'pages.track.badge', label:'الشارة (Chip)' },
-          { type:'html', path:'pages.track.title', label:'العنوان (يدعم <br/>)' },
-          { type:'textarea', path:'pages.track.desc', label:'الوصف' },
-          { type:'textarea', path:'pages.track.intro', label:'رسالة الترحيب داخل صندوق المحادثة' },
-          { type:'text', path:'pages.track.orderPlaceholder', label:'Placeholder: رقم الطلب' },
-          { type:'text', path:'pages.track.cta', label:'زر التتبع' },
-          { type:'text', path:'pages.track.hint', label:'نص الملاحظة أسفل الصندوق' },
-          { type:'text', path:'pages.track.openChat', label:'رابط فتح شات خدمة العملاء' }
-        ]
-      },
-      index: {
-        title: 'الصفحة الرئيسية',
-        desc: 'نصوص الهيرو أعلى الصفحة الرئيسية.',
-        fields: [
-          { type:'text', path:'pages.index.badge', label:'الشارة (Chip)' },
-          { type:'html', path:'pages.index.title', label:'العنوان (يدعم <br/>)' },
-          { type:'textarea', path:'pages.index.desc', label:'الوصف' }
-        ]
-      },
-      products: {
-        title: 'صفحة المنتجات',
-        desc: 'نصوص صفحة المنتجات (الواجهة فقط).',
-        fields: [
-          { type:'text', path:'pages.products.badge', label:'الشارة (Chip)' },
-          { type:'html', path:'pages.products.title', label:'العنوان (يدعم <br/>)' },
-          { type:'textarea', path:'pages.products.desc', label:'الوصف' }
-        ]
-      }
-    };
+  const TOKEN_KEY = 'ix_admin_token';
+  let token = sessionStorage.getItem(TOKEN_KEY) || '';
+  let content = null;
+  let currentTab = 'global';
 
-    function isObject(v){ return v && typeof v === 'object' && !Array.isArray(v); }
+  const el = {
+    loginView: document.getElementById('loginView'),
+    appView: document.getElementById('appView'),
+    topActions: document.getElementById('topActions'),
+    loginNotice: document.getElementById('loginNotice'),
+    notice: document.getElementById('notice'),
+    password: document.getElementById('password'),
+    btnLogin: document.getElementById('btnLogin'),
+    btnSave: document.getElementById('btnSave'),
+    btnRefresh: document.getElementById('btnRefresh'),
+    btnLogout: document.getElementById('btnLogout'),
+    btnOpenReturns: document.getElementById('btnOpenReturns'),
+    btnOpenTrack: document.getElementById('btnOpenTrack'),
+    btnOpenIndex: document.getElementById('btnOpenIndex'),
+    panelTitle: document.getElementById('panelTitle'),
+    panelDesc: document.getElementById('panelDesc'),
+    panelBody: document.getElementById('panelBody'),
+    nav: document.getElementById('nav')
+  };
 
-    function getPath(obj, path){
-      return path.split('.').reduce((acc,k)=> (acc && acc[k] !== undefined) ? acc[k] : undefined, obj);
+  const schema = {
+    global: {
+      title: 'عام',
+      desc: 'روابط المتجر/السياسة + التنقل + الشعارات.',
+      fields: [
+        { type:'url', path:'global.links.store', label:'رابط المتجر' },
+        { type:'url', path:'global.links.warrantyPolicy', label:'رابط سياسة الضمان الذهبي' },
+        { type:'text', path:'global.chipAfterSales', label:'شريط أعلى الصفحة (خدمات ما بعد البيع)' },
+
+        { type:'text', path:'global.nav.home', label:'تنقل (ديسكتوب): الرئيسية' },
+        { type:'text', path:'global.nav.track', label:'تنقل (ديسكتوب): تتبع الطلب' },
+        { type:'text', path:'global.nav.returns', label:'تنقل (ديسكتوب): الاسترجاع' },
+        { type:'text', path:'global.nav.products', label:'تنقل (ديسكتوب): المنتجات' },
+        { type:'text', path:'global.nav.policy', label:'زر (ديسكتوب): سياسة الضمان الذهبي' },
+        { type:'text', path:'global.nav.store', label:'زر (ديسكتوب): المتجر' },
+
+        { type:'text', path:'global.mobileNav.services', label:'تنقل (جوال): خدمات' },
+        { type:'text', path:'global.mobileNav.track', label:'تنقل (جوال): تتبع' },
+        { type:'text', path:'global.mobileNav.returns', label:'تنقل (جوال): استرجاع' },
+        { type:'text', path:'global.mobileNav.products', label:'تنقل (جوال): منتجات' },
+        { type:'text', path:'global.mobileNav.store', label:'تنقل (جوال): متجر' },
+
+        { type:'image', path:'global.media.infinitexLogo', label:'شعار INFINITEX' },
+        { type:'image', path:'global.media.yammLogo', label:'شعار يم (Yamm)' }
+      ]
+    },
+    returns: {
+      title: 'صفحة الاسترجاع',
+      desc: 'النصوص الظاهرة في أعلى صفحة الاسترجاع + نموذج التوجيه إلى يم.',
+      fields: [
+        { type:'text', path:'pages.returns.badge', label:'الشارة' },
+        { type:'html', path:'pages.returns.title', label:'العنوان (يدعم <br/>)' },
+        { type:'textarea', path:'pages.returns.desc', label:'الوصف' },
+        { type:'text', path:'pages.returns.formTitle', label:'عنوان النموذج' },
+        { type:'text', path:'pages.returns.orderLabel', label:'ليبل: رقم الطلب' },
+        { type:'text', path:'pages.returns.orderPlaceholder', label:'Placeholder: رقم الطلب' },
+        { type:'text', path:'pages.returns.phoneLabel', label:'ليبل: رقم الجوال' },
+        { type:'text', path:'pages.returns.phonePlaceholder', label:'Placeholder: رقم الجوال' },
+        { type:'text', path:'pages.returns.cta', label:'زر الإرسال' },
+        { type:'text', path:'pages.returns.policyCta', label:'زر فتح السياسة' },
+        { type:'textarea', path:'pages.returns.helper', label:'ملاحظة مختصرة' }
+      ]
+    },
+    track: {
+      title: 'صفحة تتبع الطلب',
+      desc: 'النصوص الأساسية في الهيرو وزر التتبع.',
+      fields: [
+        { type:'text', path:'pages.track.badge', label:'الشارة' },
+        { type:'html', path:'pages.track.title', label:'العنوان (يدعم <br/>)' },
+        { type:'textarea', path:'pages.track.desc', label:'الوصف' },
+        { type:'text', path:'pages.track.orderPlaceholder', label:'Placeholder: رقم الطلب' },
+        { type:'text', path:'pages.track.cta', label:'زر التتبع' },
+        { type:'textarea', path:'pages.track.hint', label:'ملاحظة تحت الإدخال' },
+        { type:'text', path:'pages.track.openChat', label:'نص رابط فتح الشات' }
+      ]
+    },
+    index: {
+      title: 'الصفحة الرئيسية',
+      desc: 'الهيرو (شريحة + عنوان + وصف) وصورة.',
+      fields: [
+        { type:'text', path:'pages.index.badge', label:'الشارة' },
+        { type:'textarea', path:'pages.index.title', label:'العنوان (نص عادي)' },
+        { type:'textarea', path:'pages.index.desc', label:'الوصف' },
+        { type:'text', path:'pages.index.ctaTrack', label:'زر: تتبع الطلب' },
+        { type:'text', path:'pages.index.ctaReturns', label:'زر: بدء الاسترجاع' },
+        { type:'image', path:'pages.index.heroImage', label:'صورة الهيرو' }
+      ]
+    },
+    products: {
+      title: 'صفحة المنتجات',
+      desc: 'نصوص عامة (قابلة للتوسعة).',
+      fields: [
+        { type:'text', path:'pages.products.badge', label:'الشارة' },
+        { type:'text', path:'pages.products.title', label:'العنوان' },
+        { type:'textarea', path:'pages.products.desc', label:'الوصف' },
+        { type:'text', path:'pages.products.ctaStore', label:'زر زيارة المتجر' }
+      ]
+    },
+    yamm: {
+      title: 'إعدادات يم (Yamm)',
+      desc: 'تحديد رابط يم وأسماء البراميترز حتى تنعكس القيم داخل منصة يم بشكل صحيح.',
+      fields: [
+        { type:'url', path:'yamm.baseUrl', label:'Base URL لبوابة يم' },
+        { type:'text', path:'yamm.hostname', label:'Hostname (دومين المتجر)' },
+        { type:'text', path:'yamm.phone.countryCode', label:'كود الدولة (للسعودية: 966)' },
+        { type:'text', path:'yamm.params.hostname', label:'اسم براميتر الدومين' },
+        { type:'text', path:'yamm.params.order', label:'اسم براميتر رقم الطلب' },
+        { type:'text', path:'yamm.params.phone', label:'اسم براميتر رقم الجوال' },
+        { type:'text', path:'yamm.params.countryCode', label:'اسم براميتر كود الدولة (اختياري)' }
+      ]
     }
+  };
 
-    function setPath(obj, path, value){
-      const parts = path.split('.');
-      let cur = obj;
-      for(let i=0;i<parts.length-1;i++){
-        const k = parts[i];
-        if(!isObject(cur[k])) cur[k] = {};
-        cur = cur[k];
-      }
-      cur[parts[parts.length-1]] = value;
+  function showNotice(msg, ok=true, where='notice'){
+    const box = where==='login' ? el.loginNotice : el.notice;
+    box.textContent = msg;
+    box.style.borderColor = ok ? 'rgba(57,255,20,.22)' : 'rgba(255,80,80,.35)';
+    box.style.background = ok ? 'rgba(57,255,20,.06)' : 'rgba(255,80,80,.10)';
+    box.classList.add('show');
+    setTimeout(()=>box.classList.remove('show'), 3500);
+  }
+
+  function getByPath(obj, path){
+    try{ return path.split('.').reduce((o,k)=> (o && k in o) ? o[k] : undefined, obj); }catch{ return undefined; }
+  }
+  function setByPath(obj, path, value){
+    const parts = path.split('.');
+    let cur = obj;
+    for(let i=0;i<parts.length-1;i++){
+      const k = parts[i];
+      if(!cur[k] || typeof cur[k] !== 'object') cur[k] = {};
+      cur = cur[k];
     }
+    cur[parts[parts.length-1]] = value;
+  }
 
-    function el(tag, attrs={}, children=[]){
-      const node = document.createElement(tag);
-      Object.entries(attrs).forEach(([k,v])=>{
-        if(k==='class') node.className=v;
-        else if(k==='text') node.textContent=v;
-        else node.setAttribute(k,v);
-      });
-      (children||[]).forEach(ch=> node.appendChild(ch));
-      return node;
-    }
+  function resolveMedia(v){
+    if(!v) return '';
+    const s = String(v);
+    if(s.startsWith('media/')) return `/api/media?key=${encodeURIComponent(s)}`;
+    return s;
+  }
 
-    function showNotice(text){
-      const n = document.getElementById('notice');
-      n.textContent = text;
-      n.classList.add('show');
-      clearTimeout(showNotice._t);
-      showNotice._t = setTimeout(()=> n.classList.remove('show'), 3500);
-    }
+  async function api(url, opts={}){
+    const headers = Object.assign({ 'Content-Type':'application/json' }, opts.headers||{});
+    if(token) headers['Authorization'] = 'Bearer ' + token;
+    const res = await fetch(url, Object.assign({}, opts, { headers }));
+    const txt = await res.text();
+    let json = null;
+    try{ json = txt ? JSON.parse(txt) : null; }catch{}
+    if(!res.ok) throw new Error(json?.error || txt || ('HTTP '+res.status));
+    return json;
+  }
 
-    let model = null;
+  async function loadContent(){
+    const res = await fetch(API.content, { cache:'no-store' });
+    const json = await res.json();
+    content = json;
+  }
 
-    async function loadModel(){
-      // Prefer local preview override
-      const override = localStorage.getItem(STORAGE_KEY);
-      if(override){
-        try{ model = JSON.parse(override); return; }catch(e){}
-      }
-      const res = await fetch('../content.json', { cache:'no-store' });
-      model = await res.json();
-    }
+  function renderTab(tab){
+    currentTab = tab;
+    [...el.nav.querySelectorAll('button')].forEach(b=> b.classList.toggle('active', b.dataset.tab===tab));
 
-    function render(tab){
-      const p = panels[tab];
-      document.getElementById('panelTitle').textContent = p.title;
-      document.getElementById('panelDesc').textContent = p.desc;
-      const body = document.getElementById('panelBody');
-      body.innerHTML = '';
+    const cfg = schema[tab];
+    el.panelTitle.textContent = cfg.title;
+    el.panelDesc.textContent = cfg.desc;
 
-      const rows = el('div', {class:'row'});
-      p.fields.forEach(f=>{
-        const field = el('div', {class:'field'});
-        const label = el('label', {});
-        label.appendChild(el('span', {text:f.label}));
-        label.appendChild(el('code', {text:f.path}));
-        field.appendChild(label);
+    const frag = document.createDocumentFragment();
+    const row = document.createElement('div');
+    row.className = 'row';
 
-        const val = getPath(model, f.path);
-        let input;
-        if(f.type==='textarea'){
-          input = el('textarea', {'data-path':f.path});
-          input.value = (val ?? '').toString();
-        }else if(f.type==='html'){
-          input = el('input', {type:'text', 'data-path':f.path});
-          input.value = (val ?? '').toString();
-        }else{
-          input = el('input', {type:(f.type==='url'?'url':'text'), 'data-path':f.path});
-          input.value = (val ?? '').toString();
-        }
+    cfg.fields.forEach(field => {
+      const box = document.createElement('div');
+      box.className = 'field';
+      const label = document.createElement('label');
+      label.innerHTML = `<span>${escapeHtml(field.label)}</span><code>${escapeHtml(field.path)}</code>`;
+      box.appendChild(label);
 
-        input.addEventListener('input', ()=>{
-          setPath(model, f.path, input.value);
+      const val = getByPath(content, field.path);
+
+      if(field.type === 'textarea'){
+        const ta = document.createElement('textarea');
+        ta.value = val ?? '';
+        ta.addEventListener('input', ()=> setByPath(content, field.path, ta.value));
+        box.appendChild(ta);
+      } else if(field.type === 'html'){
+        const ta = document.createElement('textarea');
+        ta.value = val ?? '';
+        ta.addEventListener('input', ()=> setByPath(content, field.path, ta.value));
+        const h = document.createElement('div');
+        h.className = 'hint';
+        h.textContent = 'يدعم <br/> للنزول سطر.';
+        box.appendChild(ta);
+        box.appendChild(h);
+      } else if(field.type === 'image'){
+        const wrap = document.createElement('div');
+        wrap.className = 'mediaPrev';
+        const img = document.createElement('img');
+        img.src = resolveMedia(val) || '../assets/icons/icon-192.png';
+        img.alt = 'preview';
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+        meta.innerHTML = `<div>المسار الحالي:</div><div><code style="color:rgba(57,255,20,.9)">${escapeHtml(String(val||''))}</code></div>`;
+        wrap.appendChild(img);
+        wrap.appendChild(meta);
+
+        const inp = document.createElement('input');
+        inp.type = 'file';
+        inp.accept = 'image/*';
+        inp.style.marginTop = '10px';
+
+        inp.addEventListener('change', async ()=>{
+          const file = inp.files && inp.files[0];
+          if(!file) return;
+          try{
+            const dataUrl = await readAsDataUrl(file);
+            const up = await api(API.media, { method:'POST', body: JSON.stringify({ dataUrl, filename:file.name }) });
+            setByPath(content, field.path, up.key);
+            img.src = up.url;
+            meta.innerHTML = `<div>تم الرفع:</div><div><code style="color:rgba(57,255,20,.9)">${escapeHtml(up.key)}</code></div>`;
+            showNotice('تم رفع الصورة. اضغط "حفظ ونشر" لتطبيقها على الصفحات.', true);
+          } catch(err){
+            showNotice('فشل رفع الصورة: ' + err.message, false);
+          } finally {
+            inp.value = '';
+          }
         });
-        field.appendChild(input);
 
-        if(f.hint){
-          field.appendChild(el('div', {class:'hint', text:f.hint}));
-        }
+        box.appendChild(wrap);
+        box.appendChild(inp);
+        const h = document.createElement('div');
+        h.className = 'hint';
+        h.textContent = 'سقف الرفع ~2.5MB. سيتم تخزين الصورة في Netlify Blobs وربطها تلقائياً.';
+        box.appendChild(h);
+      } else {
+        const input = document.createElement('input');
+        input.type = (field.type === 'url') ? 'url' : 'text';
+        input.value = val ?? '';
+        input.addEventListener('input', ()=> setByPath(content, field.path, input.value));
+        box.appendChild(input);
+      }
 
-        rows.appendChild(field);
-      });
-
-      body.appendChild(rows);
-    }
-
-    function setActiveTab(tab){
-      document.querySelectorAll('#nav button').forEach(b=>{
-        b.classList.toggle('active', b.getAttribute('data-tab')===tab);
-      });
-      render(tab);
-    }
-
-    (async function init(){
-      await loadModel();
-      setActiveTab('global');
-
-      document.getElementById('nav').addEventListener('click', (e)=>{
-        const b = e.target.closest('button[data-tab]');
-        if(!b) return;
-        setActiveTab(b.getAttribute('data-tab'));
-      });
-
-      document.getElementById('btnPreview').addEventListener('click', ()=>{
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(model));
-        showNotice('تم حفظ المعاينة محلياً. افتح أي صفحة لمشاهدة التغييرات فوراً.');
-      });
-
-      document.getElementById('btnClear').addEventListener('click', ()=>{
-        localStorage.removeItem(STORAGE_KEY);
-        showNotice('تم إلغاء المعاينة. سيتم الرجوع للملف الأصلي content.json.');
-      });
-
-      document.getElementById('btnDownload').addEventListener('click', ()=>{
-        const json = JSON.stringify(model, null, 2);
-        const blob = new Blob([json], {type:'application/json;charset=utf-8'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'content.json';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(url);
-        showNotice('تم تنزيل content.json. استبدله داخل المشروع ثم ارفع التحديث إلى Netlify.');
-      });
-
-    })().catch(err=>{
-      console.error(err);
-      showNotice('تعذر تحميل content.json. تأكد أن المشروع يعمل محلياً أو على Netlify.');
+      row.appendChild(box);
     });
-  </script>
+
+    frag.appendChild(row);
+    el.panelBody.innerHTML = '';
+    el.panelBody.appendChild(frag);
+  }
+
+  function escapeHtml(s){
+    return String(s||'').replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+  }
+
+  function readAsDataUrl(file){
+    return new Promise((resolve,reject)=>{
+      const r = new FileReader();
+      r.onload = ()=> resolve(String(r.result||''));
+      r.onerror = ()=> reject(new Error('FileReader error'));
+      r.readAsDataURL(file);
+    });
+  }
+
+  async function login(){
+    try{
+      const pass = el.password.value;
+      if(!pass) return showNotice('اكتب كلمة المرور.', false, 'login');
+      const res = await fetch(API.auth, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ password: pass })
+      });
+      const j = await res.json().catch(()=>null);
+      if(!res.ok) throw new Error(j?.error || 'Login failed');
+      token = j.token;
+      sessionStorage.setItem(TOKEN_KEY, token);
+
+      await loadContent();
+      bootApp();
+      showNotice('تم تسجيل الدخول.', true);
+    } catch(err){
+      showNotice('فشل الدخول: ' + err.message, false, 'login');
+    }
+  }
+
+  async function save(){
+    try{
+      await api(API.content, { method:'PUT', body: JSON.stringify(content) });
+      // Ask open pages to refresh immediately
+      try{ new BroadcastChannel('ix_content').postMessage({ type:'refresh' }); }catch{}
+      showNotice('تم الحفظ. التغييرات ستظهر فوراً (وقد تحتاج 20 ثانية كحد أقصى بسبب التحديث التلقائي).', true);
+    } catch(err){
+      showNotice('فشل الحفظ: ' + err.message, false);
+    }
+  }
+
+  async function refresh(){
+    try{
+      await loadContent();
+      renderTab(currentTab);
+      showNotice('تم جلب آخر نسخة.', true);
+    } catch(err){
+      showNotice('فشل الجلب: ' + err.message, false);
+    }
+  }
+
+  function logout(){
+    sessionStorage.removeItem(TOKEN_KEY);
+    token = '';
+    content = null;
+    el.appView.style.display = 'none';
+    el.topActions.style.display = 'none';
+    el.loginView.style.display = '';
+    el.password.value = '';
+  }
+
+  function bootApp(){
+    el.loginView.style.display = 'none';
+    el.appView.style.display = '';
+    el.topActions.style.display = '';
+    renderTab('global');
+  }
+
+  // Events
+  el.btnLogin.addEventListener('click', login);
+  el.password.addEventListener('keydown', (e)=>{ if(e.key==='Enter') login(); });
+  el.btnSave.addEventListener('click', save);
+  el.btnRefresh.addEventListener('click', refresh);
+  el.btnLogout.addEventListener('click', logout);
+
+  el.btnOpenReturns.addEventListener('click', ()=> window.open('../returns.html', '_blank', 'noopener'));
+  el.btnOpenTrack.addEventListener('click', ()=> window.open('../track.html', '_blank', 'noopener'));
+  el.btnOpenIndex.addEventListener('click', ()=> window.open('../index.html', '_blank', 'noopener'));
+
+  el.nav.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button[data-tab]');
+    if(!btn) return;
+    renderTab(btn.dataset.tab);
+  });
+
+  // Boot
+  (async function init(){
+    if(!token){
+      el.loginView.style.display = '';
+      return;
+    }
+    try{
+      await loadContent();
+      bootApp();
+    } catch(err){
+      // token expired or backend not configured
+      logout();
+    }
+  })();
+})();
+</script>
 </body>
 </html>
