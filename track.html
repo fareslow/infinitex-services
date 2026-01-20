@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="INFINITEX" />
+
+  
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+<title>INFINITEX — تتبع الطلب</title>
+  <meta name="description" content="ادخل رقم طلبك وسيقوم الذكاء الاصطناعي بإظهار تفاصيل التتبع بشكل فوري." />
+
+  <link rel="preload" href="assets/fonts/avenir-black-arabic.otf" as="font" type="font/otf" crossorigin>
+
+  <style>
+    @font-face{font-family:"AvenirBlackArabic"; src:url("assets/fonts/avenir-black-arabic.otf") format("opentype"); font-display:swap;}
+    :root{--bg:#050607;--bg2:#0a0c0d;--text:#eef2f3;--muted:#a7b0b5;--muted2:#7d878d;--line:rgba(255,255,255,.08);--accent:#39ff14;--shadow:0 24px 80px rgba(0,0,0,.55);--radius:18px;--radius2:24px;--max:1120px;}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{background:#000}
+    body{margin:0;color:var(--text);background:radial-gradient(1100px 560px at 80% -10%, rgba(57,255,20,.18), transparent 60%),linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);font-family:"AvenirBlackArabic",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;color:var(--muted);font-size:13px}
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 18px rgba(57,255,20,.6)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--text);cursor:pointer;transition:transform .15s ease,border-color .15s ease;user-select:none;font-weight:800}
+    .btn:hover{transform:translateY(-1px);border-color:rgba(57,255,20,.45)}
+    .btn.primary{background:linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85));border-color:rgba(57,255,20,.65);color:#061006;box-shadow:0 18px 60px rgba(57,255,20,.18)}
+    .btn.ghost{border-color:rgba(255,255,255,.10)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+    header{position:sticky; top:0;  z-index:50; backdrop-filter: blur(14px); background:#000; padding-top: env(safe-area-inset-top); border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:12px;min-width:160px}
+    .brand img{height:22px;opacity:.98}
+    .navlinks{display:flex;align-items:center;gap:10px}
+    .navlinks a{padding:10px 10px;border-radius:12px;border:1px solid transparent;color:var(--muted);font-size:13px}
+    .navlinks a:hover{border-color:rgba(255,255,255,.10);color:var(--text)}
+    .navlinks a.active{border-color:rgba(57,255,20,.35);color:var(--text)}
+    .navCtas{display:flex;gap:10px;align-items:center}
+
+    .hero{padding:16px 0 8px}
+    .heroCard{padding:16px;border-radius:var(--radius2);position:relative;overflow:hidden}
+    .heroCard::before{content:"";position:absolute;inset:-1px;background:radial-gradient(700px 350px at 70% 0%, rgba(57,255,20,.18), transparent 60%);opacity:.9;pointer-events:none}
+    .h1{position:relative;font-size:clamp(22px,7vw,44px);line-height:1.1;margin:12px 0 10px}
+    .p{position:relative;margin:0;color:var(--muted);font-size:14px;line-height:1.85}
+
+    .form{margin-top:14px;position:relative;display:grid;gap:10px}
+    label{font-size:12px;color:var(--muted2)}
+    input{width:100%;padding:14px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:var(--text);outline:none;font-family:inherit}
+    input:focus{border-color:rgba(57,255,20,.45)}
+
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+    .hint{position:relative;margin-top:10px;padding:12px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.02);color:var(--muted);font-size:12px;line-height:1.8}
+
+    /* Inline AI Chat (Track Order) */
+    .inlineChat{margin-top:14px;padding:12px;border-radius:var(--radius2);position:relative;overflow:hidden}
+    .inlineChat::before{content:"";position:absolute;inset:-1px;background:radial-gradient(620px 320px at 80% 0%, rgba(57,255,20,.12), transparent 60%);opacity:.85;pointer-events:none}
+    .chatLog{position:relative;height:min(52vh,520px);overflow:auto;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.22);padding:12px;scrollbar-width:thin}
+    .msg{max-width:92%;padding:10px 12px;border-radius:14px;margin:8px 0;font-size:13px;line-height:1.8;border:1px solid rgba(255,255,255,.10)}
+    .msg.me{margin-left:auto;background:rgba(57,255,20,.10);border-color:rgba(57,255,20,.28)}
+    .msg.bot{margin-right:auto;background:rgba(255,255,255,.03)}
+    .chatRow{position:relative;display:flex;gap:10px;margin-top:10px}
+    .chatRow input{flex:1}
+    .miniLink{position:relative;display:inline-block;margin-top:10px;font-size:12px;color:var(--muted);border-bottom:1px dashed rgba(255,255,255,.22)}
+    .miniLink:hover{color:var(--text);border-bottom-color:rgba(57,255,20,.45)}
+
+    footer{padding:26px 0 110px;color:var(--muted2);font-size:12px; background:#000}
+
+    .mobileNav{position:fixed;left:12px;right:12px;bottom: calc(12px + env(safe-area-inset-bottom));z-index:70;display:none}
+    .mobileNavBar{display:flex;gap:8px;align-items:stretch;justify-content:space-between;border-radius:18px;border:1px solid rgba(255,255,255,.10);background:rgba(5,6,7,.78);backdrop-filter:blur(12px);padding:8px}
+    .mnItem{flex:1;padding:10px 8px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);color:var(--muted);font-size:12px;text-align:center;white-space:nowrap}
+    .mnItem.active{border-color:rgba(57,255,20,.35);color:var(--text)}
+    .mnItem.store{color:#061006;background:rgba(57,255,20,.90);border-color:rgba(57,255,20,.75)}
+
+    @media (max-width:980px){.navlinks{display:none}.navCtas{display:none}.mobileNav{display:block}body{padding-bottom:96px}}
+    @media (max-width:520px){body{background:linear-gradient(180deg,var(--bg) 0%, #07090a 100%) !important;}.wrap{padding:0 14px}.brand img{height:20px}}
+
+    /* ============ Popcorn Launcher Position (Keep Bubble Above Bottom Nav) ============ */
+    :root{ --chat-launcher-bottom: 24px; }
+    @media (max-width: 720px){
+      :root{ --chat-launcher-bottom: calc(env(safe-area-inset-bottom, 0px) + 140px); }
+    }
+    /* Target only the launcher / small fixed buttons (avoid moving the full chat panel) */
+    button[id*="popcorn"],
+    button[class*="popcorn"],
+    a[id*="popcorn"],
+    a[class*="popcorn"],
+    div[id*="popcorn"][role="button"],
+    div[class*="popcorn"][role="button"]{
+      bottom: var(--chat-launcher-bottom) !important;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand" aria-label="INFINITEX">
+          <a href="index.html" aria-label="الرئيسية"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></a>
+          <span class="chip"><span class="dot"></span> خدمات ما بعد البيع</span>
+        </div>
+
+        <nav class="navlinks" aria-label="التنقل">
+          <a href="index.html">الرئيسية</a>
+          <a class="active" href="track.html">تتبع الطلب</a>
+          <a href="returns.html">الاسترجاع</a>
+          <a href="products.html">المنتجات</a>
+        </nav>
+
+        <div class="navCtas">
+          <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">سياسة الضمان الذهبي</a>
+          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener">المتجر</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap hero">
+    <section class="heroCard card">
+      <div class="chip" style="position:relative"><span class="dot"></span> تتبع فوري بالذكاء الاصطناعي</div>
+      <h1 class="h1">تتبع طلبك مباشرة<br/>اكتب رقم الطلب وخلاص</h1>
+      <p class="p">اكتب رقم الطلب بالأسفل. الوكيل مربوط عندنا ويعطيك تفاصيل التتبع فورًا داخل نفس الصفحة.</p>
+
+      <div class="inlineChat card">
+        <div id="chatLog" class="chatLog" aria-live="polite">
+          <div class="msg bot">أهلاً! اكتب رقم طلبك وسأرسل لك حالة الشحنة ورقم التتبع والرابط إن وجد.</div>
+        </div>
+
+        <div class="chatRow">
+          <input id="order" name="order" inputmode="numeric" placeholder="رقم الطلب (مثال: 12345)" aria-label="رقم الطلب" />
+          <button class="btn primary" type="button" id="sendBtn">تتبع</button>
+        </div>
+
+        <div class="hint">إذا عندك أي استفسار إضافي، تقدر تفتح الشات من أيقونة خدمة العملاء في يمين الشاشة.</div>
+        <a class="miniLink" href="#" id="openWidgetLink">فتح شات خدمة العملاء</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div style="border-top:1px solid rgba(255,255,255,.08); padding-top: 14px">
+      <div>© <span id="year"></span> INFINITEX — تتبع الطلب</div>
+    </div>
+    </div>
+  </footer>
+
+  <div class="mobileNav" role="navigation" aria-label="تنقل سريع">
+    <div class="mobileNavBar">
+      <a class="mnItem" href="index.html">خدمات</a>
+      <a class="mnItem active" href="track.html">تتبع</a>
+      <a class="mnItem" href="returns.html">استرجاع</a>
+      <a class="mnItem" href="products.html">منتجات</a>
+      <a class="mnItem store" href="https://infinitex.sa/" target="_blank" rel="noopener">متجر</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // يتم تنفيذ النداء عبر Netlify Function للحفاظ على سرية API KEY.
+    const POPCORN_PROXY_URL = '/api/track';
+
+    const chatLog = document.getElementById('chatLog');
+    const orderInput = document.getElementById('order');
+    const sendBtn = document.getElementById('sendBtn');
+
+    const userId = (function(){
+      const k = 'ix_popcorn_uid';
+      const v = localStorage.getItem(k);
+      if(v) return v;
+      const nv = (crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now());
+      localStorage.setItem(k, nv);
+      return nv;
+    })();
+
+    function addMsg(role, text){
+      const el = document.createElement('div');
+      el.className = 'msg ' + (role === 'me' ? 'me' : 'bot');
+      el.textContent = text;
+      chatLog.appendChild(el);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    async function sendOrder(){
+      const orderNo = (orderInput.value || '').trim();
+      if(!orderNo){
+        addMsg('bot', 'اكتب رقم الطلب أولاً.');
+        return;
+      }
+
+      addMsg('me', `رقم طلبي: ${orderNo}`);
+      orderInput.value = '';
+
+      sendBtn.disabled = true;
+      const thinking = document.createElement('div');
+      thinking.className = 'msg bot';
+      thinking.textContent = 'جاري جلب التتبع...';
+      chatLog.appendChild(thinking);
+      chatLog.scrollTop = chatLog.scrollHeight;
+
+      try{
+        const res = await fetch(POPCORN_PROXY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ order: orderNo })
+      });
+
+        const data = await res.json().catch(()=> ({}));
+        thinking.remove();
+
+        if(!res.ok){
+          addMsg('bot', data?.error || 'حصل خطأ في خدمة التتبع. جرّب مرة ثانية.');
+          return;
+        }
+        addMsg('bot', data?.response || 'تم استلام الطلب، لكن لم يصل رد واضح. جرّب مرة ثانية.');
+      }catch(e){
+        thinking.remove();
+        addMsg('bot', 'تعذر الاتصال بخدمة التتبع. جرّب مرة ثانية.');
+      }finally{
+        sendBtn.disabled = false;
+      }
+    }
+
+    sendBtn.addEventListener('click', sendOrder);
+    orderInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') sendOrder(); });
+
+    // Optional fallback: open the floating widget if user wants live support.
+    function findLauncher(){
+      const els = Array.from(document.querySelectorAll('body *'));
+      const topNav = document.querySelector('.mobileNav')?.getBoundingClientRect().top ?? null;
+      const cands = els.filter(el=>{
+        if(!el || el === document.body || el === document.documentElement) return false;
+        if(el.closest && el.closest('.mobileNav')) return false;
+        const st = getComputedStyle(el);
+        if(st.position !== 'fixed') return false;
+        const r = el.getBoundingClientRect();
+        if(r.width < 24 || r.height < 24) return false;
+        if(r.width > 360 || r.height > 360) return false;
+        if(r.left < window.innerWidth * 0.35) return false;
+        if(r.top < window.innerHeight * 0.35) return false;
+        if(topNav !== null && r.bottom <= (topNav - 2)) return false;
+        if(el.tagName === 'IFRAME') return true;
+        if(el.querySelector && el.querySelector('iframe')) return true;
+        if(['BUTTON','A'].includes(el.tagName)) return true;
+        if(el.getAttribute && el.getAttribute('role') === 'button') return true;
+        if(st.cursor === 'pointer') return true;
+        return false;
+      });
+      if(!cands.length) return null;
+      cands.sort((a,b)=>{
+        const ra=a.getBoundingClientRect(), rb=b.getBoundingClientRect();
+        const areaA=ra.width*ra.height, areaB=rb.width*rb.height;
+        const distA=(window.innerWidth-ra.right)**2 + (window.innerHeight-ra.bottom)**2;
+        const distB=(window.innerWidth-rb.right)**2 + (window.innerHeight-rb.bottom)**2;
+        return (areaA+distA) - (areaB+distB);
+      });
+      return cands[0];
+    }
+
+    document.getElementById('openWidgetLink')?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const el = findLauncher();
+      if(el){ try{ el.click(); }catch(_){} }
+    });
+  </script>
+<!-- INFINITEX Support Chat (Popcorn) -->
+<script
+    src='https://app.trypopcorn.ai/loader.js'
+    data-url='https://app.trypopcorn.ai'
+    data-api-url='https://api.trypopcorn.ai'
+    data-agent=''
+    data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'>
+</script>
+    <!-- Popcorn: lift ONLY the launcher icon above the bottom nav (mobile) -->
+  <script>
+  (function(){
+    function navTop(){
+      var nav = document.querySelector('.mobileNav');
+      if(!nav) return null;
+      return nav.getBoundingClientRect().top;
+    }
+
+    function overlaps(r, top){
+      return top !== null && r.bottom > (top - 4);
+    }
+
+    function isCandidate(el){
+      if(!el || el === document.documentElement || el === document.body) return false;
+      // avoid moving our own bottom nav
+      if(el.closest && el.closest('.mobileNav')) return false;
+
+      var st = getComputedStyle(el);
+      if(st.position !== 'fixed') return false;
+      if(st.display === 'none' || st.visibility === 'hidden') return false;
+      if(parseFloat(st.opacity || '1') < 0.05) return false;
+
+      var r = el.getBoundingClientRect();
+      if(r.width < 24 || r.height < 24) return false;
+      // allow larger wrappers, but avoid full panels
+      if(r.width > 360 || r.height > 360) return false;
+      // must be on right/bottom half (typical launcher location)
+      if(r.left < window.innerWidth * 0.35) return false;
+      if(r.top < window.innerHeight * 0.35) return false;
+
+      // likely launcher: iframe OR contains iframe OR pointer-like
+      if(el.tagName === 'IFRAME') return true;
+      if(el.querySelector && el.querySelector('iframe')) return true;
+      if(el.tagName === 'BUTTON' || el.tagName === 'A') return true;
+      if(el.getAttribute && el.getAttribute('role') === 'button') return true;
+      if(st.cursor === 'pointer') return true;
+
+      return false;
+    }
+
+    function lift(el, top){
+      // move the launcher just above the bottom nav
+      var px = Math.round(window.innerHeight - top + 14);
+      var bottom = Math.max(16, px);
+      try{
+        el.style.setProperty('bottom', bottom + 'px', 'important');
+        el.style.setProperty('right', '16px', 'important');
+        el.style.setProperty('left', 'auto', 'important');
+        el.style.setProperty('z-index', '99999', 'important');
+      }catch(e){}
+    }
+
+    function score(el){
+      var r = el.getBoundingClientRect();
+      var area = r.width * r.height;
+      var dx = Math.max(0, window.innerWidth - r.right);
+      var dy = Math.max(0, window.innerHeight - r.bottom);
+      var z = parseInt(getComputedStyle(el).zIndex || '0', 10) || 0;
+      // prefer small area and near bottom-right; higher z-index helps a bit
+      return area + (dx*dx + dy*dy) - (z * 80);
+    }
+
+    function apply(){
+      var top = navTop();
+      if(top === null) return;
+
+      var nodes = Array.from(document.querySelectorAll('body *'));
+      var candidates = nodes.filter(isCandidate);
+      if(!candidates.length) return;
+
+      var overlapping = candidates.filter(function(el){
+        return overlaps(el.getBoundingClientRect(), top);
+      });
+      if(!overlapping.length) return;
+
+      overlapping.sort(function(a,b){ return score(a) - score(b); });
+      lift(overlapping[0], top);
+    }
+
+    // Run repeatedly because the widget is injected after load
+    var obs = new MutationObserver(function(){ apply(); });
+    obs.observe(document.documentElement, {subtree:true, childList:true, attributes:true});
+
+    var tries = 0;
+    var timer = setInterval(function(){
+      apply();
+      tries++;
+      if(tries > 120) clearInterval(timer);
+    }, 250);
+
+    window.addEventListener('resize', apply, {passive:true});
+    document.addEventListener('visibilitychange', apply);
+    window.addEventListener('load', apply);
+  })();
+  </script>
+
+
+</body>
+</html>
