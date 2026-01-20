@@ -191,6 +191,25 @@
       chatLog.scrollTop = chatLog.scrollHeight;
     }
 
+    // Clean Popcorn output: sometimes includes tool-call JSON before the final message
+    function cleanBotText(input){
+      const s = (input ?? '').toString();
+      if(!s) return '';
+      // Try to take the tail after the last }" (end of embedded JSON)
+      const marker = '}"';
+      const idx = s.lastIndexOf(marker);
+      if(idx !== -1){
+        let tail = s.slice(idx + marker.length);
+        tail = tail.replace(/^["\s]+/, '');
+        if(/[A-Za-z؀-ۿ]/.test(tail)) return tail.trim();
+      }
+      // Fallback: strip leading JSON-like blobs
+      return s
+        .replace(/^\s*\[.*?\]\s*/s, '')
+        .replace(/^\s*"\s*\{.*?\}\s*"\s*/s, '')
+        .trim();
+    }
+
     async function sendOrder(){
       const orderNo = (orderInput.value || '').trim();
       if(!orderNo){
@@ -222,7 +241,7 @@
           addMsg('bot', data?.error || 'حصل خطأ في خدمة التتبع. جرّب مرة ثانية.');
           return;
         }
-        addMsg('bot', data?.response || 'تم استلام الطلب، لكن لم يصل رد واضح. جرّب مرة ثانية.');
+        addMsg('bot', cleanBotText(data?.response) || 'تم استلام الطلب، لكن لم يصل رد واضح. جرّب مرة ثانية.');
       }catch(e){
         thinking.remove();
         addMsg('bot', 'تعذر الاتصال بخدمة التتبع. جرّب مرة ثانية.');
