@@ -1,0 +1,81 @@
+{
+  "global": {
+    "links": {
+      "store": "https://infinitex.sa/",
+      "warrantyPolicy": "https://infinitex.sa/blogs/gold-warranty-policy"
+    },
+    "chipAfterSales": "خدمات ما بعد البيع",
+    "nav": {
+      "home": "الرئيسية",
+      "track": "تتبع الطلب",
+      "returns": "الاسترجاع",
+      "products": "المنتجات",
+      "policy": "سياسة الضمان الذهبي",
+      "store": "المتجر"
+    },
+    "mobileNav": {
+      "services": "خدمات",
+      "track": "تتبع",
+      "returns": "استرجاع",
+      "products": "منتجات",
+      "store": "متجر"
+    },
+    "media": {
+      "infinitexLogo": "assets/brands/infinitex-logo.png",
+      "yammLogo": "assets/brands/yamm-logo.png"
+    }
+  },
+  "yamm": {
+    "baseUrl": "https://yamm.sa/store",
+    "hostname": "infinitex.sa",
+    "phone": {
+      "countryCode": "966"
+    },
+    "params": {
+      "hostname": "hostname",
+      "order": "order_number",
+      "phone": "phone_number",
+      "countryCode": "country_code"
+    }
+  },
+  "pages": {
+    "returns": {
+      "badge": "استرجاع منظم وموثّق",
+      "title": "اشترِ بثقة…<br/>واسترجع بكل وضوح",
+      "desc": "صممنا “الضمان الذهبي” لتكون تجربة الشراء أكثر اطمئنانًا. من هذه الصفحة ستصل مباشرةً إلى السياسة الرسمية وتبدأ طلب الاسترجاع عبر “يم (Yamm)” بخطوات واضحة.",
+      "formTitle": "ابدأ طلب الاسترجاع الآن",
+      "orderLabel": "رقم الطلب",
+      "orderPlaceholder": "مثال: 3455",
+      "phoneLabel": "رقم الجوال",
+      "phonePlaceholder": "5XXXXXXXX",
+      "cta": "ابدأ طلب الاسترجاع",
+      "policyCta": "فتح السياسة الرسمية",
+      "helper": "الشروط الرسمية والمدة وآلية الاسترجاع موجودة داخل صفحة “سياسة الضمان الذهبي”. هذه الصفحة هدفها توجيهك بسرعة إلى بوابة “يم” مع تمرير رقم الطلب والجوال.",
+      "footerTitle": "مهم قبل الاسترجاع"
+    },
+    "track": {
+      "badge": "تتبع فوري بالذكاء الاصطناعي",
+      "title": "تتبع طلبك مباشرة<br/>اكتب رقم الطلب وخلاص",
+      "desc": "اكتب رقم الطلب بالأسفل. الوكيل مربوط عندنا ويعطيك تفاصيل التتبع فورًا داخل نفس الصفحة.",
+      "intro": "أهلاً! اكتب رقم طلبك وسأرسل لك حالة الشحنة ورقم التتبع والرابط إن وجد.",
+      "orderPlaceholder": "رقم الطلب (مثال: 12345)",
+      "cta": "تتبع",
+      "hint": "إذا عندك أي استفسار إضافي، تقدر تفتح الشات من أيقونة خدمة العملاء في يمين الشاشة.",
+      "openChat": "فتح شات خدمة العملاء"
+    },
+    "index": {
+      "badge": "خدمات ما بعد البيع",
+      "title": "كل ما تحتاجه بعد الشراء…\nفي صفحة واحدة",
+      "desc": "تتبع الطلب، الاسترجاع، وسياسة الضمان الذهبي — بشكل واضح وسريع.",
+      "ctaTrack": "تتبع الطلب",
+      "ctaReturns": "بدء الاسترجاع",
+      "heroImage": "assets/images/sound-pro-dark-grey.jpg"
+    },
+    "products": {
+      "badge": "منتجات INFINITEX",
+      "title": "منتجاتنا",
+      "desc": "استعرض أبرز المنتجات والمواصفات بشكل سريع.",
+      "ctaStore": "زيارة المتجر"
+    }
+  }
+}
