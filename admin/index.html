@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لوحة التحكم — نصوص صفحات INFINITEX</title>
+  <link rel="icon" href="../assets/icons/icon-192.png" />
+  <style>
+    :root{
+      --bg:#0b0f0c;
+      --card:#0e1511;
+      --stroke:rgba(255,255,255,.10);
+      --text:#eaf3ec;
+      --muted:rgba(234,243,236,.75);
+      --muted2:rgba(234,243,236,.55);
+      --green:#38ff7b;
+      --green2:#1ef063;
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 70% 10%, rgba(56,255,123,.14), transparent 60%),
+        radial-gradient(900px 500px at 20% 20%, rgba(56,255,123,.10), transparent 60%),
+        linear-gradient(180deg, #050807, #0b0f0c 30%, #060806);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:1200px;margin:0 auto;padding:24px 18px 80px}
+    .top{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:18px 18px;border:1px solid var(--stroke);border-radius:24px;
+      background:linear-gradient(180deg, rgba(20,34,26,.78), rgba(10,14,12,.45));
+      box-shadow: var(--shadow);
+      position:sticky;top:14px;z-index:10;
+      backdrop-filter: blur(14px);
+    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:240px}
+    .brand img{height:22px}
+    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(56,255,123,.22);background:rgba(56,255,123,.06);color:var(--muted);
+      font-weight:700;white-space:nowrap}
+    .dot{width:10px;height:10px;border-radius:999px;background:var(--green);box-shadow:0 0 26px rgba(56,255,123,.7)}
+
+    .actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+    .btn{appearance:none;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--text);
+      padding:10px 14px;border-radius:14px;cursor:pointer;font-weight:800}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{border-color:rgba(56,255,123,.4);background:linear-gradient(180deg, rgba(56,255,123,.95), rgba(30,200,90,.85));color:#061008}
+    .btn.ghost{background:transparent}
+
+    .grid{display:grid;grid-template-columns: 280px 1fr;gap:16px;margin-top:16px}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}}
+
+    .side{
+      border:1px solid var(--stroke);border-radius:var(--radius);
+      background:rgba(255,255,255,.03);box-shadow:var(--shadow);overflow:hidden
+    }
+    .sideHead{padding:14px 14px;border-bottom:1px solid var(--stroke);color:var(--muted);font-weight:900}
+    .nav{display:flex;flex-direction:column}
+    .nav button{
+      width:100%;text-align:right;border:0;border-bottom:1px solid rgba(255,255,255,.06);
+      background:transparent;color:var(--text);padding:12px 14px;cursor:pointer;font-weight:800
+    }
+    .nav button.active{background:rgba(56,255,123,.10);border-right:3px solid var(--green)}
+    .nav small{color:var(--muted2);font-weight:700}
+
+    .panel{
+      border:1px solid var(--stroke);border-radius:var(--radius);
+      background:rgba(255,255,255,.03);box-shadow:var(--shadow);overflow:hidden
+    }
+    .panelHead{padding:16px 16px;border-bottom:1px solid var(--stroke)}
+    .panelHead h1{margin:0;font-size:18px}
+    .panelHead p{margin:6px 0 0;color:var(--muted);line-height:1.8}
+
+    .form{padding:16px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:820px){.row{grid-template-columns:1fr}}
+
+    .field{border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.18);border-radius:16px;padding:12px}
+    .field label{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-weight:900;font-size:13px;margin-bottom:8px}
+    .field label code{color:rgba(56,255,123,.9);font-weight:900;font-size:12px}
+    input, textarea{
+      width:100%;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);color:var(--text);
+      padding:12px 12px;border-radius:14px;outline:none;font-size:14px
+    }
+    textarea{min-height:92px;resize:vertical;line-height:1.9}
+    .hint{margin-top:8px;color:var(--muted2);font-size:12px;line-height:1.8}
+
+    .notice{margin-top:12px;padding:12px 14px;border-radius:16px;border:1px solid rgba(56,255,123,.22);background:rgba(56,255,123,.06);color:var(--muted);display:none}
+    .notice.show{display:block}
+
+    .foot{padding:12px 16px;border-top:1px solid var(--stroke);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .foot .mini{color:var(--muted2);font-size:12px;line-height:1.7}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <img src="../assets/brands/infinitex-logo.png" alt="INFINITEX" />
+        <span class="chip"><span class="dot"></span> لوحة التحكم — النصوص</span>
+      </div>
+      <div class="actions">
+        <button class="btn ghost" id="btnPreview">حفظ معاينة (Local)</button>
+        <button class="btn" id="btnClear">إلغاء المعاينة</button>
+        <button class="btn primary" id="btnDownload">تنزيل content.json</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <aside class="side">
+        <div class="sideHead">الأقسام</div>
+        <div class="nav" id="nav">
+          <button data-tab="global" class="active">عام <small>روابط + تنقل</small></button>
+          <button data-tab="returns">صفحة الاسترجاع <small>الشارة/العنوان/الوصف</small></button>
+          <button data-tab="yamm">إعدادات يم (Yamm) <small>الرابط + البراميترز</small></button>
+          <button data-tab="track">صفحة تتبع الطلب <small>نصوص الواجهة</small></button>
+          <button data-tab="index">الصفحة الرئيسية <small>نصوص الهيرو</small></button>
+          <button data-tab="products">صفحة المنتجات <small>نصوص الواجهة</small></button>
+        </div>
+      </aside>
+
+      <section class="panel">
+        <div class="panelHead">
+          <h1 id="panelTitle">عام</h1>
+          <p id="panelDesc">عدّل النصوص ثم احفظ المعاينة أو نزّل ملف content.json للاستبدال في المشروع ثم ارفع التحديث إلى Netlify.</p>
+          <div class="notice" id="notice"></div>
+        </div>
+
+        <div class="form" id="panelBody"></div>
+
+        <div class="foot">
+          <div class="mini">
+            نصيحة تشغيل: بعد حفظ المعاينة، افتح الصفحات من نفس الدومين لتشاهد التغييرات فوراً.
+          </div>
+          <div class="actions">
+            <a class="btn" href="../returns.html" target="_blank" rel="noopener">فتح الاسترجاع</a>
+            <a class="btn" href="../track.html" target="_blank" rel="noopener">فتح التتبع</a>
+            <a class="btn" href="../index.html" target="_blank" rel="noopener">فتح الرئيسية</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // Lightweight JSON editor (no backend). Stores preview in localStorage.
+    const STORAGE_KEY = 'ix_content_override';
+
+    const panels = {
+      global: {
+        title: 'عام',
+        desc: 'روابط المتجر/السياسة + عناوين التنقل.',
+        fields: [
+          { type:'url', path:'global.links.store', label:'رابط المتجر', hint:'يستخدم في زر "المتجر" وفي التنقل السفلي.' },
+          { type:'url', path:'global.links.warrantyPolicy', label:'رابط سياسة الضمان الذهبي', hint:'زر السياسة الرسمية.' },
+          { type:'text', path:'global.chipAfterSales', label:'شريط أعلى الصفحة (خدمات ما بعد البيع)' },
+          { type:'text', path:'global.nav.home', label:'تنقل (ديسكتوب): الرئيسية' },
+          { type:'text', path:'global.nav.track', label:'تنقل (ديسكتوب): تتبع الطلب' },
+          { type:'text', path:'global.nav.returns', label:'تنقل (ديسكتوب): الاسترجاع' },
+          { type:'text', path:'global.nav.products', label:'تنقل (ديسكتوب): المنتجات' },
+          { type:'text', path:'global.mobileNav.services', label:'تنقل (جوال): خدمات' },
+          { type:'text', path:'global.mobileNav.track', label:'تنقل (جوال): تتبع' },
+          { type:'text', path:'global.mobileNav.returns', label:'تنقل (جوال): استرجاع' },
+          { type:'text', path:'global.mobileNav.products', label:'تنقل (جوال): منتجات' },
+          { type:'text', path:'global.mobileNav.store', label:'تنقل (جوال): متجر' }
+        ]
+      },
+      returns: {
+        title: 'صفحة الاسترجاع',
+        desc: 'النصوص الظاهرة في أعلى صفحة الاسترجاع + زر السياسة الرسمية.',
+        fields: [
+          { type:'text', path:'pages.returns.badge', label:'الشارة (Chip)' },
+          { type:'html', path:'pages.returns.title', label:'العنوان (يدعم <br/>)', hint:'يمكنك استخدام <br/> للنزول سطر.' },
+          { type:'textarea', path:'pages.returns.desc', label:'الوصف' },
+          { type:'text', path:'pages.returns.formTitle', label:'عنوان النموذج' },
+          { type:'text', path:'pages.returns.orderLabel', label:'ليبل: رقم الطلب' },
+          { type:'text', path:'pages.returns.orderPlaceholder', label:'Placeholder: رقم الطلب' },
+          { type:'text', path:'pages.returns.phoneLabel', label:'ليبل: رقم الجوال' },
+          { type:'text', path:'pages.returns.phonePlaceholder', label:'Placeholder: رقم الجوال' },
+          { type:'text', path:'pages.returns.cta', label:'زر الإرسال' },
+          { type:'text', path:'pages.returns.policyCta', label:'زر فتح السياسة' },
+          { type:'text', path:'pages.returns.helper', label:'ملاحظة مختصرة فوق النموذج' }
+        ]
+      },
+      yamm: {
+        title: 'إعدادات يم (Yamm)',
+        desc: 'تحدد كيف يتم إرسال رقم الطلب والجوال إلى يم. إذا لم تنعكس القيم داخل يم، عدّل أسماء البراميترز هنا ثم جرّب.',
+        fields: [
+          { type:'url', path:'yamm.baseUrl', label:'Base URL لبوابة يم' },
+          { type:'text', path:'yamm.hostname', label:'Hostname (دومين المتجر)' },
+          { type:'text', path:'yamm.params.hostname', label:'اسم براميتر الدومين (hostname param)' },
+          { type:'text', path:'yamm.params.order', label:'اسم براميتر رقم الطلب' },
+          { type:'text', path:'yamm.params.phone', label:'اسم براميتر رقم الجوال' },
+          { type:'text', path:'yamm.params.countryCode', label:'اسم براميتر كود الدولة (اختياري)' , hint:'اتركه فارغاً إذا يم لا يحتاجه.' },
+          { type:'text', path:'yamm.phone.countryCode', label:'كود الدولة (للسعودية: 966)' },
+          { type:'text', path:'yamm.phone.showPrefix', label:'النص الظاهر بجانب رقم الجوال (مثال: +966)' }
+        ]
+      },
+      track: {
+        title: 'صفحة تتبع الطلب',
+        desc: 'نصوص صفحة التتبع (العنوان/الوصف/زر التتبع...).',
+        fields: [
+          { type:'text', path:'pages.track.badge', label:'الشارة (Chip)' },
+          { type:'html', path:'pages.track.title', label:'العنوان (يدعم <br/>)' },
+          { type:'textarea', path:'pages.track.desc', label:'الوصف' },
+          { type:'textarea', path:'pages.track.intro', label:'رسالة الترحيب داخل صندوق المحادثة' },
+          { type:'text', path:'pages.track.orderPlaceholder', label:'Placeholder: رقم الطلب' },
+          { type:'text', path:'pages.track.cta', label:'زر التتبع' },
+          { type:'text', path:'pages.track.hint', label:'نص الملاحظة أسفل الصندوق' },
+          { type:'text', path:'pages.track.openChat', label:'رابط فتح شات خدمة العملاء' }
+        ]
+      },
+      index: {
+        title: 'الصفحة الرئيسية',
+        desc: 'نصوص الهيرو أعلى الصفحة الرئيسية.',
+        fields: [
+          { type:'text', path:'pages.index.badge', label:'الشارة (Chip)' },
+          { type:'html', path:'pages.index.title', label:'العنوان (يدعم <br/>)' },
+          { type:'textarea', path:'pages.index.desc', label:'الوصف' }
+        ]
+      },
+      products: {
+        title: 'صفحة المنتجات',
+        desc: 'نصوص صفحة المنتجات (الواجهة فقط).',
+        fields: [
+          { type:'text', path:'pages.products.badge', label:'الشارة (Chip)' },
+          { type:'html', path:'pages.products.title', label:'العنوان (يدعم <br/>)' },
+          { type:'textarea', path:'pages.products.desc', label:'الوصف' }
+        ]
+      }
+    };
+
+    function isObject(v){ return v && typeof v === 'object' && !Array.isArray(v); }
+
+    function getPath(obj, path){
+      return path.split('.').reduce((acc,k)=> (acc && acc[k] !== undefined) ? acc[k] : undefined, obj);
+    }
+
+    function setPath(obj, path, value){
+      const parts = path.split('.');
+      let cur = obj;
+      for(let i=0;i<parts.length-1;i++){
+        const k = parts[i];
+        if(!isObject(cur[k])) cur[k] = {};
+        cur = cur[k];
+      }
+      cur[parts[parts.length-1]] = value;
+    }
+
+    function el(tag, attrs={}, children=[]){
+      const node = document.createElement(tag);
+      Object.entries(attrs).forEach(([k,v])=>{
+        if(k==='class') node.className=v;
+        else if(k==='text') node.textContent=v;
+        else node.setAttribute(k,v);
+      });
+      (children||[]).forEach(ch=> node.appendChild(ch));
+      return node;
+    }
+
+    function showNotice(text){
+      const n = document.getElementById('notice');
+      n.textContent = text;
+      n.classList.add('show');
+      clearTimeout(showNotice._t);
+      showNotice._t = setTimeout(()=> n.classList.remove('show'), 3500);
+    }
+
+    let model = null;
+
+    async function loadModel(){
+      // Prefer local preview override
+      const override = localStorage.getItem(STORAGE_KEY);
+      if(override){
+        try{ model = JSON.parse(override); return; }catch(e){}
+      }
+      const res = await fetch('../content.json', { cache:'no-store' });
+      model = await res.json();
+    }
+
+    function render(tab){
+      const p = panels[tab];
+      document.getElementById('panelTitle').textContent = p.title;
+      document.getElementById('panelDesc').textContent = p.desc;
+      const body = document.getElementById('panelBody');
+      body.innerHTML = '';
+
+      const rows = el('div', {class:'row'});
+      p.fields.forEach(f=>{
+        const field = el('div', {class:'field'});
+        const label = el('label', {});
+        label.appendChild(el('span', {text:f.label}));
+        label.appendChild(el('code', {text:f.path}));
+        field.appendChild(label);
+
+        const val = getPath(model, f.path);
+        let input;
+        if(f.type==='textarea'){
+          input = el('textarea', {'data-path':f.path});
+          input.value = (val ?? '').toString();
+        }else if(f.type==='html'){
+          input = el('input', {type:'text', 'data-path':f.path});
+          input.value = (val ?? '').toString();
+        }else{
+          input = el('input', {type:(f.type==='url'?'url':'text'), 'data-path':f.path});
+          input.value = (val ?? '').toString();
+        }
+
+        input.addEventListener('input', ()=>{
+          setPath(model, f.path, input.value);
+        });
+        field.appendChild(input);
+
+        if(f.hint){
+          field.appendChild(el('div', {class:'hint', text:f.hint}));
+        }
+
+        rows.appendChild(field);
+      });
+
+      body.appendChild(rows);
+    }
+
+    function setActiveTab(tab){
+      document.querySelectorAll('#nav button').forEach(b=>{
+        b.classList.toggle('active', b.getAttribute('data-tab')===tab);
+      });
+      render(tab);
+    }
+
+    (async function init(){
+      await loadModel();
+      setActiveTab('global');
+
+      document.getElementById('nav').addEventListener('click', (e)=>{
+        const b = e.target.closest('button[data-tab]');
+        if(!b) return;
+        setActiveTab(b.getAttribute('data-tab'));
+      });
+
+      document.getElementById('btnPreview').addEventListener('click', ()=>{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(model));
+        showNotice('تم حفظ المعاينة محلياً. افتح أي صفحة لمشاهدة التغييرات فوراً.');
+      });
+
+      document.getElementById('btnClear').addEventListener('click', ()=>{
+        localStorage.removeItem(STORAGE_KEY);
+        showNotice('تم إلغاء المعاينة. سيتم الرجوع للملف الأصلي content.json.');
+      });
+
+      document.getElementById('btnDownload').addEventListener('click', ()=>{
+        const json = JSON.stringify(model, null, 2);
+        const blob = new Blob([json], {type:'application/json;charset=utf-8'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'content.json';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        showNotice('تم تنزيل content.json. استبدله داخل المشروع ثم ارفع التحديث إلى Netlify.');
+      });
+
+    })().catch(err=>{
+      console.error(err);
+      showNotice('تعذر تحميل content.json. تأكد أن المشروع يعمل محلياً أو على Netlify.');
+    });
+  </script>
+</body>
+</html>
