@@ -94,7 +94,7 @@ export async function handler(event) {
     return { statusCode: 204, headers, body: '' };
   }
 
-  const store = getStore(STORE_NAME);
+  const store = getStore(STORE_NAME, getBlobsOpts());
 
   if (event.httpMethod === 'GET') {
     let content = await store.get(CONTENT_KEY, { type: 'json' }).catch(()=>null);
@@ -172,4 +172,12 @@ function verifyAuth(headers) {
   } catch {
     return { ok: false, code: 401, error: 'Invalid token' };
   }
+}
+
+// If Netlify Blobs isn't auto-provisioned in this environment, fall back to
+// explicit API mode via NETLIFY_SITE_ID + NETLIFY_AUTH_TOKEN.
+function getBlobsOpts() {
+  const siteID = process.env.NETLIFY_SITE_ID;
+  const token = process.env.NETLIFY_AUTH_TOKEN;
+  return siteID && token ? { siteID, token } : undefined;
 }

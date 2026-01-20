@@ -13,7 +13,7 @@ export async function handler(event) {
     return { statusCode: 204, headers, body: '' };
   }
 
-  const store = getStore(STORE_NAME);
+  const store = getStore(STORE_NAME, getBlobsOpts());
 
   if (event.httpMethod === 'GET') {
     const key = (event.queryStringParameters && event.queryStringParameters.key) ? String(event.queryStringParameters.key) : '';
@@ -129,4 +129,12 @@ function extFromContentType(ct){
 function extFromFilename(name){
   const m = String(name||'').toLowerCase().match(/\.([a-z0-9]{2,5})$/);
   return m ? m[1] : null;
+}
+
+// If Netlify Blobs isn't auto-provisioned in this environment, fall back to
+// explicit API mode via NETLIFY_SITE_ID + NETLIFY_AUTH_TOKEN.
+function getBlobsOpts() {
+  const siteID = process.env.NETLIFY_SITE_ID;
+  const token = process.env.NETLIFY_AUTH_TOKEN;
+  return siteID && token ? { siteID, token } : undefined;
 }

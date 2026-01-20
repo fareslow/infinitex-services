@@ -19,6 +19,13 @@ INFINITEX Services — Netlify (GitHub) + لوحة تحكم Live
    اختياري (أمان إضافي):
    - ALLOWED_ORIGIN = رابط موقعك بالضبط (مثال: https://xxxxx.netlify.app)
 
+   ملاحظة مهمة لميزة Netlify Blobs:
+   - في كثير من الحالات Netlify يضبط Blobs تلقائياً داخل Functions.
+   - إذا ظهرت لك رسالة: MissingBlobsEnvironmentError / Server not configured عند الحفظ
+     أضف المتغيرات التالية (لتفعيل "API mode"):
+     - NETLIFY_SITE_ID = Project ID (Site ID) من Netlify
+     - NETLIFY_AUTH_TOKEN = Personal Access Token من Netlify (يكون له صلاحية على حسابك)
+
 4) الروابط داخل المشروع:
    - /api/track    → تتبع الطلب (Netlify Function)
    - /api/content  → قراءة/تحديث المحتوى (Netlify Blobs)
