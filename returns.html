@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="INFINITEX" />
+
+  
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+<title>INFINITEX — الاسترجاع والضمان الذهبي</title>
+  <meta name="description" content="بوابة الاسترجاع لدى INFINITEX + الضمان الذهبي." />
+
+  <link rel="preload" href="assets/fonts/avenir-black-arabic.otf" as="font" type="font/otf" crossorigin>
+
+  <style>
+    @font-face{font-family:"AvenirBlackArabic"; src:url("assets/fonts/avenir-black-arabic.otf") format("opentype"); font-display:swap;}
+    :root{--bg:#050607;--bg2:#0a0c0d;--text:#eef2f3;--muted:#a7b0b5;--muted2:#7d878d;--line:rgba(255,255,255,.08);--accent:#39ff14;--shadow:0 24px 80px rgba(0,0,0,.55);--radius:18px;--radius2:24px;--max:1120px;}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{background:#000}
+    body{margin:0;color:var(--text);background:radial-gradient(1100px 560px at 80% -10%, rgba(57,255,20,.18), transparent 60%),linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);font-family:"AvenirBlackArabic",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
+    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;color:var(--muted);font-size:13px}
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 18px rgba(57,255,20,.6)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--text);cursor:pointer;transition:transform .15s ease,border-color .15s ease;user-select:none;font-weight:800}
+    .btn:hover{transform:translateY(-1px);border-color:rgba(57,255,20,.45)}
+    .btn.primary{background:linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85));border-color:rgba(57,255,20,.65);color:#061006;box-shadow:0 18px 60px rgba(57,255,20,.18)}
+    .btn.ghost{border-color:rgba(255,255,255,.10)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+    header{position:sticky; top:0;  z-index:50; backdrop-filter: blur(14px); background:#000; padding-top: env(safe-area-inset-top); border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:12px;min-width:160px}
+    .brand img{height:22px;opacity:.98}
+    .navlinks{display:flex;align-items:center;gap:10px}
+    .navlinks a{padding:10px 10px;border-radius:12px;border:1px solid transparent;color:var(--muted);font-size:13px}
+    .navlinks a:hover{border-color:rgba(255,255,255,.10);color:var(--text)}
+    .navlinks a.active{border-color:rgba(57,255,20,.35);color:var(--text)}
+    .navCtas{display:flex;gap:10px;align-items:center}
+
+    .hero{padding:16px 0 8px}
+    .heroCard{padding:16px;border-radius:var(--radius2);position:relative;overflow:hidden}
+    .heroCard::before{content:"";position:absolute;inset:-1px;background:radial-gradient(700px 350px at 70% 0%, rgba(57,255,20,.18), transparent 60%);opacity:.9;pointer-events:none}
+    .h1{position:relative;font-size:clamp(22px,7vw,44px);line-height:1.1;margin:12px 0 10px}
+    .p{position:relative;margin:0;color:var(--muted);font-size:14px;line-height:1.85}
+
+    .box{margin-top:14px;padding:14px;border-radius:18px}
+    .grid{margin-top:12px;display:grid;grid-template-columns: 1fr;gap:10px}
+    .item{padding:12px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.18)}
+    .item b{display:block;color:var(--text);font-size:13px}
+    .item span{display:block;color:var(--muted);font-size:13px;line-height:1.75;margin-top:4px}
+
+    .row{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+    .brandRow{margin-top:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .brandRow img{height:22px;opacity:.95}
+
+    footer{padding:26px 0 110px;color:var(--muted2);font-size:12px; background:#000}
+
+    .mobileNav{position:fixed;left:12px;right:12px;bottom: calc(12px + env(safe-area-inset-bottom));z-index:70;display:none}
+    .mobileNavBar{display:flex;gap:8px;align-items:stretch;justify-content:space-between;border-radius:18px;border:1px solid rgba(255,255,255,.10);background:rgba(5,6,7,.78);backdrop-filter:blur(12px);padding:8px}
+    .mnItem{flex:1;padding:10px 8px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);color:var(--muted);font-size:12px;text-align:center;white-space:nowrap}
+    .mnItem.active{border-color:rgba(57,255,20,.35);color:var(--text)}
+    .mnItem.store{color:#061006;background:rgba(57,255,20,.90);border-color:rgba(57,255,20,.75)}
+
+    @media (max-width:980px){.navlinks{display:none}.navCtas{display:none}.mobileNav{display:block}body{padding-bottom:96px}}
+    @media (max-width:520px){body{background:linear-gradient(180deg,var(--bg) 0%, #07090a 100%) !important;}.wrap{padding:0 14px}.brand img{height:20px}}
+
+    /* ============ Popcorn Launcher Position (Keep Bubble Above Bottom Nav) ============ */
+    :root{ --chat-launcher-bottom: 24px; }
+    @media (max-width: 720px){
+      :root{ --chat-launcher-bottom: calc(env(safe-area-inset-bottom, 0px) + 140px); }
+    }
+    /* Target only the launcher / small fixed buttons (avoid moving the full chat panel) */
+    button[id*="popcorn"],
+    button[class*="popcorn"],
+    a[id*="popcorn"],
+    a[class*="popcorn"],
+    div[id*="popcorn"][role="button"],
+    div[class*="popcorn"][role="button"]{
+      bottom: var(--chat-launcher-bottom) !important;
+    }
+
+    /* ===================== Yamm Embedded Return Form (UI only) ===================== */
+    .yamm-shell{margin-top:14px;position:relative}
+    .yamm-note{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.85}
+    .yamm-note b{color:var(--text)}
+
+    .yamm-card{max-width:560px;margin:10px auto 0;border-radius:18px;border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.18));
+      box-shadow:0 24px 80px rgba(0,0,0,.55);
+      overflow:hidden;
+      --primary-color: #9E6CFF; /* Yamm brand color */
+    }
+    .yamm-header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 14px 10px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .yamm-title{display:flex;align-items:center;gap:10px}
+    .yamm-header-icon{width:22px;height:22px;color:var(--primary-color)}
+    .yamm-header-text{font-size:14px;color:var(--text)}
+    .yamm-apply-method-button{appearance:none;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);
+      color:var(--text);border-radius:12px;padding:10px 10px;font-weight:800;cursor:pointer;font-size:12px}
+    .yamm-apply-method-button:hover{border-color:rgba(158,108,255,.55)}
+
+    #yamm-card-content{padding:14px}
+    .yamm-video-container{margin:0 0 12px;border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:12px;background:rgba(0,0,0,.22)}
+    .yamm-hide{display:none}
+    .yamm-form{display:block}
+    .yamm-input-group{display:grid;grid-template-columns:1fr;gap:12px}
+    .yamm-input-wrapper{display:flex;flex-direction:column;gap:8px}
+    .yamm-label{color:var(--muted);font-size:12px}
+    .yamm-input{width:100%;padding:14px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);color:var(--text);outline:none;font-size:14px}
+    .yamm-input:focus{border-color:rgba(158,108,255,.60);box-shadow:0 0 0 4px rgba(158,108,255,.10)}
+    .yamm-phone-input{display:flex;align-items:center;gap:10px}
+    .yamm-prefix{padding:12px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);color:var(--muted);font-size:13px}
+    .yamm-submit-button{width:100%;margin-top:12px;padding:14px 14px;border-radius:14px;border:1px solid rgba(158,108,255,.65);
+      background:linear-gradient(180deg, rgba(158,108,255,.95), rgba(120,70,255,.85));color:#0b0616;font-weight:900;cursor:pointer}
+    .yamm-submit-button:hover{transform:translateY(-1px)}
+    .yamm-footer{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 14px 14px;border-top:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:12px}
+    .yamm-logo{width:88px;height:auto;display:block}
+    .yamm-inline-msg{margin-top:10px;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.22);color:var(--muted);font-size:13px;line-height:1.8}
+
+    @media (max-width:520px){
+      .yamm-card{max-width:100%}
+      .yamm-header{padding:12px}
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand" aria-label="INFINITEX">
+          <a href="index.html" aria-label="الرئيسية"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></a>
+          <span class="chip"><span class="dot"></span> <span data-ix-text="global.chipAfterSales">خدمات ما بعد البيع</span></span>
+        </div>
+
+        <nav class="navlinks" aria-label="التنقل">
+          <a href="index.html"><span data-ix-text="global.nav.home">الرئيسية</span></a>
+          <a href="track.html"><span data-ix-text="global.nav.track">تتبع الطلب</span></a>
+          <a class="active" href="returns.html"><span data-ix-text="global.nav.returns">الاسترجاع</span></a>
+          <a href="products.html"><span data-ix-text="global.nav.products">المنتجات</span></a>
+        </nav>
+
+        <div class="navCtas">
+          <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" data-ix-href="global.links.warrantyPolicy" target="_blank" rel="noopener"><span data-ix-text="global.cta.warrantyPolicy">سياسة الضمان الذهبي</span></a>
+          <a class="btn primary" href="https://infinitex.sa/" data-ix-href="global.links.store" target="_blank" rel="noopener"><span data-ix-text="global.cta.store">المتجر</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap hero">
+    <section class="heroCard card">
+      <div class="chip" style="position:relative"><span class="dot"></span> <span data-ix-text="pages.returns.badge">الاسترجاع</span></div>
+      <h1 class="h1" data-ix="pages.returns.title">الضمان الذهبي<br/>واسترجاع الفلوس</h1>
+      <p class="p" data-ix-text="pages.returns.desc">هنا بتلقى الوصول السريع لسياسة الضمان الذهبي وبوابة الاسترجاع. أي تفاصيل/شروط رسمية تكون داخل صفحة السياسة.</p>
+
+      <div class="brandRow" aria-label="الشركاء">
+        <img src="assets/brands/infinitex-logo.png" alt="INFINITEX" />
+        <span style="color:var(--muted)">×</span>
+        <img src="assets/brands/yamm-logo.png" alt="Yamm" />
+</div>
+
+      <div class="yamm-shell" aria-label="نموذج طلب استرجاع">
+        <p class="yamm-note"><b data-ix-text="pages.returns.helper">سيتم فتح بوابة “يم (Yamm)” وإكمال الخطوات الرسمية هناك.</b></p>
+
+        <!-- Yamm Return Request Form (Embedded UI) -->
+        <div class="yamm-card" dir="rtl" style="--primary-color: #9E6CFF;" data-monitored="true">
+          <div class="yamm-header">
+            <div class="yamm-title">
+              <svg class="yamm-header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <rect width="256" height="256" fill="none"></rect>
+                <polyline points="176 104 176 136 80 136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+                <polyline points="104 112 80 136 104 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+                <rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect>
+              </svg>
+              <div class="yamm-header-text"><span data-ix-text="pages.returns.formTitle">نموذج طلب استرجاع</span></div>
+            </div>
+            <button class="yamm-apply-method-button" type="button">طريقة التقديم</button>
+          </div>
+
+          <div id="yamm-card-content">
+            <div id="yamm-tutorial-video" class="yamm-video-container yamm-hide">
+              <div style="font-weight:900;color:var(--text);margin-bottom:6px">طريقة التقديم</div>
+              <div style="color:var(--muted);font-size:13px;line-height:1.85">
+                1) اكتب <b>رقم الطلب</b> و<b>رقم الجوال</b.<br>
+                2) اضغط <b>استرجع الان</b>.<br>
+                3) إذا احتجت إكمال الخطوات، راح تفتح لك بوابة الاسترجاع الرسمية.
+              </div>
+            </div>
+
+            <form class="yamm-form" id="yammReturnForm">
+              <div class="yamm-input-group">
+                <div class="yamm-input-wrapper yamm-order-number-wrapper">
+                  <label for="order_number" class="yamm-label"><span data-ix-text="pages.returns.orderLabel">رقم الطلب</span></label>
+                  <input id="yamm-order-number-input" name="order_number" dir="ltr" type="text" inputmode="numeric" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9٠-٩]/g, '')" class="yamm-input" placeholder="مثال: 3455" data-ix-placeholder="pages.returns.orderPlaceholder">
+                </div>
+
+                <div class="yamm-input-wrapper yamm-phone-number-wrapper">
+                  <label for="phone_number" class="yamm-label"><span data-ix-text="pages.returns.phoneLabel">رقم الجوال</span></label>
+                  <div dir="rtl" id="yamm-phone-number-input" class="yamm-phone-input">
+                    <input dir="ltr" id="phone_number" name="phone_number" type="text" inputmode="numeric" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9٠-٩]/g, '')" class="yamm-input" placeholder="مثال: 551234567" data-ix-placeholder="pages.returns.phonePlaceholder">
+                    <div class="yamm-prefix" data-ix-text="yamm.phone.showPrefix">+966</div>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="yamm-submit-button"><span data-ix-text="pages.returns.cta">ابدأ الاسترجاع</span></button>
+              <div id="yammInlineMsg" class="yamm-inline-msg yamm-hide" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <div class="yamm-footer">
+            <p>هذه الخدمة مقدمة من منصة</p>
+            <a href="https://yamm.sa" target="_blank" rel="noopener">
+              <svg class="yamm-logo" viewBox="0 0 140 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M79.7172 11.3994C75.324 11.3994 72.3693 13.5183 71.2418 16.9566C71.1252 17.3164 71.3195 17.6762 71.6694 17.7562L74.9741 18.6757C75.2851 18.7557 75.5961 18.5958 75.7128 18.2759C76.296 16.5968 77.6567 15.5573 79.7172 15.5573C82.0888 15.5573 83.6439 16.8766 83.6439 19.0755C83.6439 19.7152 83.0608 20.195 82.4387 20.035L81.8944 19.9151C80.8447 19.6352 79.7561 19.5153 78.6286 19.5153C74.1188 19.5153 71.1641 21.6342 71.1641 25.8321C71.1641 29.6302 74.1577 31.949 77.4623 31.949C79.8339 31.949 81.5834 31.2693 82.8275 29.91C83.1774 29.5102 83.7995 29.7901 83.7995 30.3098V30.9095C83.7995 31.2693 84.0716 31.5492 84.4215 31.5492H87.9205C88.2704 31.5492 88.5426 31.2693 88.5426 30.9095V19.3554C88.5426 14.238 85.549 11.3994 79.7172 11.3994ZM83.6051 24.2329C83.6051 26.5117 81.8944 27.8711 79.5229 27.8711C77.4623 27.8711 76.4126 26.9515 76.4126 25.5123C76.4126 23.953 77.54 23.1535 79.4451 23.1535C80.2226 23.1535 81.2335 23.3533 82.4387 23.7531L83.6051 24.113V24.2329Z" fill="#9E6CFF"></path>
+                <path d="M133.468 11.3994C131.796 11.3994 130.358 11.9591 129.23 13.1585C128.569 13.8782 127.442 13.7982 126.82 13.0786C125.848 11.9991 124.526 11.4394 122.971 11.4394C120.988 11.4394 119.511 12.239 118.539 13.7582C118.345 14.0781 118.228 14.3979 118.15 14.7977L117.917 16.077C117.878 16.237 117.645 16.237 117.606 16.077C116.906 12.5988 114.496 11.4794 111.813 11.4794C110.141 11.4794 108.703 12.0391 107.575 13.2385C106.914 13.9581 105.787 13.8782 105.126 13.1585C104.154 12.0791 102.832 11.5194 101.277 11.5194C99.7219 11.5194 98.4778 11.9991 97.5058 12.9986C97.1559 13.3584 96.5338 13.1185 96.5338 12.5988C96.5338 12.239 96.2617 11.9591 95.9118 11.9591H91.9463C91.5964 11.9591 91.3242 12.239 91.3242 12.5988V31.0295C91.3242 31.3893 91.5964 31.6691 91.9463 31.6691H95.9118C96.2617 31.6691 96.5338 31.3893 96.5338 31.0295V19.6352C96.5338 17.2764 97.7002 15.9571 99.372 15.9571C101.044 15.9571 102.21 17.1165 102.21 19.2354V30.9095C102.21 31.2693 102.482 31.5492 102.832 31.5492H106.759C107.109 31.5492 107.381 31.2693 107.381 30.9095V19.4353C107.381 17.1565 108.469 15.7972 110.219 15.7972C111.852 15.7972 113.057 17.0366 113.057 19.1955V30.8695C113.057 31.2294 113.329 31.5092 113.679 31.5092H117.645C117.995 31.5092 118.267 31.2294 118.267 30.8695V19.6352C118.267 17.2764 119.433 15.9571 121.105 15.9571C122.777 15.9571 123.943 17.1165 123.943 19.2354V30.9095C123.943 31.2693 124.215 31.5492 124.565 31.5492H128.492C128.842 31.5492 129.114 31.2693 129.114 30.9095V19.4353C129.114 17.1565 130.202 15.7972 131.952 15.7972C133.624 15.7972 134.79 17.0366 134.79 19.1955V30.8695C134.79 31.2294 135.062 31.5092 135.412 31.5092H139.378C139.727 31.5092 140 31.2294 140 30.8695V18.196C139.844 13.8782 137.395 11.3994 133.468 11.3994Z" fill="#9E6CFF"></path>
+                <path d="M66.1558 12.1596L61.957 21.1151C61.6071 21.8747 60.5574 21.8747 60.2075 21.0751L56.2807 12.1596C56.1641 11.9197 55.9698 11.7998 55.7365 11.7998H51.6543C51.2266 11.7998 50.9156 12.2796 51.11 12.6794L58.2636 28.4314C58.3413 28.5913 58.3413 28.7912 58.2636 28.9511L54.8423 36.3474C54.6479 36.7472 54.9589 37.2269 55.3866 37.2269H59.2744C59.5077 37.2269 59.7021 37.107 59.8187 36.8671L71.1322 12.6794C71.3266 12.2796 71.0156 11.7998 70.5879 11.7998H66.7001C66.5057 11.7998 66.2724 11.9597 66.1558 12.1596Z" fill="#9E6CFF"></path>
+                <path d="M43.7913 14.0384L37.1821 36.1472C35.7047 41.0647 30.5728 43.8633 25.7908 42.384L21.2809 40.9448C17.3542 39.7054 14.8271 35.9473 14.8271 31.9094C15.8769 31.8694 16.8877 31.5495 17.8597 31.0298L23.4581 27.9514C27.0737 25.9924 28.4345 21.3947 26.5295 17.6766L21.5142 8.00149L21.7863 7.12193C23.2637 2.20443 28.3956 -0.594151 33.1776 0.885099L37.6875 2.32437C42.5473 3.8436 45.2687 9.12092 43.7913 14.0384Z" fill="#9E6CFF"></path>
+                <path d="M23.5353 27.9521L17.9368 31.0305C16.9649 31.5503 15.9151 31.8301 14.9043 31.9101C14.9043 31.0305 15.0209 30.111 15.2931 29.2314L21.6302 8.0022L26.6455 17.6773C28.5117 21.3954 27.1121 25.9931 23.5353 27.9521Z" fill="#FF8389"></path>
+                <path d="M21.5436 8.00117L15.2064 29.2304C14.9343 30.1099 14.8176 31.0295 14.8176 31.909C12.0184 32.0689 9.25806 30.5897 7.89733 27.8711L0.860398 14.238C-1.04463 10.5199 0.316114 5.92222 3.93178 3.96322L9.53024 0.884779C13.1459 -1.07423 17.6169 0.325062 19.5219 4.04318L21.5436 8.00117Z" fill="#FFCD2E"></path>
+                <path d="M4.61771 39.1456C4.26781 38.9457 4.0345 38.6658 3.80123 38.306C3.60684 37.9462 3.49023 37.5864 3.49023 37.1866C3.49023 36.7868 3.60684 36.387 3.80123 36.0671C3.99562 35.7073 4.26781 35.4674 4.61771 35.2276C4.96761 35.0277 5.31749 34.9077 5.70627 34.9077C6.09505 34.9077 6.48385 35.0277 6.79487 35.2276C7.14478 35.4275 7.37804 35.7073 7.61131 36.0671C7.8057 36.4269 7.92235 36.7868 7.92235 37.1866C7.92235 37.7063 7.76681 38.1861 7.45578 38.5858C7.33915 38.7458 7.22251 38.8657 7.10587 38.9457C6.71709 39.2655 6.25055 39.4254 5.74514 39.4254C5.31748 39.4654 4.96761 39.3455 4.61771 39.1456ZM6.63935 38.8657C6.9115 38.7058 7.14475 38.4659 7.30026 38.1861C7.45577 37.9062 7.53357 37.5864 7.53357 37.2265C7.53357 36.8667 7.45577 36.5869 7.30026 36.267C7.14475 35.9872 6.9115 35.7473 6.63935 35.5874C6.36721 35.4274 6.05616 35.3475 5.74514 35.3475C5.43411 35.3475 5.12312 35.4274 4.85097 35.5874C4.57882 35.7473 4.34552 35.9872 4.19001 36.267C4.0345 36.5469 3.95675 36.8667 3.95675 37.2265C3.95675 37.5864 4.0345 37.8662 4.19001 38.1861C4.34552 38.4659 4.57882 38.7058 4.85097 38.8657C5.12312 39.0256 5.43411 39.1056 5.74514 39.1056C6.05616 39.1056 6.36721 39.0256 6.63935 38.8657ZM5.00649 38.226C4.96761 38.1861 4.96757 38.1861 4.96757 38.1461V36.267C4.96757 36.227 4.96761 36.1871 5.00649 36.1871C5.04537 36.1471 5.04535 36.1471 5.08423 36.1471H5.82292C6.05619 36.1471 6.25059 36.1871 6.36722 36.307C6.52274 36.4269 6.56162 36.5869 6.56162 36.8267C6.56162 36.9867 6.52272 37.1066 6.44496 37.2265C6.36721 37.3465 6.28943 37.4264 6.13392 37.4664L6.5227 38.1061C6.5227 38.1461 6.56162 38.1461 6.56162 38.1861C6.56162 38.226 6.56158 38.266 6.5227 38.266C6.48382 38.306 6.48384 38.306 6.44496 38.306H6.36722C6.28947 38.306 6.25058 38.266 6.2117 38.1861L5.78405 37.5064H5.27862V38.1461C5.27862 38.1861 5.27863 38.226 5.23975 38.226C5.20087 38.266 5.20084 38.266 5.16197 38.266H5.08423C5.04535 38.266 5.00649 38.266 5.00649 38.226ZM5.78405 37.1466C6.09508 37.1466 6.2117 37.0266 6.2117 36.8267C6.2117 36.5869 6.0562 36.5069 5.78405 36.5069H5.27862V37.1866H5.78405V37.1466Z" fill="#9E6CFF"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <a class="btn primary" href="https://infinitex.sa/blogs/gold-warranty-policy" data-ix-href="global.links.warrantyPolicy" target="_blank" rel="noopener"><span data-ix-text="pages.returns.policyCta">فتح السياسة الرسمية</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div style="border-top:1px solid rgba(255,255,255,.08); padding-top: 14px">
+      <div>© <span id="year"></span> INFINITEX — الاسترجاع</div>
+    </div>
+    </div>
+  
+  <script>
+    // IX_YAMM_RETURN: build redirect URL for Yamm using content.json settings
+    (function(){
+      function toAsciiDigits(s){
+        return (s||'').toString().replace(/[٠-٩]/g, function(d){
+          return String(d.charCodeAt(0) - 0x0660);
+        }).replace(/[۰-۹]/g, function(d){
+          return String(d.charCodeAt(0) - 0x06F0);
+        });
+      }
+
+      function showMsg(msg){
+        var box = document.getElementById('yammInlineMsg');
+        if(!box) return;
+        box.textContent = msg || '';
+        box.classList.remove('yamm-hide');
+      }
+      function hideMsg(){
+        var box = document.getElementById('yammInlineMsg');
+        if(!box) return;
+        box.classList.add('yamm-hide');
+        box.textContent = '';
+      }
+
+      var form = document.getElementById('yammReturnForm');
+      if(!form) return;
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        hideMsg();
+
+        var content = window.IX_CONTENT || {};
+        var baseUrl = (content.yamm && content.yamm.baseUrl) ? content.yamm.baseUrl : 'https://yamm.sa/store';
+        var hostname = (content.yamm && content.yamm.hostname) ? content.yamm.hostname : 'infinitex.sa';
+        var params = (content.yamm && content.yamm.params) ? content.yamm.params : {};
+
+        var order = toAsciiDigits(document.getElementById('yamm-order-number-input')?.value || '').trim();
+        var phone = toAsciiDigits(document.getElementById('phone_number')?.value || '').trim();
+
+        var v = (content.pages && content.pages.returns && content.pages.returns.validation) ? content.pages.returns.validation : {};
+        if(!order || !phone){
+          showMsg(v.missing || 'فضلاً اكتب رقم الطلب ورقم الجوال.');
+          return;
+        }
+        if(!/^\d+$/.test(order)){
+          showMsg(v.badOrder || 'رقم الطلب غير صحيح.');
+          return;
+        }
+        if(!/^\d+$/.test(phone)){
+          showMsg(v.badPhone || 'رقم الجوال غير صحيح.');
+          return;
+        }
+
+        // Optional normalize: remove leading zeros for local phone
+        phone = phone.replace(/^0+/, '');
+
+        var cc = (content.yamm && content.yamm.phone && content.yamm.phone.countryCode) ? toAsciiDigits(content.yamm.phone.countryCode) : '966';
+
+        var u;
+        try{ u = new URL(baseUrl); }catch(_){ u = new URL('https://yamm.sa/store'); }
+
+        var hostKey = params.hostname || 'hostname';
+        var orderKey = params.order || 'order_number';
+        var phoneKey = params.phone || 'phone_number';
+        var ccKey = params.countryCode || null;
+
+        u.searchParams.set(hostKey, hostname);
+        u.searchParams.set(orderKey, order);
+        u.searchParams.set(phoneKey, phone);
+        if(ccKey) u.searchParams.set(ccKey, cc);
+
+        window.location.href = u.toString();
+      });
+
+      // Toggle tutorial
+      var btn = document.querySelector('.yamm-apply-method-button');
+      var vid = document.getElementById('yamm-tutorial-video');
+      if(btn && vid){
+        btn.addEventListener('click', function(){
+          vid.classList.toggle('yamm-hide');
+        });
+      }
+    })();
+  </script>
+</footer>
+
+  <div class="mobileNav" role="navigation" aria-label="تنقل سريع">
+    <div class="mobileNavBar">
+      <a class="mnItem" href="index.html"><span data-ix-text="global.mobileNav.services">خدمات</span></a>
+      <a class="mnItem" href="track.html"><span data-ix-text="global.mobileNav.track">تتبع</span></a>
+      <a class="mnItem active" href="returns.html"><span data-ix-text="global.mobileNav.returns">استرجاع</span></a>
+      <a class="mnItem" href="products.html"><span data-ix-text="global.mobileNav.products">منتجات</span></a>
+      <a class="mnItem store" href="https://infinitex.sa/" data-ix-href="global.links.store" target="_blank" rel="noopener"><span data-ix-text="global.mobileNav.store">متجر</span></a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<!-- INFINITEX Support Chat (Popcorn) -->
+<script
+    src='https://app.trypopcorn.ai/loader.js'
+    data-url='https://app.trypopcorn.ai'
+    data-api-url='https://api.trypopcorn.ai'
+    data-agent=''
+    data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'>
+</script>
+    <!-- Popcorn: lift ONLY the launcher icon above the bottom nav (mobile) -->
+  <script>
+  (function(){
+    function navTop(){
+      var nav = document.querySelector('.mobileNav');
+      if(!nav) return null;
+      return nav.getBoundingClientRect().top;
+    }
+
+    function overlaps(r, top){
+      return top !== null && r.bottom > (top - 4);
+    }
+
+    function isCandidate(el){
+      if(!el || el === document.documentElement || el === document.body) return false;
+      // avoid moving our own bottom nav
+      if(el.closest && el.closest('.mobileNav')) return false;
+
+      var st = getComputedStyle(el);
+      if(st.position !== 'fixed') return false;
+      if(st.display === 'none' || st.visibility === 'hidden') return false;
+      if(parseFloat(st.opacity || '1') < 0.05) return false;
+
+      var r = el.getBoundingClientRect();
+      if(r.width < 24 || r.height < 24) return false;
+      // allow larger wrappers, but avoid full panels
+      if(r.width > 360 || r.height > 360) return false;
+      // must be on right/bottom half (typical launcher location)
+      if(r.left < window.innerWidth * 0.35) return false;
+      if(r.top < window.innerHeight * 0.35) return false;
+
+      // likely launcher: iframe OR contains iframe OR pointer-like
+      if(el.tagName === 'IFRAME') return true;
+      if(el.querySelector && el.querySelector('iframe')) return true;
+      if(el.tagName === 'BUTTON' || el.tagName === 'A') return true;
+      if(el.getAttribute && el.getAttribute('role') === 'button') return true;
+      if(st.cursor === 'pointer') return true;
+
+      return false;
+    }
+
+    function lift(el, top){
+      // move the launcher just above the bottom nav
+      var px = Math.round(window.innerHeight - top + 14);
+      var bottom = Math.max(16, px);
+      try{
+        el.style.setProperty('bottom', bottom + 'px', 'important');
+        el.style.setProperty('right', '16px', 'important');
+        el.style.setProperty('left', 'auto', 'important');
+        el.style.setProperty('z-index', '99999', 'important');
+      }catch(e){}
+    }
+
+    function score(el){
+      var r = el.getBoundingClientRect();
+      var area = r.width * r.height;
+      var dx = Math.max(0, window.innerWidth - r.right);
+      var dy = Math.max(0, window.innerHeight - r.bottom);
+      var z = parseInt(getComputedStyle(el).zIndex || '0', 10) || 0;
+      // prefer small area and near bottom-right; higher z-index helps a bit
+      return area + (dx*dx + dy*dy) - (z * 80);
+    }
+
+    function apply(){
+      var top = navTop();
+      if(top === null) return;
+
+      var nodes = Array.from(document.querySelectorAll('body *'));
+      var candidates = nodes.filter(isCandidate);
+      if(!candidates.length) return;
+
+      var overlapping = candidates.filter(function(el){
+        return overlaps(el.getBoundingClientRect(), top);
+      });
+      if(!overlapping.length) return;
+
+      overlapping.sort(function(a,b){ return score(a) - score(b); });
+      lift(overlapping[0], top);
+    }
+
+    // Run repeatedly because the widget is injected after load
+    var obs = new MutationObserver(function(){ apply(); });
+    obs.observe(document.documentElement, {subtree:true, childList:true, attributes:true});
+
+    var tries = 0;
+    var timer = setInterval(function(){
+      apply();
+      tries++;
+      if(tries > 120) clearInterval(timer);
+    }, 250);
+
+    window.addEventListener('resize', apply, {passive:true});
+    document.addEventListener('visibilitychange', apply);
+    window.addEventListener('load', apply);
+  })();
+  </script>
+
+
+  <!-- IX Content Loader -->
+  <script src="assets/js/ix-content.js"></script>
+
+</body>
+</html>
