@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="INFINITEX" />
+
+  
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+<title>خدمات INFINITEX — ما بعد البيع</title>
+  <meta name="description" content="مركز خدمات INFINITEX لما بعد البيع: تتبع الطلب، الاسترجاع، والمنتجات (قريباً)." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="خدمات INFINITEX — ما بعد البيع" />
+  <meta property="og:description" content="٣ خطوات بسيطة: تتبع الطلب، الاسترجاع، والمنتجات." />
+  <meta property="og:image" content="assets/images/sound-pro-dark-grey.jpg" />
+
+  <link rel="preload" href="assets/fonts/avenir-black-arabic.otf" as="font" type="font/otf" crossorigin>
+
+  <style>
+    @font-face{
+      font-family:"AvenirBlackArabic";
+      src:url("assets/fonts/avenir-black-arabic.otf") format("opentype");
+      font-display:swap;
+    }
+
+    :root{
+      --bg:#050607; --bg2:#0a0c0d;
+      --card:#0f1213;
+      --text:#eef2f3; --muted:#a7b0b5; --muted2:#7d878d;
+      --line: rgba(255,255,255,.08);
+      --accent:#39ff14;
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --radius:18px; --radius2:24px;
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{background:#000}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(1100px 560px at 80% -10%, rgba(57,255,20,.18), transparent 60%),
+        radial-gradient(900px 600px at 10% 10%, rgba(57,255,20,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      font-family:"AvenirBlackArabic", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 0 18px}
+
+    .chip{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius:999px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .dot{width:8px; height:8px; border-radius:999px; background:var(--accent); box-shadow:0 0 18px rgba(57,255,20,.6)}
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+      cursor:pointer;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      user-select:none;
+      font-weight: 800;
+      width:auto;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(57,255,20,.45)}
+    .btn:active{transform: translateY(0px)}
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85));
+      border-color: rgba(57,255,20,.65);
+      color:#061006;
+      box-shadow: 0 18px 60px rgba(57,255,20,.18);
+    }
+    .btn.primary:hover{border-color: rgba(57,255,20,.9)}
+    .btn.ghost{border-color: rgba(255,255,255,.10)}
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Header */
+    header{position:sticky; top:0;  z-index:50; backdrop-filter: blur(14px); background:#000; padding-top: env(safe-area-inset-top); border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 16px 0}
+    .brand{display:flex; align-items:center; gap:12px; min-width: 160px}
+    .brand img{height: 22px; opacity:.98}
+    .navlinks{display:flex; align-items:center; gap:10px}
+    .navlinks a{
+      padding:10px 10px;
+      border-radius: 12px;
+      border:1px solid transparent;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .navlinks a:hover{border-color: rgba(255,255,255,.10); color: var(--text)}
+    .navlinks a.active{border-color: rgba(57,255,20,.35); color: var(--text)}
+    .navCtas{display:flex; gap:10px; align-items:center}
+
+    /* Hero */
+    .hero{padding: 18px 0 8px}
+    .heroCard{padding: 18px; border-radius: var(--radius2); position:relative; overflow:hidden}
+    .heroCard::before{
+      content:""; position:absolute; inset:-1px;
+      background: radial-gradient(700px 350px at 70% 0%, rgba(57,255,20,.18), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .heroGrid{position:relative; display:grid; grid-template-columns: 1fr; gap:14px}
+
+    .h1{font-size: clamp(24px, 7.2vw, 52px); line-height:1.05; margin: 12px 0 10px}
+    .p{margin:0; color: var(--muted); font-size: 14px; line-height: 1.85}
+
+    .steps{margin-top: 14px; display:grid; grid-template-columns: 1fr; gap: 12px}
+    .step{padding: 14px; border-radius: var(--radius)}
+    .stepTop{display:flex; align-items:flex-start; justify-content:space-between; gap:12px}
+    .stepNum{
+      width:34px; height:34px; border-radius: 12px;
+      display:inline-flex; align-items:center; justify-content:center;
+      border: 1px solid rgba(57,255,20,.35);
+      background: rgba(57,255,20,.08);
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+    .step h3{margin:0; font-size: 16px}
+    .step p{margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height:1.8}
+    .stepActions{margin-top: 10px; display:flex; gap:10px; flex-wrap:wrap}
+
+    .note{margin-top: 14px; padding: 12px; border-radius: 16px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18)}
+    .note b{color: var(--text)}
+
+    footer{padding: 26px 0 calc(110px + env(safe-area-inset-bottom)); color: var(--muted2); font-size: 12px; background:#000}
+
+    /* Mobile nav */
+    .mobileNav{position:fixed; left:12px; right:12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index:70; display:none}
+    .mobileNavBar{
+      display:flex; gap:8px; align-items:stretch; justify-content:space-between;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(5,6,7,.78);
+      backdrop-filter: blur(12px);
+      padding: 8px;
+    }
+    .mnItem{
+      flex:1;
+      padding: 10px 8px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      white-space:nowrap;
+    }
+    .mnItem.active{border-color: rgba(57,255,20,.35); color: var(--text)}
+    .mnItem.store{color:#061006; background: rgba(57,255,20,.90); border-color: rgba(57,255,20,.75)}
+
+    @media (max-width: 980px){
+      .navlinks{display:none}
+      .navCtas{display:none}
+      .mobileNav{display:block}
+      body{padding-bottom: calc(96px + env(safe-area-inset-bottom))}
+    }
+
+    @media (max-width: 520px){
+      body{background: linear-gradient(180deg, var(--bg) 0%, #07090a 100%) !important;}
+      .wrap{padding:0 14px}
+      .brand img{height:20px}
+      .chip{font-size:12px}
+      .hero{padding: 14px 0 6px}
+      .heroCard{padding: 16px}
+    }
+
+    /* ============ Popcorn Launcher Position (Keep Bubble Above Bottom Nav) ============ */
+    :root{ --chat-launcher-bottom: 24px; }
+    @media (max-width: 720px){
+      :root{ --chat-launcher-bottom: calc(env(safe-area-inset-bottom, 0px) + 140px); }
+    }
+    /* Target only the launcher / small fixed buttons (avoid moving the full chat panel) */
+    button[id*="popcorn"],
+    button[class*="popcorn"],
+    a[id*="popcorn"],
+    a[class*="popcorn"],
+    div[id*="popcorn"][role="button"],
+    div[class*="popcorn"][role="button"]{
+      bottom: var(--chat-launcher-bottom) !important;
+    }
+
+  </style>
+  <script src="assets/js/ix-live-content.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand" aria-label="INFINITEX">
+          <a href="index.html" aria-label="الرئيسية"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></a>
+          <span class="chip" id="ix-afterSalesChip"><span class="dot"></span> خدمات ما بعد البيع</span>
+        </div>
+
+        <nav class="navlinks" aria-label="التنقل">
+          <a class="active" href="index.html">الرئيسية</a>
+          <a href="track.html">تتبع الطلب</a>
+          <a href="returns.html">الاسترجاع</a>
+          <a href="products.html">المنتجات</a>
+        </nav>
+
+        <div class="navCtas">
+          <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">سياسة الضمان الذهبي</a>
+          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener">المتجر</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap hero">
+    <section class="heroCard card" aria-label="خدمات INFINITEX">
+      <div class="heroGrid">
+        <div>
+          <div class="chip" id="ix-index-badge"><span class="dot"></span> Own Every Moment</div>
+          <h1 class="h1" id="ix-index-title">خدمات INFINITEX<br/>بعد الشراء… في ٣ خطوات</h1>
+          <p class="p" id="ix-index-desc">هذا الموقع مخصص لخدمات ما بعد البيع: تتبع الطلب، الاسترجاع، ومتابعة المنتجات. إذا تبغى الشراء مباشرة، الزر يوديك على المتجر الرسمي.</p>
+
+          <div class="steps" aria-label="الخطوات الثلاث">
+            <div class="step card">
+              <div class="stepTop">
+                <div style="display:flex; gap:10px; align-items:flex-start">
+                  <span class="stepNum">1</span>
+                  <div>
+                    <h3>تتبع الطلب</h3>
+                    <p>تتبع حالتك باستخدام رقم الطلب. (تفعيل/دمج التتبع حسب نظام المتجر)</p>
+                  </div>
+                </div>
+              </div>
+              <div class="stepActions">
+                <a class="btn primary" href="track.html">ابدأ التتبع</a>
+                <a class="btn ghost" href="https://infinitex.sa/" target="_blank" rel="noopener">فتح المتجر</a>
+              </div>
+            </div>
+
+            <div class="step card">
+              <div class="stepTop">
+                <div style="display:flex; gap:10px; align-items:flex-start">
+                  <span class="stepNum">2</span>
+                  <div>
+                    <h3>الاسترجاع</h3>
+                    <p>بوابة الاسترجاع + الضمان الذهبي. تفاصيل وشروط الاسترجاع داخل السياسة الرسمية.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="stepActions">
+                <a class="btn primary" href="returns.html">بدء الاسترجاع</a>
+                <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">سياسة الضمان</a>
+              </div>
+            </div>
+
+            <div class="step card">
+              <div class="stepTop">
+                <div style="display:flex; gap:10px; align-items:flex-start">
+                  <span class="stepNum">3</span>
+                  <div>
+                    <h3>المنتجات</h3>
+                    <p>منتجاتنا القادمة، وصفحة تشويقية لسماعة Sound Pro 2.0v (الإصدار الثاني).</p>
+                  </div>
+                </div>
+              </div>
+              <div class="stepActions">
+                <a class="btn primary" href="products.html">عرض المنتجات</a>
+                <a class="btn ghost" href="products.html#gold">الضمان الذهبي</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="note" role="note">
+            <p class="p" id="ix-index-note" style="margin:0">
+              <b>تنبيه قبل الإطلاق:</b> صفحة المنتجات حالياً تشويقية. المواصفات النهائية والتوفر تُعلن عند الإطلاق عبر المتجر الرسمي.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div style="border-top:1px solid rgba(255,255,255,.08); padding-top: 14px">
+      <div>© <span id="year"></span> INFINITEX — خدمات ما بعد البيع</div>
+    </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Nav -->
+  <div class="mobileNav" role="navigation" aria-label="تنقل سريع">
+    <div class="mobileNavBar">
+      <a class="mnItem active" href="index.html">خدمات</a>
+      <a class="mnItem" href="track.html">تتبع</a>
+      <a class="mnItem" href="returns.html">استرجاع</a>
+      <a class="mnItem" href="products.html">منتجات</a>
+      <a class="mnItem store" href="https://infinitex.sa/" target="_blank" rel="noopener">متجر</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<!-- INFINITEX Support Chat (Popcorn) -->
+<script
+    src='https://app.trypopcorn.ai/loader.js'
+    data-url='https://app.trypopcorn.ai'
+    data-api-url='https://api.trypopcorn.ai'
+    data-agent=''
+    data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'>
+</script>
+    <!-- Popcorn: lift ONLY the launcher icon above the bottom nav (mobile) -->
+  <script>
+  (function(){
+    function navTop(){
+      var nav = document.querySelector('.mobileNav');
+      if(!nav) return null;
+      return nav.getBoundingClientRect().top;
+    }
+
+    function overlaps(r, top){
+      return top !== null && r.bottom > (top - 4);
+    }
+
+    function isCandidate(el){
+      if(!el || el === document.documentElement || el === document.body) return false;
+      // avoid moving our own bottom nav
+      if(el.closest && el.closest('.mobileNav')) return false;
+
+      var st = getComputedStyle(el);
+      if(st.position !== 'fixed') return false;
+      if(st.display === 'none' || st.visibility === 'hidden') return false;
+      if(parseFloat(st.opacity || '1') < 0.05) return false;
+
+      var r = el.getBoundingClientRect();
+      if(r.width < 24 || r.height < 24) return false;
+      // allow larger wrappers, but avoid full panels
+      if(r.width > 360 || r.height > 360) return false;
+      // must be on right/bottom half (typical launcher location)
+      if(r.left < window.innerWidth * 0.35) return false;
+      if(r.top < window.innerHeight * 0.35) return false;
+
+      // likely launcher: iframe OR contains iframe OR pointer-like
+      if(el.tagName === 'IFRAME') return true;
+      if(el.querySelector && el.querySelector('iframe')) return true;
+      if(el.tagName === 'BUTTON' || el.tagName === 'A') return true;
+      if(el.getAttribute && el.getAttribute('role') === 'button') return true;
+      if(st.cursor === 'pointer') return true;
+
+      return false;
+    }
+
+    function lift(el, top){
+      // move the launcher just above the bottom nav
+      var px = Math.round(window.innerHeight - top + 14);
+      var bottom = Math.max(16, px);
+      try{
+        el.style.setProperty('bottom', bottom + 'px', 'important');
+        el.style.setProperty('right', '16px', 'important');
+        el.style.setProperty('left', 'auto', 'important');
+        el.style.setProperty('z-index', '99999', 'important');
+      }catch(e){}
+    }
+
+    function score(el){
+      var r = el.getBoundingClientRect();
+      var area = r.width * r.height;
+      var dx = Math.max(0, window.innerWidth - r.right);
+      var dy = Math.max(0, window.innerHeight - r.bottom);
+      var z = parseInt(getComputedStyle(el).zIndex || '0', 10) || 0;
+      // prefer small area and near bottom-right; higher z-index helps a bit
+      return area + (dx*dx + dy*dy) - (z * 80);
+    }
+
+    function apply(){
+      var top = navTop();
+      if(top === null) return;
+
+      var nodes = Array.from(document.querySelectorAll('body *'));
+      var candidates = nodes.filter(isCandidate);
+      if(!candidates.length) return;
+
+      var overlapping = candidates.filter(function(el){
+        return overlaps(el.getBoundingClientRect(), top);
+      });
+      if(!overlapping.length) return;
+
+      overlapping.sort(function(a,b){ return score(a) - score(b); });
+      lift(overlapping[0], top);
+    }
+
+    // Run repeatedly because the widget is injected after load
+    var obs = new MutationObserver(function(){ apply(); });
+    obs.observe(document.documentElement, {subtree:true, childList:true, attributes:true});
+
+    var tries = 0;
+    var timer = setInterval(function(){
+      apply();
+      tries++;
+      if(tries > 120) clearInterval(timer);
+    }, 250);
+
+    window.addEventListener('resize', apply, {passive:true});
+    document.addEventListener('visibilitychange', apply);
+    window.addEventListener('load', apply);
+  })();
+  </script>
+
+
+</body>
+</html>
