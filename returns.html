@@ -1,279 +1,475 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="color-scheme" content="dark" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-mobile-web-app-title" content="INFINITEX" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>الاسترجاع | InfiniteX</title>
 
-  
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="assets/icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
-<title>INFINITEX — الاسترجاع والضمان الذهبي</title>
-  <meta name="description" content="بوابة الاسترجاع لدى INFINITEX + الضمان الذهبي." />
+    <style>
+      :root {
+        --bg: #0b0d0f;
+        --panel: #0f1216;
+        --stroke: rgba(255, 255, 255, 0.08);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.65);
+        --accent: #27ff4a; /* InfiniteX neon green */
+        --yamm: #9e6cff; /* Yamm purple */
+        --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+      }
 
-  <link rel="preload" href="assets/fonts/avenir-black-arabic.otf" as="font" type="font/otf" crossorigin>
+      * {
+        box-sizing: border-box;
+      }
 
-  <style>
-    @font-face{font-family:"AvenirBlackArabic"; src:url("assets/fonts/avenir-black-arabic.otf") format("opentype"); font-display:swap;}
-    :root{--bg:#050607;--bg2:#0a0c0d;--text:#eef2f3;--muted:#a7b0b5;--muted2:#7d878d;--line:rgba(255,255,255,.08);--accent:#39ff14;--shadow:0 24px 80px rgba(0,0,0,.55);--radius:18px;--radius2:24px;--max:1120px;}
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    html{background:#000}
-    body{margin:0;color:var(--text);background:radial-gradient(1100px 560px at 80% -10%, rgba(57,255,20,.18), transparent 60%),linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);font-family:"AvenirBlackArabic",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;overflow-x:hidden;}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
-    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;color:var(--muted);font-size:13px}
-    .dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 18px rgba(57,255,20,.6)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--text);cursor:pointer;transition:transform .15s ease,border-color .15s ease;user-select:none;font-weight:800}
-    .btn:hover{transform:translateY(-1px);border-color:rgba(57,255,20,.45)}
-    .btn.primary{background:linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85));border-color:rgba(57,255,20,.65);color:#061006;box-shadow:0 18px 60px rgba(57,255,20,.18)}
-    .btn.ghost{border-color:rgba(255,255,255,.10)}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+      body {
+        margin: 0;
+        background: radial-gradient(
+            1200px 700px at 50% -20%,
+            rgba(39, 255, 74, 0.08),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 600px at 110% 10%,
+            rgba(158, 108, 255, 0.12),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--text);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans Arabic", "Tahoma", sans-serif;
+        line-height: 1.55;
+      }
 
-    header{position:sticky; top:0;  z-index:50; backdrop-filter: blur(14px); background:#000; padding-top: env(safe-area-inset-top); border-bottom:1px solid rgba(255,255,255,.08)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}
-    .brand{display:flex;align-items:center;gap:12px;min-width:160px}
-    .brand img{height:22px;opacity:.98}
-    .navlinks{display:flex;align-items:center;gap:10px}
-    .navlinks a{padding:10px 10px;border-radius:12px;border:1px solid transparent;color:var(--muted);font-size:13px}
-    .navlinks a:hover{border-color:rgba(255,255,255,.10);color:var(--text)}
-    .navlinks a.active{border-color:rgba(57,255,20,.35);color:var(--text)}
-    .navCtas{display:flex;gap:10px;align-items:center}
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-    .hero{padding:16px 0 8px}
-    .heroCard{padding:16px;border-radius:var(--radius2);position:relative;overflow:hidden}
-    .heroCard::before{content:"";position:absolute;inset:-1px;background:radial-gradient(700px 350px at 70% 0%, rgba(57,255,20,.18), transparent 60%);opacity:.9;pointer-events:none}
-    .h1{position:relative;font-size:clamp(22px,7vw,44px);line-height:1.1;margin:12px 0 10px}
-    .p{position:relative;margin:0;color:var(--muted);font-size:14px;line-height:1.85}
+      .wrap {
+        max-width: 560px;
+        margin: 0 auto;
+        padding: 18px 14px 40px;
+      }
 
-    .box{margin-top:14px;padding:14px;border-radius:18px}
-    .grid{margin-top:12px;display:grid;grid-template-columns: 1fr;gap:10px}
-    .item{padding:12px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.18)}
-    .item b{display:block;color:var(--text);font-size:13px}
-    .item span{display:block;color:var(--muted);font-size:13px;line-height:1.75;margin-top:4px}
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 8px 18px;
+      }
 
-    .row{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
-    .brandRow{margin-top:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .brandRow img{height:22px;opacity:.95}
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-    footer{padding:26px 0 110px;color:var(--muted2);font-size:12px; background:#000}
+      .brand .dot {
+        width: 10px;
+        height: 10px;
+        background: var(--accent);
+        border-radius: 999px;
+        box-shadow: 0 0 18px rgba(39, 255, 74, 0.55);
+      }
 
-    .mobileNav{position:fixed;left:12px;right:12px;bottom: calc(12px + env(safe-area-inset-bottom));z-index:70;display:none}
-    .mobileNavBar{display:flex;gap:8px;align-items:stretch;justify-content:space-between;border-radius:18px;border:1px solid rgba(255,255,255,.10);background:rgba(5,6,7,.78);backdrop-filter:blur(12px);padding:8px}
-    .mnItem{flex:1;padding:10px 8px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);color:var(--muted);font-size:12px;text-align:center;white-space:nowrap}
-    .mnItem.active{border-color:rgba(57,255,20,.35);color:var(--text)}
-    .mnItem.store{color:#061006;background:rgba(57,255,20,.90);border-color:rgba(57,255,20,.75)}
+      .brand h1 {
+        font-size: 14px;
+        margin: 0;
+        letter-spacing: 0.2px;
+        font-weight: 800;
+      }
 
-    @media (max-width:980px){.navlinks{display:none}.navCtas{display:none}.mobileNav{display:block}body{padding-bottom:96px}}
-    @media (max-width:520px){body{background:linear-gradient(180deg,var(--bg) 0%, #07090a 100%) !important;}.wrap{padding:0 14px}.brand img{height:20px}}
+      .sub {
+        color: var(--muted);
+        font-size: 12px;
+        margin: 2px 0 0;
+      }
 
-    /* ============ Popcorn Launcher Position (Keep Bubble Above Bottom Nav) ============ */
-    :root{ --chat-launcher-bottom: 24px; }
-    @media (max-width: 720px){
-      :root{ --chat-launcher-bottom: calc(env(safe-area-inset-bottom, 0px) + 140px); }
-    }
-    /* Target only the launcher / small fixed buttons (avoid moving the full chat panel) */
-    button[id*="popcorn"],
-    button[class*="popcorn"],
-    a[id*="popcorn"],
-    a[class*="popcorn"],
-    div[id*="popcorn"][role="button"],
-    div[class*="popcorn"][role="button"]{
-      bottom: var(--chat-launcher-bottom) !important;
-    }
+      .card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+        border: 1px solid var(--stroke);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
 
-  </style>
-</head>
-<body>
-  <header>
+      .cardTop {
+        padding: 16px 16px 10px;
+      }
+
+      .title {
+        font-size: 18px;
+        margin: 0 0 6px;
+        font-weight: 900;
+      }
+
+      .desc {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      /* Yamm UI block */
+      .yamm-card {
+        --primary-color: var(--yamm);
+        padding: 0;
+      }
+
+      .yamm-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 14px 14px;
+        border-top: 1px solid var(--stroke);
+        border-bottom: 1px solid var(--stroke);
+        background: rgba(0,0,0,0.18);
+      }
+
+      .yamm-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .yamm-header-icon {
+        width: 22px;
+        height: 22px;
+        color: var(--primary-color);
+        flex: 0 0 auto;
+      }
+
+      .yamm-header-text {
+        font-weight: 900;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .yamm-apply-method-button {
+        border: 1px solid rgba(158,108,255,0.35);
+        color: rgba(255,255,255,0.92);
+        background: rgba(158,108,255,0.12);
+        padding: 8px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .yamm-apply-method-button:active {
+        transform: translateY(1px);
+      }
+
+      #yamm-card-content {
+        padding: 14px;
+      }
+
+      .yamm-video-container {
+        border: 1px solid var(--stroke);
+        border-radius: 14px;
+        padding: 12px;
+        background: rgba(0,0,0,0.18);
+        margin-bottom: 12px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .yamm-hide {
+        display: none;
+      }
+
+      .yamm-input-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .yamm-input-wrapper {
+        display: grid;
+        gap: 8px;
+      }
+
+      .yamm-label {
+        font-size: 12px;
+        color: rgba(255,255,255,0.75);
+        font-weight: 800;
+      }
+
+      .yamm-input {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(0,0,0,0.25);
+        color: var(--text);
+        outline: none;
+        font-size: 14px;
+      }
+
+      .yamm-input:focus {
+        border-color: rgba(39,255,74,0.35);
+        box-shadow: 0 0 0 4px rgba(39,255,74,0.08);
+      }
+
+      .yamm-phone-input {
+        position: relative;
+      }
+
+      .yamm-prefix {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 13px;
+        color: rgba(255,255,255,0.7);
+        background: rgba(255,255,255,0.06);
+        border: 1px solid var(--stroke);
+        padding: 6px 8px;
+        border-radius: 10px;
+        pointer-events: none;
+      }
+
+      .yamm-phone-input input {
+        padding-left: 86px; /* space for prefix */
+      }
+
+      .yamm-submit-button {
+        width: 100%;
+        margin-top: 12px;
+        padding: 13px 14px;
+        border: 0;
+        border-radius: 16px;
+        background: linear-gradient(90deg, rgba(39,255,74,1), rgba(158,108,255,0.85));
+        color: #07110a;
+        font-weight: 1000;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .yamm-submit-button:active {
+        transform: translateY(1px);
+      }
+
+      .helper {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .error {
+        margin-top: 10px;
+        color: #ffb2b2;
+        font-size: 12px;
+        display: none;
+      }
+
+      .yamm-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 14px 16px;
+        border-top: 1px solid var(--stroke);
+        color: rgba(255,255,255,0.7);
+        font-size: 12px;
+        background: rgba(0,0,0,0.16);
+      }
+
+      .yamm-logo {
+        width: 82px;
+        height: auto;
+      }
+
+      .navRow {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .ghostBtn {
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--stroke);
+        background: rgba(255,255,255,0.03);
+        color: rgba(255,255,255,0.9);
+        text-align: center;
+        font-weight: 900;
+        font-size: 13px;
+      }
+
+      .ghostBtn:hover {
+        background: rgba(255,255,255,0.05);
+      }
+    </style>
+  </head>
+
+  <body>
     <div class="wrap">
-      <div class="nav">
-        <div class="brand" aria-label="INFINITEX">
-          <a href="index.html" aria-label="الرئيسية"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></a>
-          <span class="chip"><span class="dot"></span> خدمات ما بعد البيع</span>
+      <header>
+        <div class="brand">
+          <div class="dot" aria-hidden="true"></div>
+          <div>
+            <h1>INFINITEX Services</h1>
+            <p class="sub">الاسترجاع السهل عبر منصة يم</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="card yamm-card" dir="rtl" style="--primary-color: #9E6CFF;">
+        <div class="cardTop">
+          <h2 class="title">طلب استرجاع</h2>
+          <p class="desc">
+            اكتب رقم الطلب ورقم جوالك، وبنوجّهك مباشرة لبوابة يم لإكمال طلب الاسترجاع.
+          </p>
         </div>
 
-        <nav class="navlinks" aria-label="التنقل">
-          <a href="index.html">الرئيسية</a>
-          <a href="track.html">تتبع الطلب</a>
-          <a class="active" href="returns.html">الاسترجاع</a>
-          <a href="products.html">المنتجات</a>
-        </nav>
-
-        <div class="navCtas">
-          <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">سياسة الضمان الذهبي</a>
-          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener">المتجر</a>
+        <div class="yamm-header">
+          <div class="yamm-title">
+            <svg class="yamm-header-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+              <rect width="256" height="256" fill="none"></rect>
+              <polyline points="176 104 176 136 80 136" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+              <polyline points="104 112 80 136 104 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+              <rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect>
+            </svg>
+            <div class="yamm-header-text">نموذج طلب استرجاع</div>
+          </div>
+          <button id="applyMethodBtn" class="yamm-apply-method-button" type="button">طريقة التقديم</button>
         </div>
+
+        <div id="yamm-card-content">
+          <div id="yamm-tutorial-video" class="yamm-video-container yamm-hide">
+            <strong>طريقة التقديم:</strong>
+            <ol style="margin: 8px 0 0; padding-right: 18px; color: rgba(255,255,255,0.7);">
+              <li>اكتب رقم الطلب ورقم الجوال.</li>
+              <li>اضغط “استرجع الآن”.</li>
+              <li>بتنتقل تلقائيًا إلى بوابة يم لإكمال الطلب.</li>
+            </ol>
+          </div>
+
+          <form id="yammForm" class="yamm-form">
+            <div class="yamm-input-group">
+              <div class="yamm-input-wrapper yamm-order-number-wrapper">
+                <label for="order_number" class="yamm-label">رقم الطلب</label>
+                <input
+                  id="yamm-order-number-input"
+                  name="order_number"
+                  dir="ltr"
+                  type="text"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  oninput="this.value = this.value.replace(/[^0-9٠-٩]/g, '')"
+                  class="yamm-input"
+                  placeholder="12345678"
+                  required
+                />
+              </div>
+
+              <div class="yamm-input-wrapper yamm-phone-number-wrapper">
+                <label for="phone_number" class="yamm-label">رقم الجوال</label>
+                <div dir="rtl" id="yamm-phone-number-input" class="yamm-phone-input">
+                  <input
+                    dir="ltr"
+                    id="phone_number"
+                    name="phone_number"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="tel"
+                    oninput="this.value = this.value.replace(/[^0-9٠-٩]/g, '')"
+                    class="yamm-input"
+                    placeholder="551234567"
+                    required
+                  />
+                  <div class="yamm-prefix">966+</div>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="yamm-submit-button">استرجع الآن</button>
+
+            <div id="err" class="error"></div>
+            <div class="helper">
+              سيتم توجيهك إلى: <span style="color: rgba(255,255,255,0.9); font-weight: 800;">yamm.sa</span>
+            </div>
+          </form>
+        </div>
+
+        <div class="yamm-footer">
+          <p>هذه الخدمة مقدمة من منصة</p>
+          <a href="https://yamm.sa" target="_blank" rel="noopener noreferrer" aria-label="Yamm">
+            <!-- Logo placeholder: You can replace this SVG with Yamm official SVG if desired -->
+            <svg class="yamm-logo" viewBox="0 0 140 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M43.7913 14.0384L37.1821 36.1472C35.7047 41.0647 30.5728 43.8633 25.7908 42.384L21.2809 40.9448C17.3542 39.7054 14.8271 35.9473 14.8271 31.9094C15.8769 31.8694 16.8877 31.5495 17.8597 31.0298L23.4581 27.9514C27.0737 25.9924 28.4345 21.3947 26.5295 17.6766L21.5142 8.00149L21.7863 7.12193C23.2637 2.20443 28.3956 -0.594151 33.1776 0.885099L37.6875 2.32437C42.5473 3.8436 45.2687 9.12092 43.7913 14.0384Z" fill="#9E6CFF"></path>
+              <path d="M23.5353 27.9521L17.9368 31.0305C16.9649 31.5503 15.9151 31.8301 14.9043 31.9101C14.9043 31.0305 15.0209 30.111 15.2931 29.2314L21.6302 8.0022L26.6455 17.6773C28.5117 21.3954 27.1121 25.9931 23.5353 27.9521Z" fill="#FF8389"></path>
+              <path d="M21.5436 8.00117L15.2064 29.2304C14.9343 30.1099 14.8176 31.0295 14.8176 31.909C12.0184 32.0689 9.25806 30.5897 7.89733 27.8711L0.860398 14.238C-1.04463 10.5199 0.316114 5.92222 3.93178 3.96322L9.53024 0.884779C13.1459 -1.07423 17.6169 0.325062 19.5219 4.04318L21.5436 8.00117Z" fill="#FFCD2E"></path>
+            </svg>
+          </a>
+        </div>
+      </main>
+
+      <div class="navRow">
+        <a class="ghostBtn" href="index.html">الرئيسية</a>
+        <a class="ghostBtn" href="track.html">تتبع الطلب</a>
       </div>
     </div>
-  </header>
 
-  <main class="wrap hero">
-    <section class="heroCard card">
-      <div class="chip" style="position:relative"><span class="dot"></span> الاسترجاع</div>
-      <h1 class="h1">الضمان الذهبي<br/>واسترجاع الفلوس</h1>
-      <p class="p">هنا بتلقى الوصول السريع لسياسة الضمان الذهبي وبوابة الاسترجاع. أي تفاصيل/شروط رسمية تكون داخل صفحة السياسة.</p>
-
-      <div class="brandRow" aria-label="الشركاء">
-        <img src="assets/brands/infinitex-logo.png" alt="INFINITEX" />
-        <span style="color:var(--muted)">×</span>
-        <img src="assets/brands/yamm-logo.png" alt="Yamm" />
-        <span class="chip" style="padding:8px 10px">استرجاع عبر Yamm</span>
-      </div>
-
-      <div class="grid">
-        <div class="item">
-          <b>ابدأ الاسترجاع من السياسة الرسمية</b>
-          <span>رابط الاسترجاع (ومنصة Yamm) موجود داخل صفحة سياسة الضمان الذهبي.</span>
-        </div>
-        <div class="item">
-          <b>الفلوس ترجع لك كاملة حسب السياسة</b>
-          <span>نلتزم بالآلية المذكورة في صفحة الضمان الذهبي. تجنب أي افتراضات خارج النص الرسمي.</span>
-        </div>
-        <div class="item">
-          <b>عند الإطلاق</b>
-          <span>إذا المنتج غير متوفر حالياً (Pre‑Launch)، تفعيل “الضمان الذهبي” يتم عند الإطلاق وفق السياسة.</span>
-        </div>
-      </div>
-
-      <div class="row">
-        <a class="btn primary" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">فتح سياسة الضمان الذهبي</a>
-        <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">بدء طلب الاسترجاع</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div style="border-top:1px solid rgba(255,255,255,.08); padding-top: 14px">
-      <div>© <span id="year"></span> INFINITEX — الاسترجاع</div>
-    </div>
-    </div>
-  </footer>
-
-  <div class="mobileNav" role="navigation" aria-label="تنقل سريع">
-    <div class="mobileNavBar">
-      <a class="mnItem" href="index.html">خدمات</a>
-      <a class="mnItem" href="track.html">تتبع</a>
-      <a class="mnItem active" href="returns.html">استرجاع</a>
-      <a class="mnItem" href="products.html">منتجات</a>
-      <a class="mnItem store" href="https://infinitex.sa/" target="_blank" rel="noopener">متجر</a>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-<!-- INFINITEX Support Chat (Popcorn) -->
-<script
-    src='https://app.trypopcorn.ai/loader.js'
-    data-url='https://app.trypopcorn.ai'
-    data-api-url='https://api.trypopcorn.ai'
-    data-agent=''
-    data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'>
-</script>
-    <!-- Popcorn: lift ONLY the launcher icon above the bottom nav (mobile) -->
-  <script>
-  (function(){
-    function navTop(){
-      var nav = document.querySelector('.mobileNav');
-      if(!nav) return null;
-      return nav.getBoundingClientRect().top;
-    }
-
-    function overlaps(r, top){
-      return top !== null && r.bottom > (top - 4);
-    }
-
-    function isCandidate(el){
-      if(!el || el === document.documentElement || el === document.body) return false;
-      // avoid moving our own bottom nav
-      if(el.closest && el.closest('.mobileNav')) return false;
-
-      var st = getComputedStyle(el);
-      if(st.position !== 'fixed') return false;
-      if(st.display === 'none' || st.visibility === 'hidden') return false;
-      if(parseFloat(st.opacity || '1') < 0.05) return false;
-
-      var r = el.getBoundingClientRect();
-      if(r.width < 24 || r.height < 24) return false;
-      // allow larger wrappers, but avoid full panels
-      if(r.width > 360 || r.height > 360) return false;
-      // must be on right/bottom half (typical launcher location)
-      if(r.left < window.innerWidth * 0.35) return false;
-      if(r.top < window.innerHeight * 0.35) return false;
-
-      // likely launcher: iframe OR contains iframe OR pointer-like
-      if(el.tagName === 'IFRAME') return true;
-      if(el.querySelector && el.querySelector('iframe')) return true;
-      if(el.tagName === 'BUTTON' || el.tagName === 'A') return true;
-      if(el.getAttribute && el.getAttribute('role') === 'button') return true;
-      if(st.cursor === 'pointer') return true;
-
-      return false;
-    }
-
-    function lift(el, top){
-      // move the launcher just above the bottom nav
-      var px = Math.round(window.innerHeight - top + 14);
-      var bottom = Math.max(16, px);
-      try{
-        el.style.setProperty('bottom', bottom + 'px', 'important');
-        el.style.setProperty('right', '16px', 'important');
-        el.style.setProperty('left', 'auto', 'important');
-        el.style.setProperty('z-index', '99999', 'important');
-      }catch(e){}
-    }
-
-    function score(el){
-      var r = el.getBoundingClientRect();
-      var area = r.width * r.height;
-      var dx = Math.max(0, window.innerWidth - r.right);
-      var dy = Math.max(0, window.innerHeight - r.bottom);
-      var z = parseInt(getComputedStyle(el).zIndex || '0', 10) || 0;
-      // prefer small area and near bottom-right; higher z-index helps a bit
-      return area + (dx*dx + dy*dy) - (z * 80);
-    }
-
-    function apply(){
-      var top = navTop();
-      if(top === null) return;
-
-      var nodes = Array.from(document.querySelectorAll('body *'));
-      var candidates = nodes.filter(isCandidate);
-      if(!candidates.length) return;
-
-      var overlapping = candidates.filter(function(el){
-        return overlaps(el.getBoundingClientRect(), top);
+    <script>
+      // Toggle "طريقة التقديم"
+      const applyBtn = document.getElementById("applyMethodBtn");
+      const tutorial = document.getElementById("yamm-tutorial-video");
+      applyBtn?.addEventListener("click", () => {
+        tutorial.classList.toggle("yamm-hide");
       });
-      if(!overlapping.length) return;
 
-      overlapping.sort(function(a,b){ return score(a) - score(b); });
-      lift(overlapping[0], top);
-    }
+      // Helpers
+      function normalizeDigits(str) {
+        // Convert Arabic-Indic digits to Western digits
+        const map = { "٠": "0", "١": "1", "٢": "2", "٣": "3", "٤": "4", "٥": "5", "٦": "6", "٧": "7", "٨": "8", "٩": "9" };
+        return String(str || "").replace(/[٠-٩]/g, (d) => map[d] || d).trim();
+      }
 
-    // Run repeatedly because the widget is injected after load
-    var obs = new MutationObserver(function(){ apply(); });
-    obs.observe(document.documentElement, {subtree:true, childList:true, attributes:true});
+      function showError(msg) {
+        const el = document.getElementById("err");
+        el.textContent = msg;
+        el.style.display = "block";
+      }
 
-    var tries = 0;
-    var timer = setInterval(function(){
-      apply();
-      tries++;
-      if(tries > 120) clearInterval(timer);
-    }, 250);
+      function clearError() {
+        const el = document.getElementById("err");
+        el.textContent = "";
+        el.style.display = "none";
+      }
 
-    window.addEventListener('resize', apply, {passive:true});
-    document.addEventListener('visibilitychange', apply);
-    window.addEventListener('load', apply);
-  })();
-  </script>
+      // Redirect to Yamm with query params
+      const form = document.getElementById("yammForm");
+      form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        clearError();
 
+        const orderRaw = document.getElementById("yamm-order-number-input")?.value || "";
+        const phoneRaw = document.getElementById("phone_number")?.value || "";
 
-</body>
+        const order = normalizeDigits(orderRaw);
+        let phone = normalizeDigits(phoneRaw);
+
+        if (!order || order.length < 3) return showError("فضلاً أدخل رقم طلب صحيح.");
+        if (!phone || phone.length < 8) return showError("فضلاً أدخل رقم جوال صحيح بدون 966.");
+
+        // If user typed leading 0, remove it (common in KSA local numbers)
+        phone = phone.replace(/^0+/, "");
+
+        // Build redirect URL
+        const base = "https://yamm.sa/store";
+        const params = new URLSearchParams({
+          hostname: "infinitex.sa",
+          order_number: order,
+          phone_number: "966" + phone,
+        });
+
+        window.location.href = `${base}?${params.toString()}`;
+      });
+    </script>
+  </body>
 </html>
