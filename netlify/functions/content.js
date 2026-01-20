@@ -12,7 +12,7 @@ const DEFAULT_CONTENT = {
       store: 'https://infinitex.sa/',
       warrantyPolicy: 'https://infinitex.sa/blogs/gold-warranty-policy'
     },
-    chipAfterSales: 'خدمات ما بعد البيع',
+    chipAfterSales: 'الخدمات',
     nav: {
       home: 'الرئيسية',
       track: 'تتبع الطلب',
