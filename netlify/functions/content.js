@@ -22,11 +22,11 @@ const DEFAULT_CONTENT = {
       store: 'المتجر'
     },
     mobileNav: {
-      services: 'خدمات',
-      track: 'تتبع',
-      returns: 'استرجاع',
-      products: 'منتجات',
-      store: 'متجر'
+      services: 'الخدمات',
+      track: 'تتبع طلبك',
+      returns: 'الاسترجاع',
+      products: 'المنتجات',
+      store: 'المتجر'
     },
     media: {
       infinitexLogo: 'assets/brands/infinitex-logo.png',
