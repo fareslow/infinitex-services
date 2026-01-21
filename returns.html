@@ -267,14 +267,15 @@
         </div>
 
         <nav class="navlinks" aria-label="التنقل">
-          <a href="index.html" data-ix-text="global.nav.home">الرئيسية</a>
-          <a href="track.html" data-ix-text="global.nav.track">تتبع الطلب</a>
-          <a class="active" href="returns.html" data-ix-text="global.nav.returns">الاسترجاع</a>
-          <a href="products.html" data-ix-text="global.nav.products">المنتجات</a>
+          <a href="index.html" data-ix-text="global.nav.home" data-ix-permission="permissions.showHome">الرئيسية</a>
+          <a href="track.html" data-ix-text="global.nav.track" data-ix-permission="permissions.showTrack">تتبع الطلب</a>
+          <a class="active" href="returns.html" data-ix-text="global.nav.returns" data-ix-permission="permissions.showReturns">الاسترجاع</a>
+          <a href="products.html" data-ix-text="global.nav.products" data-ix-permission="permissions.showProducts">المنتجات</a>
         </nav>
 
         <div class="navCtas">
-          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="global.nav.store">المتجر</a>
+          <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener" data-ix-href="global.links.warrantyPolicy" data-ix-text="global.nav.policy" data-ix-permission="permissions.showPolicyCta">سياسة الضمان الذهبي</a>
+          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="global.nav.store" data-ix-permission="permissions.showStoreCta">المتجر</a>
         </div>
       </div>
     </div>
@@ -292,7 +293,7 @@
             صممنا “الضمان الذهبي” لتكون تجربة الشراء أكثر اطمئنانًا. من هذه الصفحة ستصل مباشرةً إلى السياسة الرسمية وتبدأ طلب الاسترجاع عبر “يم (Yamm)” بخطوات واضحة.
           </p>
 
-          <div class="hint" style="margin-top:14px">
+          <div class="hint" style="margin-top:14px" data-ix-permission="permissions.showPolicyCta">
             للوصول إلى السياسة الرسمية: <a id="ix-returns-policyLink" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener" data-ix-href="global.links.warrantyPolicy" data-ix-text="pages.returns.policyCta">فتح سياسة الضمان الذهبي</a>
           </div>
         </div>
@@ -364,11 +365,11 @@
   <!-- Mobile bottom nav (نفس رقم 2) -->
   <div class="mobileNav" role="navigation" aria-label="تنقل سريع">
     <div class="mobileNavBar">
-      <a class="mnItem" href="index.html" data-ix-text="global.mobileNav.services">خدمات</a>
-      <a class="mnItem" href="track.html" data-ix-text="global.mobileNav.track">تتبع</a>
-      <a class="mnItem active" href="returns.html" data-ix-text="global.mobileNav.returns">استرجاع</a>
-      <a class="mnItem" href="products.html" data-ix-text="global.mobileNav.products">منتجات</a>
-      <a class="mnItem store" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="global.mobileNav.store">متجر</a>
+      <a class="mnItem" href="index.html" data-ix-text="global.mobileNav.services" data-ix-permission="permissions.showHome">خدمات</a>
+      <a class="mnItem" href="track.html" data-ix-text="global.mobileNav.track" data-ix-permission="permissions.showTrack">تتبع</a>
+      <a class="mnItem active" href="returns.html" data-ix-text="global.mobileNav.returns" data-ix-permission="permissions.showReturns">استرجاع</a>
+      <a class="mnItem" href="products.html" data-ix-text="global.mobileNav.products" data-ix-permission="permissions.showProducts">منتجات</a>
+      <a class="mnItem store" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="global.mobileNav.store" data-ix-permission="permissions.showStoreCta">متجر</a>
     </div>
   </div>
 

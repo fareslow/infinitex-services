@@ -104,10 +104,30 @@
         el.textContent = `+${value}`;
       }
     });
+
+    document.querySelectorAll('[data-ix-permission]').forEach((el) => {
+      const value = getValue(content, el.dataset.ixPermission);
+      if (value !== undefined) {
+        el.hidden = !Boolean(value);
+      }
+    });
+  };
+
+  const getStoredContent = () => {
+    const stored = localStorage.getItem('IX_CONTENT_OVERRIDE');
+    if (!stored) return null;
+    try {
+      return JSON.parse(stored);
+    } catch (error) {
+      return null;
+    }
   };
 
   const load = async () => {
-    let content = await fetchJson(API_URL);
+    let content = getStoredContent();
+    if (!content) {
+      content = await fetchJson(API_URL);
+    }
     if (!content) {
       content = await fetchJson(FALLBACK_URL);
     }
