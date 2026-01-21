@@ -616,20 +616,20 @@
     <div class="wrap">
       <div class="nav">
         <div class="brand" aria-label="INFINITEX">
-          <img src="assets/brands/infinitex-logo.png" alt="INFINITEX" />
-          <span class="chip" id="ix-afterSalesChip"><span class="dot"></span> صفحة المنتجات — الإطلاق قريباً</span>
+          <img src="assets/brands/infinitex-logo.png" alt="INFINITEX" data-ix-src="global.media.infinitexLogo" />
+          <span class="chip" id="ix-afterSalesChip" data-ix-chip="pages.products.headerChip"><span class="dot"></span> صفحة المنتجات — الإطلاق قريباً</span>
         </div>
 
         <nav class="navlinks" aria-label="التنقل">
-          <a href="index.html">الرئيسية</a>
-          <a href="track.html">تتبع الطلب</a>
-          <a href="returns.html">الاسترجاع</a>
-          <a href="products.html" class="active">المنتجات</a>
+          <a href="index.html" data-ix-text="global.nav.home">الرئيسية</a>
+          <a href="track.html" data-ix-text="global.nav.track">تتبع الطلب</a>
+          <a href="returns.html" data-ix-text="global.nav.returns">الاسترجاع</a>
+          <a href="products.html" class="active" data-ix-text="global.nav.products">المنتجات</a>
         </nav>
 
         <div class="navCtas">
-          <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">سياسة الضمان الذهبي</a>
-          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener">تابع المتجر</a>
+          <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener" data-ix-href="global.links.warrantyPolicy" data-ix-text="global.nav.policy">سياسة الضمان الذهبي</a>
+          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store">تابع المتجر</a>
         </div>
       </div>
     </div>
@@ -640,10 +640,10 @@
     <div class="wrap hero">
       <div class="heroGrid">
         <div class="heroLeft card">
-          <div class="chip" id="ix-products-badge"><span class="dot"></span> INFINITEX Sound Pro 2.0v — الإصدار الثاني</div>
+          <div class="chip" id="ix-products-badge" data-ix-chip="pages.products.badge"><span class="dot"></span> INFINITEX Sound Pro 2.0v — الإصدار الثاني</div>
 
           <div class="heroTitleRow">
-            <h1 class="h1" id="ix-products-title" style="margin:0">Own Every Moment</h1>
+            <h1 class="h1" id="ix-products-title" style="margin:0" data-ix-text="pages.products.title">Own Every Moment</h1>
             <span class="kbd">Bluetooth • 2.4GHz • USB‑C</span>
           </div>
 
@@ -658,7 +658,7 @@
             </div>
           </div>
 
-          <p class="p" id="ix-products-desc" style="margin-top:10px">
+          <p class="p" id="ix-products-desc" style="margin-top:10px" data-ix-html="pages.products.desc">
             نحن الآن في مرحلة <b style="color:var(--text)">ما قبل الإطلاق</b>. هذا هو <b style="color:var(--text)">الإصدار الثاني</b> من Sound Pro —
             قاعدين “نطبخ” منتج خيالي يرفع سقف التجربة ويغيّر نظرة الناس لسماعات القيمنغ.
             <br />
@@ -666,7 +666,7 @@
           </p>
 
           <div class="ctaRow">
-            <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener">تابع المتجر الرسمي</a>
+            <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="pages.products.ctaStore">تابع المتجر الرسمي</a>
             <a class="btn ghost" href="#gold">الضمان الذهبي (قريباً)</a>
           </div>
 
@@ -948,8 +948,8 @@
 
         <div class="footerLinks">
           <div style="margin-bottom:10px; color:var(--muted2)">روابط رسمية</div>
-          <a href="https://infinitex.sa/" target="_blank" rel="noopener">المتجر</a>
-          <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">الضمان الذهبي</a>
+          <a href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="global.nav.store">المتجر</a>
+          <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener" data-ix-href="global.links.warrantyPolicy" data-ix-text="global.nav.policy">الضمان الذهبي</a>
           <a href="https://infinitex.sa/blogs/shipping-policy-saudi-arabia" target="_blank" rel="noopener">سياسة الشحن</a>
         </div>
       </div>
@@ -959,11 +959,11 @@
   <!-- Mobile bottom nav (mobile only) -->
   <div class="mobileNav" role="navigation" aria-label="تنقل سريع">
     <div class="mobileNavBar">
-      <a class="mnItem" href="index.html">خدمات</a>
-      <a class="mnItem" href="track.html">تتبع</a>
-      <a class="mnItem" href="returns.html">استرجاع</a>
-      <a class="mnItem active" href="products.html">منتجات</a>
-      <a class="mnItem" href="https://infinitex.sa/" target="_blank" rel="noopener">متجر</a>
+      <a class="mnItem" href="index.html" data-ix-text="global.mobileNav.services">خدمات</a>
+      <a class="mnItem" href="track.html" data-ix-text="global.mobileNav.track">تتبع</a>
+      <a class="mnItem" href="returns.html" data-ix-text="global.mobileNav.returns">استرجاع</a>
+      <a class="mnItem active" href="products.html" data-ix-text="global.mobileNav.products">منتجات</a>
+      <a class="mnItem" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="global.mobileNav.store">متجر</a>
     </div>
   </div>
 
