@@ -214,20 +214,20 @@
     <div class="wrap">
       <div class="nav">
         <div class="brand" aria-label="INFINITEX">
-          <a href="index.html" aria-label="الرئيسية"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></a>
-          <span class="chip" id="ix-afterSalesChip"><span class="dot"></span> خدمات ما بعد البيع</span>
+          <a href="index.html" aria-label="الرئيسية"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" data-ix-src="global.media.infinitexLogo" /></a>
+          <span class="chip" id="ix-afterSalesChip" data-ix-chip="global.chipAfterSales"><span class="dot"></span> خدمات ما بعد البيع</span>
         </div>
 
         <nav class="navlinks" aria-label="التنقل">
-          <a class="active" href="index.html">الرئيسية</a>
-          <a href="track.html">تتبع الطلب</a>
-          <a href="returns.html">الاسترجاع</a>
-          <a href="products.html">المنتجات</a>
+          <a class="active" href="index.html" data-ix-text="global.nav.home">الرئيسية</a>
+          <a href="track.html" data-ix-text="global.nav.track">تتبع الطلب</a>
+          <a href="returns.html" data-ix-text="global.nav.returns">الاسترجاع</a>
+          <a href="products.html" data-ix-text="global.nav.products">المنتجات</a>
         </nav>
 
         <div class="navCtas">
-          <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">سياسة الضمان الذهبي</a>
-          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener">المتجر</a>
+          <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener" data-ix-href="global.links.warrantyPolicy" data-ix-text="global.nav.policy">سياسة الضمان الذهبي</a>
+          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="global.nav.store">المتجر</a>
         </div>
       </div>
     </div>
@@ -237,9 +237,9 @@
     <section class="heroCard card" aria-label="خدمات INFINITEX">
       <div class="heroGrid">
         <div>
-          <div class="chip" id="ix-index-badge"><span class="dot"></span> Own Every Moment</div>
-          <h1 class="h1" id="ix-index-title">خدمات INFINITEX<br/>بعد الشراء… في ٣ خطوات</h1>
-          <p class="p" id="ix-index-desc">هذا الموقع مخصص لخدمات ما بعد البيع: تتبع الطلب، الاسترجاع، ومتابعة المنتجات. إذا تبغى الشراء مباشرة، الزر يوديك على المتجر الرسمي.</p>
+          <div class="chip" id="ix-index-badge" data-ix-chip="pages.index.badge"><span class="dot"></span> Own Every Moment</div>
+          <h1 class="h1" id="ix-index-title" data-ix-html="pages.index.title">خدمات INFINITEX<br/>بعد الشراء… في ٣ خطوات</h1>
+          <p class="p" id="ix-index-desc" data-ix-text="pages.index.desc">هذا الموقع مخصص لخدمات ما بعد البيع: تتبع الطلب، الاسترجاع، ومتابعة المنتجات. إذا تبغى الشراء مباشرة، الزر يوديك على المتجر الرسمي.</p>
 
           <div class="steps" aria-label="الخطوات الثلاث">
             <div class="step card">
@@ -253,8 +253,8 @@
                 </div>
               </div>
               <div class="stepActions">
-                <a class="btn primary" href="track.html">ابدأ التتبع</a>
-                <a class="btn ghost" href="https://infinitex.sa/" target="_blank" rel="noopener">فتح المتجر</a>
+                <a class="btn primary" href="track.html" data-ix-text="pages.index.ctaTrack">ابدأ التتبع</a>
+                <a class="btn ghost" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store">فتح المتجر</a>
               </div>
             </div>
 
@@ -269,8 +269,8 @@
                 </div>
               </div>
               <div class="stepActions">
-                <a class="btn primary" href="returns.html">بدء الاسترجاع</a>
-                <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">سياسة الضمان</a>
+                <a class="btn primary" href="returns.html" data-ix-text="pages.index.ctaReturns">بدء الاسترجاع</a>
+                <a class="btn ghost" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener" data-ix-href="global.links.warrantyPolicy" data-ix-text="global.nav.policy">سياسة الضمان</a>
               </div>
             </div>
 
@@ -292,7 +292,7 @@
           </div>
 
           <div class="note" role="note">
-            <p class="p" id="ix-index-note" style="margin:0">
+            <p class="p" id="ix-index-note" style="margin:0" data-ix-html="pages.index.note">
               <b>تنبيه قبل الإطلاق:</b> صفحة المنتجات حالياً تشويقية. المواصفات النهائية والتوفر تُعلن عند الإطلاق عبر المتجر الرسمي.
             </p>
           </div>
@@ -312,11 +312,11 @@
   <!-- Mobile Nav -->
   <div class="mobileNav" role="navigation" aria-label="تنقل سريع">
     <div class="mobileNavBar">
-      <a class="mnItem active" href="index.html">خدمات</a>
-      <a class="mnItem" href="track.html">تتبع</a>
-      <a class="mnItem" href="returns.html">استرجاع</a>
-      <a class="mnItem" href="products.html">منتجات</a>
-      <a class="mnItem store" href="https://infinitex.sa/" target="_blank" rel="noopener">متجر</a>
+      <a class="mnItem active" href="index.html" data-ix-text="global.mobileNav.services">خدمات</a>
+      <a class="mnItem" href="track.html" data-ix-text="global.mobileNav.track">تتبع</a>
+      <a class="mnItem" href="returns.html" data-ix-text="global.mobileNav.returns">استرجاع</a>
+      <a class="mnItem" href="products.html" data-ix-text="global.mobileNav.products">منتجات</a>
+      <a class="mnItem store" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="global.mobileNav.store">متجر</a>
     </div>
   </div>
 

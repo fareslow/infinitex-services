@@ -262,19 +262,19 @@
     <div class="wrap">
       <div class="nav">
         <div class="brand" aria-label="INFINITEX">
-          <a href="index.html" aria-label="الرئيسية"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></a>
-          <span class="chip" id="ix-afterSalesChip"><span class="dot"></span> خدمات ما بعد البيع</span>
+          <a href="index.html" aria-label="الرئيسية"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" data-ix-src="global.media.infinitexLogo" /></a>
+          <span class="chip" id="ix-afterSalesChip" data-ix-chip="global.chipAfterSales"><span class="dot"></span> خدمات ما بعد البيع</span>
         </div>
 
         <nav class="navlinks" aria-label="التنقل">
-          <a href="index.html">الرئيسية</a>
-          <a href="track.html">تتبع الطلب</a>
-          <a class="active" href="returns.html">الاسترجاع</a>
-          <a href="products.html">المنتجات</a>
+          <a href="index.html" data-ix-text="global.nav.home">الرئيسية</a>
+          <a href="track.html" data-ix-text="global.nav.track">تتبع الطلب</a>
+          <a class="active" href="returns.html" data-ix-text="global.nav.returns">الاسترجاع</a>
+          <a href="products.html" data-ix-text="global.nav.products">المنتجات</a>
         </nav>
 
         <div class="navCtas">
-          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener">المتجر</a>
+          <a class="btn primary" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="global.nav.store">المتجر</a>
         </div>
       </div>
     </div>
@@ -286,27 +286,27 @@
 
         <!-- النص -->
         <div>
-          <div class="chip" id="ix-returns-badge"><span class="dot"></span> استرجاع منظم وموثّق</div>
-          <h1 class="h1" id="ix-returns-title">اشترِ بثقة…<br/>واسترجع بكل وضوح</h1>
-          <p class="p" id="ix-returns-desc">
+          <div class="chip" id="ix-returns-badge" data-ix-chip="pages.returns.badge"><span class="dot"></span> استرجاع منظم وموثّق</div>
+          <h1 class="h1" id="ix-returns-title" data-ix-html="pages.returns.title">اشترِ بثقة…<br/>واسترجع بكل وضوح</h1>
+          <p class="p" id="ix-returns-desc" data-ix-text="pages.returns.desc">
             صممنا “الضمان الذهبي” لتكون تجربة الشراء أكثر اطمئنانًا. من هذه الصفحة ستصل مباشرةً إلى السياسة الرسمية وتبدأ طلب الاسترجاع عبر “يم (Yamm)” بخطوات واضحة.
           </p>
 
           <div class="hint" style="margin-top:14px">
-            للوصول إلى السياسة الرسمية: <a id="ix-returns-policyLink" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener">فتح سياسة الضمان الذهبي</a>
+            للوصول إلى السياسة الرسمية: <a id="ix-returns-policyLink" href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" rel="noopener" data-ix-href="global.links.warrantyPolicy" data-ix-text="pages.returns.policyCta">فتح سياسة الضمان الذهبي</a>
           </div>
         </div>
 
         <!-- النموذج -->
         <div class="formCard card" aria-label="نموذج طلب استرجاع">
           <div class="formHead">
-            <b id="ix-returns-formTitle">نموذج طلب استرجاع</b>
-            <img class="yammLogo" id="ix-yamm-logo" src="assets/brands/yamm-logo.png" alt="Yamm" />
+            <b id="ix-returns-formTitle" data-ix-text="pages.returns.formTitle">نموذج طلب استرجاع</b>
+            <img class="yammLogo" id="ix-yamm-logo" src="assets/brands/yamm-logo.png" alt="Yamm" data-ix-src="global.media.yammLogo" />
           </div>
 
           <form id="returnForm" novalidate>
             <div class="field">
-              <label class="label" for="orderNumber">رقم الطلب</label>
+              <label class="label" for="orderNumber" id="ix-returns-orderLabel" data-ix-text="pages.returns.orderLabel">رقم الطلب</label>
               <input
                 class="input"
                 id="orderNumber"
@@ -314,14 +314,15 @@
                 inputmode="numeric"
                 autocomplete="off"
                 placeholder="مثال: 3455"
+                data-ix-placeholder="pages.returns.orderPlaceholder"
                 required
               />
             </div>
 
             <div class="field">
-              <label class="label" for="phoneLocal">رقم الجوال</label>
+              <label class="label" for="phoneLocal" id="ix-returns-phoneLabel" data-ix-text="pages.returns.phoneLabel">رقم الجوال</label>
               <div class="phoneRow">
-                <div class="cc" id="ix-returns-cc" aria-hidden="true">+966</div>
+                <div class="cc" id="ix-returns-cc" aria-hidden="true" data-ix-cc="yamm.phone.countryCode">+966</div>
                 <input
                   class="input"
                   id="phoneLocal"
@@ -329,13 +330,14 @@
                   inputmode="tel"
                   autocomplete="tel"
                   placeholder="5XXXXXXXX"
+                  data-ix-placeholder="pages.returns.phonePlaceholder"
                   required
                 />
               </div>
             </div>
 
             <div class="submitRow">
-              <button class="btn primary" id="ix-returns-cta" type="submit">ابدأ طلب الاسترجاع</button>
+              <button class="btn primary" id="ix-returns-cta" type="submit" data-ix-text="pages.returns.cta">ابدأ طلب الاسترجاع</button>
             </div>
 
             <div id="msg" class="hint" style="display:none"></div>
@@ -362,11 +364,11 @@
   <!-- Mobile bottom nav (نفس رقم 2) -->
   <div class="mobileNav" role="navigation" aria-label="تنقل سريع">
     <div class="mobileNavBar">
-      <a class="mnItem" href="index.html">خدمات</a>
-      <a class="mnItem" href="track.html">تتبع</a>
-      <a class="mnItem active" href="returns.html">استرجاع</a>
-      <a class="mnItem" href="products.html">منتجات</a>
-      <a class="mnItem store" href="https://infinitex.sa/" target="_blank" rel="noopener">متجر</a>
+      <a class="mnItem" href="index.html" data-ix-text="global.mobileNav.services">خدمات</a>
+      <a class="mnItem" href="track.html" data-ix-text="global.mobileNav.track">تتبع</a>
+      <a class="mnItem active" href="returns.html" data-ix-text="global.mobileNav.returns">استرجاع</a>
+      <a class="mnItem" href="products.html" data-ix-text="global.mobileNav.products">منتجات</a>
+      <a class="mnItem store" href="https://infinitex.sa/" target="_blank" rel="noopener" data-ix-href="global.links.store" data-ix-text="global.mobileNav.store">متجر</a>
     </div>
   </div>
 
