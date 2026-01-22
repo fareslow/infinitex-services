@@ -25,6 +25,14 @@
       "yammLogo": "assets/brands/yamm-logo.png"
     }
   },
+  "permissions": {
+    "showHome": true,
+    "showTrack": true,
+    "showReturns": true,
+    "showProducts": true,
+    "showStoreCta": true,
+    "showPolicyCta": true
+  },
   "yamm": {
     "baseUrl": "https://yamm.sa/store",
     "hostname": "infinitex.sa",
