@@ -2,4 +2,4 @@
 /api/auth     /.netlify/functions/auth          200
 /api/content  /.netlify/functions/content       200
 /api/media    /.netlify/functions/media         200
-/admin        /admin/index.html                 200
+/admin        /admin.html                       200

@@ -10,6 +10,7 @@
       "track": "تتبع الطلب",
       "returns": "الاسترجاع",
       "products": "المنتجات",
+      "admin": "لوحة الإدارة",
       "policy": "سياسة الضمان الذهبي",
       "store": "المتجر"
     },
@@ -18,12 +19,22 @@
       "track": "تتبع",
       "returns": "استرجاع",
       "products": "منتجات",
+      "admin": "إدارة",
       "store": "متجر"
     },
     "media": {
       "infinitexLogo": "assets/brands/infinitex-logo.png",
       "yammLogo": "assets/brands/yamm-logo.png"
     }
+  },
+  "permissions": {
+    "showHome": true,
+    "showTrack": true,
+    "showReturns": true,
+    "showProducts": true,
+    "showAdmin": false,
+    "showStoreCta": true,
+    "showPolicyCta": true
   },
   "yamm": {
     "baseUrl": "https://yamm.sa/store",
