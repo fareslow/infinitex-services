@@ -1,3 +1,2 @@
-/admin.html
-  Basic-Auth: admin:change-me-strong
+/admin*
   X-Robots-Tag: noindex, nofollow

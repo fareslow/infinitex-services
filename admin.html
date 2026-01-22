@@ -217,16 +217,7 @@
   <script>
     const DEFAULT_CONTENT_URL = 'content.json';
     const STORAGE_KEY = 'IX_CONTENT_OVERRIDE';
-    const AUTH_KEY = 'IX_ADMIN_AUTH';
-    const ADMIN_HASH = 'd82734ac466918ba100b9e762e932290d2c7e04fbd06e77a56dcd4d6893fee7d';
-    const AUTH_TTL_MS = 8 * 60 * 60 * 1000;
-
-    const hashString = async (value) => {
-      const encoder = new TextEncoder();
-      const data = encoder.encode(value);
-      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-      return Array.from(new Uint8Array(hashBuffer)).map((b) => b.toString(16).padStart(2, '0')).join('');
-    };
+    const AUTH_ENDPOINT = '/api/auth';
 
     const setLocked = (locked) => {
       document.body.classList.toggle('locked', locked);
@@ -237,12 +228,12 @@
       }
     };
 
-    const isAuthorized = () => {
-      const stored = localStorage.getItem(AUTH_KEY);
-      if (!stored) return false;
+    const checkSession = async () => {
       try {
-        const parsed = JSON.parse(stored);
-        return parsed.token === ADMIN_HASH && Date.now() - parsed.at < AUTH_TTL_MS;
+        const res = await fetch(AUTH_ENDPOINT, { credentials: 'include', cache: 'no-store' });
+        if (!res.ok) return false;
+        const data = await res.json();
+        return Boolean(data && data.authorized);
       } catch (error) {
         return false;
       }
@@ -421,11 +412,24 @@
         error.classList.add('show');
         return;
       }
-      const hashed = await hashString(password);
-      if (hashed === ADMIN_HASH) {
-        localStorage.setItem(AUTH_KEY, JSON.stringify({ token: ADMIN_HASH, at: Date.now() }));
-        setLocked(false);
-      } else {
+      try {
+        const res = await fetch(AUTH_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ password })
+        });
+        if (!res.ok) {
+          error.classList.add('show');
+          return;
+        }
+        const data = await res.json();
+        if (data && data.authorized) {
+          setLocked(false);
+        } else {
+          error.classList.add('show');
+        }
+      } catch (errorResponse) {
         error.classList.add('show');
       }
     });
@@ -477,8 +481,10 @@
     });
 
     document.getElementById('year').textContent = new Date().getFullYear();
-    setLocked(!isAuthorized());
-    init();
+    checkSession().then((authorized) => {
+      setLocked(!authorized);
+      init();
+    });
   </script>
 </body>
 </html>
