@@ -1,9 +1,0 @@
-{
-  "name": "infinitex-services",
-  "private": true,
-  "version": "1.0.0",
-  "description": "INFINITEX services site with Netlify functions",
-  "dependencies": {
-    "bcryptjs": "^2.4.3"
-  }
-}
