@@ -32,7 +32,6 @@
     "showTrack": true,
     "showReturns": true,
     "showProducts": true,
-    "showAdmin": false,
     "showStoreCta": true,
     "showPolicyCta": true
   },
