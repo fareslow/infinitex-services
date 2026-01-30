@@ -33,7 +33,7 @@
       --accent2: #2bdc12;
       --gold: #ffd700;
       --red: #ff4757;
-      --purple: #a855f7;
+      --purple: #ff3b30;
       --radius: 20px;
       --max: 700px;
     }
@@ -301,6 +301,18 @@
     }
 
     .hero-content { position: relative; z-index: 1; }
+    .hero-media {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-media img {
+      width: min(100%, 420px);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
 
     .hero-subtitle {
       font-size: clamp(16px, 4.5vw, 22px);
@@ -588,6 +600,20 @@
     /* Scroll Reveal */
     .reveal { opacity: 0; transform: translateY(15px); transition: all 0.5s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Popcorn launcher above bottom nav */
+    :root { --chat-launcher-bottom: 24px; }
+    @media (max-width: 720px){
+      :root{ --chat-launcher-bottom: calc(env(safe-area-inset-bottom, 0px) + 140px); }
+    }
+    button[id*="popcorn"],
+    button[class*="popcorn"],
+    a[id*="popcorn"],
+    a[class*="popcorn"],
+    div[id*="popcorn"][role="button"],
+    div[class*="popcorn"][role="button"]{
+      bottom: var(--chat-launcher-bottom) !important;
+    }
   </style>
 </head>
 
@@ -805,6 +831,10 @@
               <div class="highlight-chip purple"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ENC عزل ضوضاء</div>
               <div class="highlight-chip purple"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg> 7.1 محيطي</div>
               <div class="highlight-chip purple"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"/></svg> Bass Mode</div>
+            </div>
+
+            <div class="hero-media">
+              <img src="assets/images/sound-force-red.svg" alt="سماعة INFINITEX Sound Force باللون الأحمر" loading="lazy" />
             </div>
 
             <div class="btn-row">
