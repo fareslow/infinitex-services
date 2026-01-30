@@ -33,23 +33,27 @@
       --accent2: #2bdc12;
       --gold: #ffd700;
       --red: #ff4757;
-      --purple: #a855f7;
+      --purple: #ff3b30;
       --radius: 20px;
       --max: 700px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; background: #000; }
+    html { scroll-behavior: smooth; background: #000; width: 100%; }
 
     body {
       font-family: "AvenirBlackArabic", system-ui, sans-serif;
       color: var(--text);
       background: linear-gradient(180deg, var(--bg) 0%, #07090a 100%);
       overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
+
+    img { max-width: 100%; height: auto; }
 
     /* Animations */
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -135,7 +139,7 @@
 
     .product-tab.active.force {
       border-color: var(--purple);
-      background: rgba(168,85,247,.05);
+      background: rgba(255,59,48,.05);
     }
 
     .product-tab .badge {
@@ -152,7 +156,7 @@
     }
 
     .product-tab .badge.available {
-      background: rgba(168,85,247,.15);
+      background: rgba(255,59,48,.15);
       color: var(--purple);
     }
 
@@ -221,8 +225,8 @@
     }
 
     .btn.primary.purple {
-      background: linear-gradient(180deg, rgba(168,85,247,.95), rgba(139,92,246,.85));
-      border-color: rgba(168,85,247,.6);
+      background: linear-gradient(180deg, rgba(255,59,48,.95), rgba(220,38,38,.85));
+      border-color: rgba(255,59,48,.6);
       color: #fff;
     }
 
@@ -258,7 +262,7 @@
     }
 
     .feature-card.purple:hover {
-      border-color: rgba(168,85,247,.3);
+      border-color: rgba(255,59,48,.3);
     }
 
     .feature-card .emoji {
@@ -297,10 +301,22 @@
     }
 
     .hero.purple::before {
-      background: radial-gradient(circle, rgba(168,85,247,.12) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(255,59,48,.12) 0%, transparent 60%);
     }
 
     .hero-content { position: relative; z-index: 1; }
+    .hero-media {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-media img {
+      width: min(100%, 420px);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
 
     .hero-subtitle {
       font-size: clamp(16px, 4.5vw, 22px);
@@ -490,8 +506,8 @@
     }
 
     .compat-item.purple {
-      background: rgba(168,85,247,.05);
-      border-color: rgba(168,85,247,.2);
+      background: rgba(255,59,48,.05);
+      border-color: rgba(255,59,48,.2);
       color: var(--purple);
     }
 
@@ -588,6 +604,7 @@
     /* Scroll Reveal */
     .reveal { opacity: 0; transform: translateY(15px); transition: all 0.5s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
   </style>
 </head>
 
@@ -601,6 +618,7 @@
           <a href="track.html">تتبع الطلب</a>
           <a href="returns.html">الاسترجاع</a>
           <a href="products.html" class="active">المنتجات</a>
+          <a href="contact.html">تواصل معنا</a>
         </div>
       </nav>
     </div>
@@ -949,6 +967,7 @@
       <a href="track.html">تتبع</a>
       <a href="returns.html">استرجاع</a>
       <a href="products.html" class="active">المنتجات</a>
+      <a href="contact.html">تواصل</a>
       <a href="https://infinitex.sa/" target="_blank">المتجر</a>
     </div>
   </div>
@@ -1034,7 +1053,6 @@
     });
   </script>
 
-  <script src='https://app.trypopcorn.ai/loader.js' data-url='https://app.trypopcorn.ai' data-api-url='https://api.trypopcorn.ai' data-agent='' data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'></script>
 </body>
 </html>
 </html>

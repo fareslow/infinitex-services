@@ -9,17 +9,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="apple-mobile-web-app-title" content="INFINITEX" />
 
-  <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="assets/icons/icon-192.png" />
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
-
-  <title>خدمات INFINITEX — ما بعد البيع</title>
-  <meta name="description" content="مركز خدمات INFINITEX لما بعد البيع: تتبع الطلب، الاسترجاع، والمنتجات (قريباً)." />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="خدمات INFINITEX — ما بعد البيع" />
-  <meta property="og:description" content="٣ خطوات بسيطة: تتبع الطلب، الاسترجاع، والمنتجات." />
-  <meta property="og:image" content="assets/images/sound-pro-dark-grey.jpg" />
+  <title>INFINITEX — تواصل معنا</title>
+  <meta name="description" content="تواصل معنا مباشرة عبر شات INFINITEX المدعوم بـ Popcorn." />
 
   <link rel="preload" href="assets/fonts/avenir-black-arabic.otf" as="font" type="font/otf" crossorigin>
 
@@ -45,7 +38,6 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; background: #000; width: 100%; }
 
     body {
@@ -218,55 +210,9 @@
       line-height: 1.9;
     }
 
-    .highlights {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin: 20px 0;
-    }
-
-    .highlight-chip {
-      padding: 10px 14px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .highlight-chip svg {
-      width: 14px;
-      height: 14px;
-      fill: var(--accent);
-    }
-
     .section-header {
       text-align: center;
       margin-bottom: 24px;
-    }
-
-    .gold-card {
-      background: linear-gradient(180deg, rgba(255,215,0,.04), rgba(255,215,0,.01));
-      border: 1px solid rgba(255,215,0,.2);
-      border-radius: var(--radius);
-      padding: 28px 20px;
-      text-align: center;
-    }
-
-    .gold-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      background: rgba(255,215,0,.1);
-      border: 1px solid rgba(255,215,0,.25);
-      border-radius: 10px;
-      font-size: 12px;
-      color: var(--gold);
-      margin-bottom: 16px;
     }
 
     .faq-list { display: flex; flex-direction: column; gap: 10px; }
@@ -373,19 +319,18 @@
     .reveal { opacity: 0; transform: translateY(15px); transition: all 0.5s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
-  <script src="assets/js/ix-live-content.js" defer></script>
 </head>
 <body>
   <header>
     <div class="wrap">
       <nav class="nav">
-        <div class="brand"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" data-ix-src="global.media.infinitexLogo" /></div>
+        <div class="brand"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></div>
         <div class="navlinks">
-          <a href="index.html" class="active" data-ix-text="global.nav.home" data-ix-permission="permissions.showHome">الرئيسية</a>
-          <a href="track.html" data-ix-text="global.nav.track" data-ix-permission="permissions.showTrack">تتبع الطلب</a>
-          <a href="returns.html" data-ix-text="global.nav.returns" data-ix-permission="permissions.showReturns">الاسترجاع</a>
-          <a href="products.html" data-ix-text="global.nav.products" data-ix-permission="permissions.showProducts">المنتجات</a>
-          <a href="contact.html">تواصل معنا</a>
+          <a href="index.html">الرئيسية</a>
+          <a href="track.html">تتبع الطلب</a>
+          <a href="returns.html">الاسترجاع</a>
+          <a href="products.html">المنتجات</a>
+          <a href="contact.html" class="active">تواصل معنا</a>
         </div>
       </nav>
     </div>
@@ -395,21 +340,14 @@
     <section class="hero">
       <div class="wrap">
         <div class="hero-content">
-          <div class="chip" id="ix-afterSalesChip" data-ix-chip="global.chipAfterSales"><span class="dot"></span> خدمات ما بعد البيع</div>
-          <h1 class="h1" id="ix-index-title" data-ix-html="pages.index.title" style="margin-top: 16px;">خدمات INFINITEX<br/>بعد الشراء… في ٣ خطوات</h1>
-          <p class="hero-subtitle" id="ix-index-desc" data-ix-text="pages.index.desc">من هنا نرتّب كل شي بعد الشراء: تتبع، استرجاع، ومنتجات جديدة قريباً.</p>
-          <p class="hero-desc" id="ix-index-note" data-ix-html="pages.index.note">هذا الموقع مخصص لخدمات ما بعد البيع. إذا تبغى الشراء مباشرة، زر المتجر الرسمي قدامك.</p>
-
-          <div class="highlights">
-            <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> تتبع فوري</div>
-            <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ضمان ذهبي</div>
-            <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"/></svg> دعم سريع</div>
-          </div>
+          <div class="chip"><span class="dot"></span> دعم مباشر</div>
+          <h1 class="h1" style="margin-top: 16px;">تواصل معنا بسهولة</h1>
+          <p class="hero-subtitle">شات فوري مرتب لكل استفساراتك.</p>
+          <p class="hero-desc">افتح الشات وقدّم استفسارك — فريق INFINITEX حاضر لخدمتك بأسرع وقت.</p>
 
           <div class="btn-row">
-            <a href="track.html" class="btn primary" data-ix-text="pages.index.ctaTrack" data-ix-permission="permissions.showTrack">ابدأ التتبع</a>
-            <a href="returns.html" class="btn ghost" data-ix-text="pages.index.ctaReturns" data-ix-permission="permissions.showReturns">بدء الاسترجاع</a>
-            <a href="products.html" class="btn ghost" data-ix-permission="permissions.showProducts">عرض المنتجات</a>
+            <button class="btn primary" id="openChatBtn">ابدأ المحادثة</button>
+            <a href="https://infinitex.sa/" target="_blank" class="btn ghost">زيارة المتجر</a>
           </div>
         </div>
       </div>
@@ -418,46 +356,23 @@
     <section class="reveal">
       <div class="wrap">
         <div class="section-header">
-          <h2 class="h2">الخدمات الأساسية</h2>
-          <p class="p">رتّبنا لك كل شيء بخطوات واضحة وسريعة.</p>
+          <h2 class="h2">ليش الشات عندنا ممتاز؟</h2>
         </div>
         <div class="feature-grid">
           <div class="feature-card">
-            <div class="emoji">📦</div>
-            <h3>تتبع الطلب</h3>
-            <p>ادخل رقم الطلب وبيطلع لك كل التفاصيل فورياً داخل نفس الصفحة.</p>
+            <div class="emoji">⚡</div>
+            <h3>رد سريع</h3>
+            <p>ردود واضحة وسريعة لمساعدتك على طول.</p>
+          </div>
+          <div class="feature-card">
+            <div class="emoji">🎯</div>
+            <h3>حلول دقيقة</h3>
+            <p>بنحدد المشكلة ونقترح الحل المناسب فوراً.</p>
           </div>
           <div class="feature-card">
             <div class="emoji">🛡️</div>
-            <h3>الاسترجاع</h3>
-            <p>بوابة استرجاع واضحة مع سياسة الضمان الذهبي الرسمية.</p>
-          </div>
-          <div class="feature-card">
-            <div class="emoji">🎧</div>
-            <h3>منتجاتنا</h3>
-            <p>تعرف على الإصدارات القادمة والمواصفات أول بأول.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="reveal">
-      <div class="wrap">
-        <div class="card" style="text-align:center;">
-          <h2 class="h2">بعد الشراء… نخليك مرتاح</h2>
-          <p class="p" style="margin-top: 12px;">كل خدمة مرتبة بنفس أسلوب صفحة المنتجات: أقسام واضحة، وتجربة جوال مظبوطة.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="reveal">
-      <div class="wrap">
-        <div class="gold-card">
-          <div class="gold-badge">🛡 الضمان الذهبي</div>
-          <h2 class="h2">سياسة واضحة بدون لف ودوران</h2>
-          <p class="p">راجع السياسة الرسمية وتأكد أن حقك محفوظ.</p>
-          <div class="btn-row" style="max-width: 300px; margin: 20px auto 0;">
-            <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" class="btn ghost" style="border-color: rgba(255,215,0,.3);" data-ix-href="global.links.warrantyPolicy" data-ix-text="global.nav.policy">سياسة الضمان</a>
+            <h3>خصوصية كاملة</h3>
+            <p>بياناتك آمنة ومستخدمة فقط لخدمتك.</p>
           </div>
         </div>
       </div>
@@ -470,16 +385,16 @@
         </div>
         <div class="faq-list">
           <div class="faq-item">
-            <button class="faq-q" type="button"><span>وين أبدأ التتبع؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-            <div class="faq-a"><div class="faq-a-inner">ادخل رقم الطلب من صفحة تتبع الطلب، والنتيجة تظهر مباشرة.</div></div>
+            <button class="faq-q" type="button"><span>كيف أفتح الشات؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">اضغط زر "ابدأ المحادثة" وسيظهر لك الشات مباشرة.</div></div>
           </div>
           <div class="faq-item">
-            <button class="faq-q" type="button"><span>كيف الاسترجاع يتم؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-            <div class="faq-a"><div class="faq-a-inner">من صفحة الاسترجاع تدخل رقم الطلب والجوال ويتم تحويلك لبوابة يم الرسمية.</div></div>
+            <button class="faq-q" type="button"><span>هل الشات متاح طوال اليوم؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">نعمل بأقصى سرعة للرد، وفي أوقات الذروة قد يتأخر الرد دقائق بسيطة.</div></div>
           </div>
           <div class="faq-item">
-            <button class="faq-q" type="button"><span>هل المنتجات متوفرة الآن؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-            <div class="faq-a"><div class="faq-a-inner">صفحة المنتجات تعرض الإصدارات الحالية والقادمة مع تفاصيلها.</div></div>
+            <button class="faq-q" type="button"><span>هل أقدر أتابع طلبي من الشات؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">نعم، اكتب رقم الطلب وسيتم إرشادك للخطوات المناسبة.</div></div>
           </div>
         </div>
       </div>
@@ -487,8 +402,8 @@
 
     <section class="closing">
       <div class="wrap">
-        <p class="closing-text">كل خدماتك في مكان واحد — وبطريقة مرتبة.</p>
-        <a href="track.html" class="btn primary" style="max-width: 280px; margin: 0 auto;">ابدأ الآن</a>
+        <p class="closing-text">نحن هنا عشان نخدمك بسرعة.</p>
+        <button class="btn primary" style="max-width: 280px; margin: 0 auto;" id="openChatBtnBottom">ابدأ المحادثة</button>
       </div>
     </section>
   </main>
@@ -498,25 +413,61 @@
       <div class="footer-brand">INFINITEX</div>
       <p class="footer-copy">© <span id="year"></span> INFINITEX. جميع الحقوق محفوظة.</p>
       <div class="footer-links">
-        <a href="https://infinitex.sa/" target="_blank" data-ix-href="global.links.store" data-ix-text="global.nav.store">المتجر</a>
-        <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" data-ix-href="global.links.warrantyPolicy" data-ix-text="global.nav.policy">الضمان الذهبي</a>
+        <a href="https://infinitex.sa/" target="_blank">المتجر</a>
+        <a href="products.html">المنتجات</a>
       </div>
     </div>
   </footer>
 
   <div class="mobile-nav">
     <div class="mobile-nav-bar">
-      <a href="index.html" class="active" data-ix-text="global.mobileNav.services" data-ix-permission="permissions.showHome">الرئيسية</a>
-      <a href="track.html" data-ix-text="global.mobileNav.track" data-ix-permission="permissions.showTrack">تتبع</a>
-      <a href="returns.html" data-ix-text="global.mobileNav.returns" data-ix-permission="permissions.showReturns">استرجاع</a>
-      <a href="products.html" data-ix-text="global.mobileNav.products" data-ix-permission="permissions.showProducts">المنتجات</a>
-      <a href="contact.html">تواصل</a>
-      <a href="https://infinitex.sa/" target="_blank" data-ix-href="global.links.store" data-ix-text="global.mobileNav.store">المتجر</a>
+      <a href="index.html">الرئيسية</a>
+      <a href="track.html">تتبع</a>
+      <a href="returns.html">استرجاع</a>
+      <a href="products.html">المنتجات</a>
+      <a href="contact.html" class="active">تواصل</a>
     </div>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    function findLauncher(){
+      const els = Array.from(document.querySelectorAll('body *'));
+      const cands = els.filter(el => {
+        if(!el || el === document.body || el === document.documentElement) return false;
+        const st = getComputedStyle(el);
+        if(st.position !== 'fixed') return false;
+        const r = el.getBoundingClientRect();
+        if(r.width < 24 || r.height < 24) return false;
+        if(r.width > 360 || r.height > 360) return false;
+        if(r.left < window.innerWidth * 0.35) return false;
+        if(r.top < window.innerHeight * 0.35) return false;
+        if(el.tagName === 'IFRAME') return true;
+        if(el.querySelector && el.querySelector('iframe')) return true;
+        if(['BUTTON','A'].includes(el.tagName)) return true;
+        if(el.getAttribute && el.getAttribute('role') === 'button') return true;
+        if(st.cursor === 'pointer') return true;
+        return false;
+      });
+      if(!cands.length) return null;
+      cands.sort((a,b)=>{
+        const ra=a.getBoundingClientRect(), rb=b.getBoundingClientRect();
+        const areaA=ra.width*ra.height, areaB=rb.width*rb.height;
+        const distA=(window.innerWidth-ra.right)**2 + (window.innerHeight-ra.bottom)**2;
+        const distB=(window.innerWidth-rb.right)**2 + (window.innerHeight-rb.bottom)**2;
+        return (areaA+distA) - (areaB+distB);
+      });
+      return cands[0];
+    }
+
+    function openChat(){
+      const el = findLauncher();
+      if(el){ try{ el.click(); }catch(_){} }
+    }
+
+    document.getElementById('openChatBtn')?.addEventListener('click', openChat);
+    document.getElementById('openChatBtnBottom')?.addEventListener('click', openChat);
 
     document.querySelectorAll('.faq-q').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -545,5 +496,6 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 
+  <script src='https://app.trypopcorn.ai/loader.js' data-url='https://app.trypopcorn.ai' data-api-url='https://api.trypopcorn.ai' data-agent='' data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'></script>
 </body>
 </html>
