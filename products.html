@@ -11,12 +11,20 @@
 
   <link rel="icon" href="assets/icons/icon-192.png" />
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
-  <title>INFINITEX — منتجاتنا</title>
-  <meta name="description" content="اكتشف منتجات INFINITEX — Sound Pro 2.0v اللاسلكية و Sound Force السلكية. مصممة في السعودية." />
+  <title>INFINITEX Sound Pro 2.0v — مو تحديث… هذا إصدار يرفع السقف</title>
+  <meta name="description" content="INFINITEX Sound Pro 2.0v — سماعة مصمّمة في السعودية. تجربة صوت متوازنة، بطارية تدوم، وضمان ذهبي للتجربة." />
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="INFINITEX Sound Pro 2.0v — مو تحديث… هذا إصدار يرفع السقف" />
+  <meta property="og:description" content="سماعة مصمّمة في السعودية — تصميم موثوق، صوت مضبوط، وضمان ذهبي للتجربة." />
+  <meta property="og:image" content="assets/images/sound-pro-dark-grey.jpg" />
+
+  <!-- Font -->
   <link rel="preload" href="assets/fonts/avenir-black-arabic.otf" as="font" type="font/otf" crossorigin>
 
   <style>
+    /* ============ Base & Variables ============ */
     @font-face {
       font-family: "AvenirBlackArabic";
       src: url("assets/fonts/avenir-black-arabic.otf") format("opentype");
@@ -25,6 +33,8 @@
 
     :root {
       --bg: #050607;
+      --bg2: #0a0c0d;
+      --card: #0f1213;
       --text: #eef2f3;
       --muted: #a7b0b5;
       --muted2: #7d878d;
@@ -32,18 +42,21 @@
       --accent: #39ff14;
       --accent2: #2bdc12;
       --gold: #ffd700;
-      --red: #ff4757;
-      --purple: #a855f7;
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
       --radius: 20px;
-      --max: 700px;
+      --radius2: 28px;
+      --max: 800px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; background: #000; }
+    html {
+      scroll-behavior: smooth;
+      background: #000;
+    }
 
     body {
-      font-family: "AvenirBlackArabic", system-ui, sans-serif;
+      font-family: "AvenirBlackArabic", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
       color: var(--text);
       background: linear-gradient(180deg, var(--bg) 0%, #07090a 100%);
       overflow-x: hidden;
@@ -51,551 +64,988 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Animations */
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-    @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(57,255,20,.3); } 50% { box-shadow: 0 0 40px rgba(57,255,20,.6); } }
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    /* ============ Animations ============ */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    .animate { animation: fadeIn 0.5s ease forwards; opacity: 0; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(57,255,20,.3); }
+      50% { box-shadow: 0 0 40px rgba(57,255,20,.6); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+    }
+
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
 
-    /* Layout */
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
-    section { padding: 40px 0; }
-
-    /* Typography */
-    .h1 { font-size: clamp(24px, 7vw, 40px); line-height: 1.15; }
-    .h2 { font-size: clamp(20px, 5.5vw, 28px); line-height: 1.2; margin-bottom: 12px; }
-    .h3 { font-size: clamp(16px, 4.5vw, 20px); line-height: 1.3; }
-    .p { color: var(--muted); font-size: 14px; line-height: 1.85; }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(0,0,0,.9);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
-    .brand img { height: 20px; }
-    .navlinks { display: flex; gap: 6px; }
-    .navlinks a { padding: 8px 12px; border-radius: 10px; color: var(--muted); font-size: 12px; text-decoration: none; }
-    .navlinks a:hover, .navlinks a.active { color: var(--text); background: rgba(255,255,255,.05); }
-
-    /* Product Selector */
-    .product-selector {
-      padding: 50px 0 30px;
-      text-align: center;
+    /* ============ Layout ============ */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .selector-title {
+    section {
+      padding: 60px 0;
+      position: relative;
+    }
+
+    /* ============ Typography ============ */
+    .h1 {
+      font-size: clamp(28px, 8vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    .h2 {
       font-size: clamp(22px, 6vw, 32px);
-      margin-bottom: 8px;
+      line-height: 1.2;
+      margin-bottom: 16px;
     }
 
-    .selector-subtitle {
+    .h3 {
+      font-size: clamp(18px, 5vw, 24px);
+      line-height: 1.3;
+    }
+
+    .p {
       color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 28px;
+      font-size: 15px;
+      line-height: 1.9;
     }
 
-    .product-tabs {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .product-tab {
-      flex: 1;
-      min-width: 140px;
-      max-width: 280px;
-      padding: 20px 16px;
-      background: rgba(255,255,255,.03);
-      border: 2px solid var(--line);
-      border-radius: 18px;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-align: center;
-    }
-
-    .product-tab:hover {
-      border-color: rgba(57,255,20,.3);
-      transform: translateY(-2px);
-    }
-
-    .product-tab.active {
-      border-color: var(--accent);
-      background: rgba(57,255,20,.05);
-    }
-
-    .product-tab.active.force {
-      border-color: var(--purple);
-      background: rgba(168,85,247,.05);
-    }
-
-    .product-tab .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 10px;
-      margin-bottom: 10px;
-    }
-
-    .product-tab .badge.soon {
-      background: rgba(57,255,20,.15);
+    .accent-text {
       color: var(--accent);
     }
 
-    .product-tab .badge.available {
-      background: rgba(168,85,247,.15);
-      color: var(--purple);
+    .gold-text {
+      background: linear-gradient(135deg, #ffd700, #ffed4a, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .product-tab h3 {
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-
-    .product-tab p {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    /* Product Pages */
-    .product-page { display: none; }
-    .product-page.active { display: block; }
-
-    /* Common Styles */
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: 999px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      animation: pulse 2s infinite;
-    }
-
-    .dot.purple { background: var(--purple); }
-
+    /* ============ Buttons ============ */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 14px 24px;
-      border-radius: 14px;
+      gap: 10px;
+      padding: 16px 28px;
+      border-radius: 16px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.03);
       color: var(--text);
       font-family: inherit;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
       text-decoration: none;
-      width: 100%;
     }
 
-    .btn:hover { transform: translateY(-2px); border-color: rgba(57,255,20,.4); }
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(57,255,20,.5);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
 
     .btn.primary {
       background: linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85));
-      border-color: rgba(57,255,20,.6);
+      border-color: rgba(57,255,20,.65);
       color: #061006;
+      box-shadow: 0 20px 60px rgba(57,255,20,.2);
     }
 
-    .btn.primary.purple {
-      background: linear-gradient(180deg, rgba(168,85,247,.95), rgba(139,92,246,.85));
-      border-color: rgba(168,85,247,.6);
-      color: #fff;
+    .btn.primary:hover {
+      box-shadow: 0 25px 70px rgba(57,255,20,.35);
+      border-color: rgba(57,255,20,.9);
     }
 
-    .btn.ghost { background: transparent; }
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.15);
+    }
 
-    .btn-row { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+    .btn.ghost:hover {
+      background: rgba(255,255,255,.05);
+    }
 
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    /* ============ Cards ============ */
     .card {
-      background: rgba(255,255,255,.02);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 24px 20px;
-      margin-bottom: 16px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 1fr;
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(57,255,20,.3), transparent);
+    }
+
+    /* ============ Chips & Badges ============ */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 15px rgba(57,255,20,.6);
+      animation: pulse 2s infinite;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 13px;
+      background: rgba(57,255,20,.08);
+      border: 1px solid rgba(57,255,20,.25);
+      color: var(--accent);
+    }
+
+    .badge-gold {
+      background: rgba(255,215,0,.08);
+      border-color: rgba(255,215,0,.25);
+      color: var(--gold);
+    }
+
+    .review-badge {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .review-badge strong {
+      color: var(--text);
+    }
+
+    /* ============ Header ============ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(0,0,0,.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
       gap: 12px;
     }
 
-    .feature-card {
-      background: rgba(0,0,0,.3);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 20px 16px;
-      transition: all 0.3s;
+    .brand img {
+      height: 22px;
     }
 
-    .feature-card:hover {
-      border-color: rgba(57,255,20,.2);
-      transform: translateY(-2px);
+    .navlinks {
+      display: flex;
+      gap: 8px;
     }
 
-    .feature-card.purple:hover {
-      border-color: rgba(168,85,247,.3);
-    }
-
-    .feature-card .emoji {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .feature-card h3 {
-      font-size: 15px;
-      margin-bottom: 8px;
-    }
-
-    .feature-card p {
-      font-size: 13px;
+    .navlinks a {
+      padding: 10px 14px;
+      border-radius: 12px;
       color: var(--muted);
-      line-height: 1.8;
+      font-size: 13px;
+      text-decoration: none;
+      transition: all 0.2s;
     }
 
-    /* Hero */
+    .navlinks a:hover,
+    .navlinks a.active {
+      color: var(--text);
+      background: rgba(255,255,255,.05);
+    }
+
+    /* ============ HERO Section ============ */
     .hero {
-      text-align: center;
-      padding: 30px 0 40px;
+      padding: 50px 0 60px;
       position: relative;
+      overflow: hidden;
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      top: -100px;
+      top: -200px;
       left: 50%;
       transform: translateX(-50%);
-      width: 500px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(57,255,20,.12) 0%, transparent 60%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(57,255,20,.15) 0%, transparent 60%);
       pointer-events: none;
     }
 
-    .hero.purple::before {
-      background: radial-gradient(circle, rgba(168,85,247,.12) 0%, transparent 60%);
+    .hero-content {
+      text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
-    .hero-content { position: relative; z-index: 1; }
+    .hero-title {
+      margin: 20px 0 10px;
+    }
 
     .hero-subtitle {
-      font-size: clamp(16px, 4.5vw, 22px);
+      font-size: clamp(18px, 5vw, 26px);
       color: var(--muted);
-      margin: 8px 0 16px;
+      margin-bottom: 20px;
     }
 
-    .hero-desc {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 500px;
-      margin: 0 auto 20px;
-      line-height: 1.9;
-    }
-
-    .identity-row {
+    .identity-stamp {
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 20px;
       flex-wrap: wrap;
       margin: 16px 0;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted2);
     }
 
-    .identity-row span {
+    .identity-stamp span {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
 
-    .identity-row svg {
-      width: 14px;
-      height: 14px;
+    .identity-stamp svg {
+      width: 16px;
+      height: 16px;
       fill: var(--accent);
     }
 
-    .identity-row.purple svg {
-      fill: var(--purple);
+    .hero-desc {
+      max-width: 600px;
+      margin: 0 auto 24px;
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.9;
     }
 
-    /* Highlight chips */
-    .highlights {
+    .features-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 8px;
-      margin: 20px 0;
+      gap: 12px;
+      margin: 28px 0;
     }
 
-    .highlight-chip {
-      padding: 10px 14px;
+    .feature-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      font-size: 13px;
+      transition: all 0.3s;
+    }
+
+    .feature-chip:hover {
+      border-color: rgba(57,255,20,.3);
+      transform: translateY(-2px);
+    }
+
+    .feature-chip svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--accent);
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 20px;
+    }
+
+    /* ============ Why Excited Section ============ */
+    .excited-section {
+      background: linear-gradient(180deg, rgba(57,255,20,.02) 0%, transparent 100%);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .info-card {
+      background: rgba(0,0,0,.3);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 20px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .info-card:hover {
+      border-color: rgba(57,255,20,.3);
+      transform: translateY(-4px);
+    }
+
+    .info-card h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .info-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .info-card .icon {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 16px;
+      background: rgba(57,255,20,.1);
+      border: 1px solid rgba(57,255,20,.2);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-card .icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent);
+    }
+
+    /* ============ Strong Voice Section ============ */
+    .voice-section {
+      text-align: center;
+      position: relative;
+    }
+
+    .voice-section::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(57,255,20,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .voice-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .voice-quote {
+      font-size: clamp(16px, 4.5vw, 20px);
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+
+    .voice-sarcasm {
+      margin-top: 30px;
+      padding: 16px 24px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      display: inline-block;
+      font-size: 14px;
+      color: var(--muted2);
+    }
+
+    /* ============ Saudi Design Section ============ */
+    .saudi-section .card {
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .saudi-section .points {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .saudi-section .point {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      background: rgba(57,255,20,.05);
+      border: 1px solid rgba(57,255,20,.15);
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    .saudi-section .point svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--accent);
+    }
+
+    /* ============ Battery Section ============ */
+    .battery-section {
+      text-align: center;
+    }
+
+    .battery-visual {
+      margin: 30px auto;
+      width: 100%;
+      max-width: 300px;
+      height: 80px;
+      background: rgba(0,0,0,.4);
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .battery-visual::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      bottom: 8px;
+      width: 85%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 10px;
+      animation: glow 3s infinite;
+    }
+
+    .battery-visual::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -12px;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 30px;
+      background: var(--line);
+      border-radius: 4px 0 0 4px;
+    }
+
+    /* ============ Comparison Section ============ */
+    .comparison-section {
+      background: linear-gradient(180deg, transparent, rgba(57,255,20,.02), transparent);
+    }
+
+    .comparison-section .card {
+      text-align: center;
+      padding: 40px 30px;
+    }
+
+    .comparison-points {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .comparison-points .point {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(0,0,0,.3);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      text-align: right;
+    }
+
+    .comparison-points .point svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ============ Gold Guarantee Section ============ */
+    .gold-section {
+      position: relative;
+    }
+
+    .gold-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,215,0,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .gold-card {
+      background: linear-gradient(180deg, rgba(255,215,0,.05), rgba(255,215,0,.01));
+      border: 1px solid rgba(255,215,0,.2);
+      border-radius: var(--radius2);
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .gold-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .gold-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      background: rgba(255,215,0,.1);
+      border: 2px solid rgba(255,215,0,.3);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .gold-icon svg {
+      width: 36px;
+      height: 36px;
+      fill: var(--gold);
+    }
+
+    /* ============ Waitlist Section ============ */
+    .waitlist-section {
+      background: linear-gradient(180deg, rgba(57,255,20,.03) 0%, transparent 100%);
+    }
+
+    .waitlist-card {
+      background: rgba(0,0,0,.4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .waitlist-form {
+      max-width: 400px;
+      margin: 30px auto 0;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+      text-align: right;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 14px 18px;
       background: rgba(255,255,255,.03);
       border: 1px solid var(--line);
       border-radius: 12px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: rgba(57,255,20,.5);
+      box-shadow: 0 0 20px rgba(57,255,20,.1);
+    }
+
+    .form-group input::placeholder {
+      color: var(--muted2);
+    }
+
+    .form-group select {
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a7b0b5' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: left 16px center;
+    }
+
+    .form-group.optional label::after {
+      content: " (اختياري)";
+      color: var(--muted2);
+    }
+
+    .form-note {
       font-size: 12px;
+      color: var(--muted2);
+      margin-top: 16px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
     }
 
-    .highlight-chip svg {
+    .form-note svg {
       width: 14px;
       height: 14px;
       fill: var(--accent);
     }
 
-    .highlight-chip.purple svg {
-      fill: var(--purple);
+    /* ============ FAQ Section ============ */
+    .faq-section {
+      padding-bottom: 100px;
     }
 
-    /* Section */
-    .section-header {
-      text-align: center;
-      margin-bottom: 24px;
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    /* Gold Section */
-    .gold-card {
-      background: linear-gradient(180deg, rgba(255,215,0,.04), rgba(255,215,0,.01));
-      border: 1px solid rgba(255,215,0,.2);
-      border-radius: var(--radius);
-      padding: 28px 20px;
-      text-align: center;
-    }
-
-    .gold-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      background: rgba(255,215,0,.1);
-      border: 1px solid rgba(255,215,0,.25);
-      border-radius: 10px;
-      font-size: 12px;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    /* Waitlist Form */
-    .form-card {
-      background: rgba(0,0,0,.4);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px 20px;
-      text-align: center;
-    }
-
-    .waitlist-form { max-width: 100%; margin-top: 20px; }
-
-    .form-group { margin-bottom: 14px; text-align: right; }
-    .form-group label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
-    .form-group input, .form-group select {
-      width: 100%;
-      padding: 12px 14px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 14px;
-    }
-    .form-group input:focus, .form-group select:focus {
-      outline: none;
-      border-color: rgba(57,255,20,.4);
-    }
-    .form-group select {
-      cursor: pointer;
-      -webkit-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath fill='%23a7b0b5' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: left 14px center;
-    }
-    .form-note { font-size: 11px; color: var(--muted2); margin-top: 12px; }
-
-    /* FAQ */
-    .faq-list { display: flex; flex-direction: column; gap: 10px; }
     .faq-item {
       background: rgba(0,0,0,.3);
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
+      transition: all 0.3s;
     }
-    .faq-q {
+
+    .faq-item:hover {
+      border-color: rgba(57,255,20,.2);
+    }
+
+    .faq-question {
       width: 100%;
-      padding: 14px 16px;
+      padding: 18px 20px;
       background: none;
       border: none;
       color: var(--text);
       font-family: inherit;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       text-align: right;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-    }
-    .faq-q svg { width: 16px; height: 16px; fill: var(--muted); transition: transform 0.3s; }
-    .faq-item.open .faq-q svg { transform: rotate(180deg); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s; }
-    .faq-a-inner { padding: 0 16px 14px; color: var(--muted); font-size: 13px; line-height: 1.85; }
-
-    /* Compatibility */
-    .compat-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 16px;
+      gap: 12px;
     }
 
-    .compat-item {
-      padding: 10px 14px;
-      background: rgba(57,255,20,.05);
-      border: 1px solid rgba(57,255,20,.2);
-      border-radius: 10px;
-      font-size: 12px;
-      color: var(--accent);
+    .faq-question svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--muted);
+      transition: transform 0.3s;
+      flex-shrink: 0;
     }
 
-    .compat-item.no {
-      background: rgba(255,71,87,.05);
-      border-color: rgba(255,71,87,.2);
-      color: var(--red);
+    .faq-item.open .faq-question svg {
+      transform: rotate(180deg);
     }
 
-    .compat-item.purple {
-      background: rgba(168,85,247,.05);
-      border-color: rgba(168,85,247,.2);
-      color: var(--purple);
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
     }
 
-    /* Warning */
-    .warning-box {
-      background: rgba(255,71,87,.05);
-      border: 1px solid rgba(255,71,87,.2);
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 12px;
-      color: var(--red);
+    .faq-answer-inner {
+      padding: 0 20px 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    /* ============ Footer / Closing ============ */
+    .closing-section {
       text-align: center;
-      margin-top: 16px;
+      padding: 60px 0 40px;
+      position: relative;
     }
 
-    /* Closing */
-    .closing {
-      text-align: center;
-      padding: 50px 0 30px;
+    .closing-section::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(57,255,20,.1) 0%, transparent 60%);
+      pointer-events: none;
     }
 
-    .closing-text {
-      font-size: clamp(18px, 5vw, 24px);
+    .closing-title {
+      font-size: clamp(20px, 5vw, 28px);
       margin-bottom: 16px;
     }
 
-    /* Footer */
     footer {
       background: #000;
-      padding: 24px 0 100px;
+      padding: 30px 0 100px;
       border-top: 1px solid var(--line);
-      text-align: center;
-    }
-    .footer-brand { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-    .footer-copy { font-size: 11px; color: var(--muted2); }
-    .footer-links { display: flex; justify-content: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
-    .footer-links a {
-      padding: 8px 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      font-size: 12px;
-      color: var(--muted);
-      text-decoration: none;
     }
 
-    /* Mobile Nav */
-    .mobile-nav {
-      position: fixed;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      z-index: 200;
-      display: none;
-    }
-    .mobile-nav-bar {
-      background: rgba(5,6,7,.92);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 18px;
-      padding: 8px;
-      display: flex;
-      gap: 6px;
-    }
-    .mobile-nav-bar a {
-      flex: 1;
+    .footer-content {
       text-align: center;
-      padding: 10px 6px;
-      border-radius: 12px;
-      background: rgba(0,0,0,.3);
-      border: 1px solid rgba(255,255,255,.06);
-      font-size: 10px;
+    }
+
+    .footer-brand {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted2);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 13px;
       color: var(--muted);
       text-decoration: none;
+      transition: all 0.2s;
     }
-    .mobile-nav-bar a.active {
-      border-color: rgba(57,255,20,.35);
+
+    .footer-links a:hover {
+      border-color: rgba(57,255,20,.3);
       color: var(--text);
     }
 
-    /* Responsive */
+    /* ============ Mobile Bottom Nav ============ */
+    .mobile-nav {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 200;
+      display: none;
+    }
+
+    .mobile-nav-bar {
+      background: rgba(5,6,7,.9);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      padding: 10px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .mobile-nav-bar a {
+      flex: 1;
+      text-align: center;
+      padding: 12px 8px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.3);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .mobile-nav-bar a.active {
+      border-color: rgba(57,255,20,.4);
+      color: var(--text);
+    }
+
+    /* ============ Responsive ============ */
     @media (max-width: 768px) {
+      section { padding: 50px 0; }
+
       .navlinks { display: none; }
       .mobile-nav { display: block; }
-      section { padding: 35px 0; }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .btn-row {
+        flex-direction: column;
+      }
+
+      .btn-row .btn {
+        width: 100%;
+      }
+
+      .identity-stamp {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .features-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .feature-chip {
+        justify-content: center;
+      }
+
+      .saudi-section .points {
+        flex-direction: column;
+      }
+
+      .saudi-section .point {
+        justify-content: center;
+      }
+
+      .gold-card,
+      .waitlist-card {
+        padding: 30px 20px;
+      }
+
+      footer {
+        padding-bottom: 120px;
+      }
     }
 
     @media (max-width: 480px) {
-      .wrap { padding: 0 14px; }
-      .product-tab { min-width: 130px; padding: 16px 12px; }
+      .wrap { padding: 0 16px; }
+      section { padding: 40px 0; }
+
+      .hero { padding: 35px 0 50px; }
+
       .card { padding: 20px 16px; }
-      .feature-card { padding: 18px 14px; }
+
+      .btn {
+        padding: 14px 20px;
+        font-size: 14px;
+      }
+
+      .info-card { padding: 22px 16px; }
+
+      .comparison-points .point {
+        padding: 14px 16px;
+      }
     }
 
-    /* Scroll Reveal */
-    .reveal { opacity: 0; transform: translateY(15px); transition: all 0.5s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ============ Scroll Reveal ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
 <body>
+  <!-- Header -->
   <header>
     <div class="wrap">
       <nav class="nav">
-        <div class="brand"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></div>
+        <div class="brand">
+          <img src="assets/brands/infinitex-logo.png" alt="INFINITEX" />
+        </div>
         <div class="navlinks">
           <a href="index.html">الرئيسية</a>
           <a href="track.html">تتبع الطلب</a>
@@ -607,342 +1057,361 @@
   </header>
 
   <main>
-    <!-- Product Selector -->
-    <section class="product-selector">
+    <!-- HERO Section -->
+    <section class="hero">
       <div class="wrap">
-        <h1 class="selector-title animate">اختر منتجك</h1>
-        <p class="selector-subtitle animate delay-1">سماعتين… كل وحدة لها قصتها</p>
-
-        <div class="product-tabs animate delay-2">
-          <div class="product-tab active" data-product="soundpro">
-            <span class="badge soon">قريباً</span>
-            <h3>Sound Pro 2.0v</h3>
-            <p>لاسلكية — BT / 2.4GHz / USB-C</p>
+        <div class="hero-content">
+          <div class="chip animate-in">
+            <span class="dot"></span>
+            قريباً — الإصدار الثاني
           </div>
-          <div class="product-tab" data-product="soundforce">
-            <span class="badge available">متوفرة</span>
-            <h3>Sound Force</h3>
-            <p>سلكية USB — 7.1 محيطي</p>
+
+          <h1 class="h1 hero-title animate-in delay-1">INFINITEX SOUND PRO 2.0v</h1>
+          <p class="hero-subtitle animate-in delay-2">مو تحديث… هذا إصدار يرفع السقف.</p>
+
+          <!-- Identity Stamp -->
+          <div class="identity-stamp animate-in delay-2">
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              مصمّمة في السعودية
+            </span>
+            <span>—</span>
+            <span>
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              تصميم موثوق
+            </span>
+          </div>
+
+          <p class="hero-desc animate-in delay-3">
+            باختصار: سوّينا سماعة تعيش معك، وتفهم وش يعني صوت مضبوط…<br>
+            مو بس "يمشي الحال".
+          </p>
+
+          <!-- Review Badge -->
+          <div class="review-badge animate-in delay-3">
+            <strong>250+</strong> تقييم على الإصدار التجريبي
+            <span style="color: var(--muted2);"> — التقييمات تخص الإصدار التجريبي</span>
+          </div>
+
+          <!-- Feature Chips -->
+          <div class="features-row animate-in delay-4">
+            <div class="feature-chip">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              ضمان ذهبي للتجربة
+            </div>
+            <div class="feature-chip">
+              <svg viewBox="0 0 24 24"><path d="M23 12h-3v-2h3v2zm-4.6 6.34l2.12 2.12-1.41 1.41-2.12-2.12 1.41-1.41zM12 5V2h2v3h-2zm6.34 4.6l2.12-2.12 1.41 1.41-2.12 2.12-1.41-1.41zM5 12H2v2h3v-2zm.66 6.34L3.54 20.46l1.41 1.41 2.12-2.12-1.41-1.41zM12 19v3h2v-3h-2zm-6.34-4.6L3.54 16.52l1.41 1.41 2.12-2.12-1.41-1.41zM12 6a6 6 0 100 12 6 6 0 000-12z"/></svg>
+              بطارية "تجلس" — مو تخلص قبل ما تتحمس
+            </div>
+            <div class="feature-chip">
+              <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+              تجربة صوت متوازنة على الواقع
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="btn-row" style="justify-content: center;">
+            <a href="#waitlist" class="btn primary">ادخل قائمة الانتظار</a>
+            <a href="#waitlist" class="btn ghost">علّمني وقت الإطلاق</a>
+          </div>
+
+          <p class="hero-note">
+            ما نزعجك. رسالة وحدة وقت الإطلاق وأنت أول الناس.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Excited Section -->
+    <section class="excited-section reveal">
+      <div class="wrap">
+        <div class="section-header">
+          <h2 class="h2">ثلاث أشياء… والباقي تفاصيل.</h2>
+          <p class="p">ليه الناس متحمسة؟</p>
+        </div>
+
+        <div class="cards-grid">
+          <div class="info-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>الضمان الذهبي</h3>
+            <p>جرّب وأنت مرتاح. إذا ما عجبك؟ الموضوع واضح.</p>
+          </div>
+
+          <div class="info-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            </div>
+            <h3>هندسة صوت جدّية</h3>
+            <p>ما نبي صوت "يصرخ". نبي صوت يثبت نفسه.</p>
+          </div>
+
+          <div class="info-card">
+            <div class="icon">
+              <svg viewBox="0 0 24 24"><path d="M17 4h-3V2h-4v2H7v18h10V4zm-6 16H9v-2h2v2zm0-4H9v-2h2v2zm0-4H9V9h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2z"/></svg>
+            </div>
+            <h3>بطارية تفكّك من هم الشحن</h3>
+            <p>الاستخدام الحقيقي هو الحكم… وصدقني بيبان.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SOUND PRO 2.0v ==================== -->
-    <div class="product-page active" id="soundpro">
+    <!-- Strong Voice Section -->
+    <section class="voice-section reveal">
+      <div class="wrap">
+        <div class="voice-content">
+          <h2 class="h2">فيه سماعات تسوّق…<br>وفيه سماعات تفرض نفسها.</h2>
 
-      <!-- Hero -->
-      <section class="hero">
-        <div class="wrap">
-          <div class="hero-content">
-            <div class="chip"><span class="dot"></span> قريباً — الإصدار الثاني</div>
-
-            <h1 class="h1" style="margin-top: 16px;">INFINITEX SOUND PRO 2.0v</h1>
-            <p class="hero-subtitle">مو تحديث… هذا إصدار يرفع السقف.</p>
-
-            <div class="identity-row">
-              <span><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> مصمّمة في السعودية</span>
-              <span><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> تصميم موثوق</span>
-            </div>
-
-            <p class="hero-desc">
-              سوّينا سماعة تعيش معك، وتفهم وش يعني صوت مضبوط…<br>مو بس "يمشي الحال".
-            </p>
-
-            <div class="highlights">
-              <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ضمان ذهبي</div>
-              <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M17 4h-3V2h-4v2H7v18h10V4z"/></svg> بطارية تجلس</div>
-              <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg> صوت متوازن</div>
-            </div>
-
-            <div class="btn-row">
-              <a href="#waitlist-pro" class="btn primary">ادخل قائمة الانتظار</a>
-              <a href="#waitlist-pro" class="btn ghost">علّمني وقت الإطلاق</a>
-            </div>
-
-            <p class="form-note" style="margin-top: 16px;">رسالة وحدة وقت الإطلاق. بدون إزعاج.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Features -->
-      <section class="reveal">
-        <div class="wrap">
-          <div class="section-header">
-            <h2 class="h2">ثلاث أشياء… والباقي تفاصيل.</h2>
-          </div>
-
-          <div class="feature-grid">
-            <div class="feature-card">
-              <div class="emoji">🛡</div>
-              <h3>الضمان الذهبي</h3>
-              <p>جرّب وأنت مرتاح. إذا ما عجبك؟ الموضوع واضح.</p>
-            </div>
-            <div class="feature-card">
-              <div class="emoji">🎵</div>
-              <h3>هندسة صوت جدّية</h3>
-              <p>ما نبي صوت "يصرخ". نبي صوت يثبت نفسه.</p>
-            </div>
-            <div class="feature-card">
-              <div class="emoji">🔋</div>
-              <h3>بطارية تفكّك من هم الشحن</h3>
-              <p>الاستخدام الحقيقي هو الحكم… وصدقني بيبان.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Voice -->
-      <section class="reveal">
-        <div class="wrap">
-          <div class="card" style="text-align: center;">
-            <h2 class="h2">فيه سماعات تسوّق…<br>وفيه سماعات تفرض نفسها.</h2>
-            <p class="p" style="margin: 16px auto; max-width: 450px;">
-              ساوند برو 2.0 ما جت تستأذن أحد.<br>جت تقول: هذا المستوى اللي المفروض تعوّدنا عليه.
-            </p>
-            <div class="chip" style="margin-top: 12px;">اللي يبي "يمشي حاله" بغيرها… الله يوفقه.</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Gold Guarantee -->
-      <section class="reveal">
-        <div class="wrap">
-          <div class="gold-card">
-            <div class="gold-badge">🛡 الضمان الذهبي</div>
-            <h2 class="h2">لأننا قد كلامنا.</h2>
-            <p class="p">نبيك تشتري وأنت مطمّن. التفاصيل وقت الإطلاق.</p>
-            <div class="btn-row" style="max-width: 300px; margin: 20px auto 0;">
-              <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" class="btn ghost" style="border-color: rgba(255,215,0,.3);">سياسة الضمان</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Waitlist -->
-      <section class="reveal" id="waitlist-pro">
-        <div class="wrap">
-          <div class="form-card">
-            <div class="chip"><span class="dot"></span> قائمة الانتظار</div>
-            <h2 class="h2" style="margin-top: 16px;">كن أول واحد يعرف</h2>
-            <p class="p">أولوية + مزايا خاصة وقت الإطلاق</p>
-
-            <form class="waitlist-form" onsubmit="return handleForm(event, 'pro')">
-              <div class="form-group">
-                <label>رقم الجوال</label>
-                <input type="tel" placeholder="05xxxxxxxx" required dir="ltr" style="text-align: left;" />
-              </div>
-              <div class="form-group">
-                <label>البريد (اختياري)</label>
-                <input type="email" placeholder="you@example.com" dir="ltr" style="text-align: left;" />
-              </div>
-              <div class="form-group">
-                <label>طريقة التواصل</label>
-                <select><option value="whatsapp">واتساب</option><option value="sms">SMS</option></select>
-              </div>
-              <button type="submit" class="btn primary" style="margin-top: 8px;">ثبّت مقعدي</button>
-              <p class="form-note">رسالة وحدة وقت الإطلاق. بدون إزعاج.</p>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section class="reveal">
-        <div class="wrap">
-          <div class="section-header">
-            <h2 class="h2">أسئلة شائعة</h2>
-          </div>
-          <div class="faq-list">
-            <div class="faq-item">
-              <button class="faq-q" type="button"><span>متى الإطلاق؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-              <div class="faq-a"><div class="faq-a-inner">قريب. بنعلن لأهل قائمة الانتظار أول.</div></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q" type="button"><span>هل المواصفات نهائية؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-              <div class="faq-a"><div class="faq-a-inner">التفاصيل النهائية تُعلن وقت الإطلاق.</div></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q" type="button"><span>فيه ميزة للمنتظرين؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-              <div class="faq-a"><div class="faq-a-inner">نعم. أولوية + مزايا خاصة.</div></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Closing -->
-      <section class="closing">
-        <div class="wrap">
-          <p class="closing-text">ساوند برو 2.0… اللي بعدها مو زي قبل.</p>
-          <a href="#waitlist-pro" class="btn primary" style="max-width: 280px; margin: 0 auto;">ادخل قائمة الانتظار</a>
-        </div>
-      </section>
-    </div>
-
-    <!-- ==================== SOUND FORCE ==================== -->
-    <div class="product-page" id="soundforce">
-
-      <!-- Hero -->
-      <section class="hero purple">
-        <div class="wrap">
-          <div class="hero-content">
-            <div class="chip"><span class="dot purple"></span> متوفرة الآن</div>
-
-            <h1 class="h1" style="margin-top: 16px;">INFINITEX SOUND FORCE</h1>
-            <p class="hero-subtitle">سماعة USB — 7.1 صوت محيطي</p>
-
-            <div class="identity-row purple">
-              <span><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg> درايفر 50mm</span>
-              <span><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ضمان ذهبي</span>
-            </div>
-
-            <p class="hero-desc">
-              سماعتك لازم تفهمك… مو تفضحك.<br>
-              إذا ودك بسماعة ما ترفع ضغطك وتعزل صوتك صح… حياك.
-            </p>
-
-            <div class="highlights">
-              <div class="highlight-chip purple"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ENC عزل ضوضاء</div>
-              <div class="highlight-chip purple"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg> 7.1 محيطي</div>
-              <div class="highlight-chip purple"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"/></svg> Bass Mode</div>
-            </div>
-
-            <div class="btn-row">
-              <a href="https://infinitex.sa/" target="_blank" class="btn primary purple">اطلبها الآن</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Features -->
-      <section class="reveal">
-        <div class="wrap">
-          <div class="feature-grid">
-            <div class="feature-card purple">
-              <div class="emoji">🔇</div>
-              <h3>تدري ان صياحهم ما يوصل؟</h3>
-              <p>المايك مزود بزر ENC — تضغطه؟ تسكت كل اللي حولك. اللي يصارخ وراك؟ السماعة تتجاهله كأنه مو موجود!</p>
-            </div>
-
-            <div class="feature-card purple">
-              <div class="emoji">🎯</div>
-              <h3>صوت يهز قلبك</h3>
-              <p>درايڤر 50mm وصوت محيطي 7.1 — تسمع خصمك قبل لا يحك خشمه.</p>
-            </div>
-
-            <div class="feature-card purple">
-              <div class="emoji">🔁</div>
-              <h3>مزاجك؟ نضبطه</h3>
-              <p>زر Bass يحولها من وحش ألعاب إلى جلسة استكنان — صوت أنظف، بيس أعلى، وجو ثاني كليًا.</p>
-            </div>
-
-            <div class="feature-card purple">
-              <div class="emoji">🪶</div>
-              <h3>أخف من الريشة</h3>
-              <p>تلبسها وتنسى — لا ضغط ولا وجع راس. مصممة للي يلعبون بالساعات… مو سماعة تكسر راسك بعد أول ساعة.</p>
-            </div>
-
-            <div class="feature-card purple">
-              <div class="emoji">🧲</div>
-              <h3>تشيل وتحط</h3>
-              <p>وسائد جلد ميموري فوم مريحة بقاعدة مغناطيس — ما يحتاج تتقروش عشان تفكها. شيل وركب بكل سهولة!</p>
-            </div>
-
-            <div class="feature-card purple">
-              <div class="emoji">👂</div>
-              <h3>سماعتهم فضايح</h3>
-              <p>سماعات السوق؟ تنقل كل الأصوات حتى صوت المكيف! سماعتنا؟ تعطي صوتك النقي بس… وتعزز حمايتك من المداهمات.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Gold Guarantee -->
-      <section class="reveal">
-        <div class="wrap">
-          <div class="gold-card">
-            <div class="gold-badge">🛡 نضمن… لأننا قدها</div>
-            <h2 class="h2">ما سوينا سماعة عشان نبيع ونختفي</h2>
-            <p class="p" style="max-width: 450px; margin: 0 auto;">
-              ما جازت لك أو صار فيها شي؟ نسترجع أو نبدّل — ما نتهرب ونقول "راجع التاجر".
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Compatibility -->
-      <section class="reveal">
-        <div class="wrap">
-          <div class="card" style="text-align: center;">
-            <h2 class="h2">التوافق</h2>
-            <p class="p">السماعة تشتغل عبر منفذ USB</p>
-
-            <div class="compat-row">
-              <div class="compat-item purple">PS5 ✓</div>
-              <div class="compat-item purple">PS4 ✓</div>
-              <div class="compat-item purple">PC ✓</div>
-              <div class="compat-item no">Xbox ✗</div>
-            </div>
-
-            <div class="warning-box">
-              ⚠️ السماعة لا تعمل عبر الإكس بوكس بسبب آخر التحديثات
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Closing -->
-      <section class="closing">
-        <div class="wrap">
-          <p class="closing-text">🎤 سماعتك لازم تفهمك… مو تفضحك</p>
-          <p class="p" style="margin-bottom: 20px; max-width: 400px; margin-left: auto; margin-right: auto;">
-            إذا ودك بسماعة ما ترفع ضغطك وتوفر مخباتك وتعزل صوتك صح وتعيش معك سنين… حياك.
+          <p class="voice-quote">
+            ساوند برو 2.0 ما جت تستأذن أحد.<br><br>
+            جت تقول: هذا هو المستوى اللي المفروض تعوّدنا عليه من زمان.
           </p>
-          <a href="https://infinitex.sa/" target="_blank" class="btn primary purple" style="max-width: 280px; margin: 0 auto;">اطلبها الآن</a>
-        </div>
-      </section>
 
-      <!-- FAQ -->
-      <section class="reveal">
-        <div class="wrap">
-          <div class="section-header">
-            <h2 class="h2">أسئلة شائعة</h2>
-          </div>
-          <div class="faq-list">
-            <div class="faq-item">
-              <button class="faq-q" type="button"><span>هل تشتغل على الجوال؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-              <div class="faq-a"><div class="faq-a-inner">السماعة تعمل عبر USB فقط — تحتاج منفذ USB-A.</div></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q" type="button"><span>ليش ما تشتغل على Xbox؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-              <div class="faq-a"><div class="faq-a-inner">بسبب تحديثات مايكروسوفت الأخيرة للنظام.</div></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q" type="button"><span>وش الفرق بين وضع Bass والعادي؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-              <div class="faq-a"><div class="faq-a-inner">وضع Bass يعزز الترددات المنخفضة — مناسب للموسيقى والأفلام. الوضع العادي أنظف للألعاب التنافسية.</div></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-q" type="button"><span>هل الوسائد قابلة للتبديل؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-              <div class="faq-a"><div class="faq-a-inner">نعم! بقاعدة مغناطيس سهلة الفك. وفيه بدائل جاية بالطريق.</div></div>
-            </div>
+          <div class="voice-sarcasm">
+            اللي يبي "يمشي حاله" بغيرها… الله يوفقه.
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
+    <!-- Saudi Design Section -->
+    <section class="saudi-section reveal">
+      <div class="wrap">
+        <div class="card">
+          <div class="badge" style="margin-bottom: 20px;">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            مصمّمة في السعودية
+          </div>
+
+          <h2 class="h2">مصمّمة في السعودية… بعقلية "نبيها صح".</h2>
+
+          <p class="p" style="max-width: 500px; margin: 0 auto;">
+            تصميمها مو شكل وبس، ولا تجميع وخلاص.<br>
+            الفكرة: تجربة كاملة—صوت، راحة، وثبات… أشياء تنحس من أول استخدام.
+          </p>
+
+          <div class="points">
+            <div class="point">
+              <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+              راحة للاستخدام الطويل
+            </div>
+            <div class="point">
+              <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+              توازن صوت يبان على الواقع
+            </div>
+            <div class="point">
+              <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+              تفاصيل تصميم تفرق بدون ما تصير مزعجة
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Battery Section -->
+    <section class="battery-section reveal">
+      <div class="wrap">
+        <h2 class="h2">الشحن؟ خله شي نادر.</h2>
+
+        <p class="p" style="max-width: 500px; margin: 0 auto;">
+          إذا أنت تكره "كل شوي شاحن"… بتنبسط.<br>
+          ساوند برو 2.0 مبنية لاستخدام طويل "على أرض الواقع".
+        </p>
+
+        <div class="battery-visual"></div>
+
+        <div class="voice-sarcasm">
+          كلمة "وين الشاحن؟" بتصير قليلة… مرة قليلة.
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section reveal">
+      <div class="wrap">
+        <div class="card">
+          <h2 class="h2">مقارنة السوق؟ خل التجربة تتكلم.</h2>
+
+          <p class="p" style="max-width: 500px; margin: 0 auto;">
+            فيه منتجات صوتها عالي بالإعلانات… وفيه منتجات تسكتك من جودة التجربة.<br>
+            إحنا ما نحتاج نذكر أحد. اللي يفهم بالصوت يعرف.
+          </p>
+
+          <div class="comparison-points">
+            <div class="point">
+              <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+              <span>تجربة أطول بدون قلق</span>
+            </div>
+            <div class="point">
+              <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+              <span>صوت مضبوط بدل تضخيم مبالغ فيه</span>
+            </div>
+            <div class="point">
+              <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+              <span>ضمان ذهبي يثبت إننا واثقين</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gold Guarantee Section -->
+    <section class="gold-section reveal" id="gold">
+      <div class="wrap">
+        <div class="gold-card">
+          <div class="gold-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+
+          <div class="badge badge-gold" style="margin-bottom: 16px;">الضمان الذهبي</div>
+
+          <h2 class="h2">الضمان الذهبي: لأننا قد كلامنا.</h2>
+
+          <p class="p" style="max-width: 500px; margin: 0 auto 24px;">
+            نبيك تشتري وأنت مطمّن.<br>
+            تفاصيل الضمان بتنزل رسميًا وقت الإطلاق… شيء قوي: تجربة بثقة.
+          </p>
+
+          <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" class="btn ghost" style="border-color: rgba(255,215,0,.3);">
+            اقرأ سياسة الضمان الذهبي
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section class="waitlist-section reveal" id="waitlist">
+      <div class="wrap">
+        <div class="waitlist-card">
+          <div class="badge" style="margin-bottom: 16px;">
+            <span class="dot"></span>
+            قائمة الانتظار
+          </div>
+
+          <h2 class="h2">قائمة الانتظار: إذا تبي تكون أول واحد.</h2>
+
+          <p class="p">
+            اللي يدخل هنا… له أولوية وميزة وقت الإطلاق.
+          </p>
+
+          <form class="waitlist-form" id="waitlistForm" onsubmit="return handleWaitlist(event)">
+            <div class="form-group">
+              <label for="phone">رقم الجوال</label>
+              <input type="tel" id="phone" name="phone" placeholder="05xxxxxxxx" required dir="ltr" style="text-align: left;" />
+            </div>
+
+            <div class="form-group optional">
+              <label for="email">البريد الإلكتروني</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" dir="ltr" style="text-align: left;" />
+            </div>
+
+            <div class="form-group">
+              <label for="contact">طريقة التواصل المفضلة</label>
+              <select id="contact" name="contact">
+                <option value="whatsapp">واتساب</option>
+                <option value="sms">SMS</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn primary" style="width: 100%; margin-top: 8px;">
+              ثبّت مقعدي
+            </button>
+
+            <p class="form-note">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              رسالة وحدة وقت الإطلاق. بدون إزعاج.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section reveal" id="faq">
+      <div class="wrap">
+        <div class="section-header">
+          <h2 class="h2">أسئلة شائعة</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>متى الإطلاق؟</span>
+              <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                قريب. بنعلن الموعد الرسمي لأهل قائمة الانتظار أول.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>هل المواصفات نهائية؟</span>
+              <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                التفاصيل النهائية تُعلن رسميًا وقت الإطلاق.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>هل فيه ميزة للمنتظرين؟</span>
+              <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                نعم. أولوية + مزايا خاصة.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>وش قصة الضمان الذهبي؟</span>
+              <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                ضمان تجربة يخليك مطمّن. التفاصيل وقت الإطلاق.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing Section -->
+    <section class="closing-section">
+      <div class="wrap">
+        <h2 class="closing-title">ساوند برو 2.0… اللي بعدها مو زي قبل.</h2>
+        <a href="#waitlist" class="btn primary">ادخل قائمة الانتظار</a>
+      </div>
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="wrap">
-      <div class="footer-brand">INFINITEX</div>
-      <p class="footer-copy">© <span id="year"></span> INFINITEX. جميع الحقوق محفوظة.</p>
-      <div class="footer-links">
-        <a href="https://infinitex.sa/" target="_blank">المتجر</a>
-        <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank">الضمان الذهبي</a>
+      <div class="footer-content">
+        <div class="footer-brand">INFINITEX</div>
+        <p class="footer-copy">© <span id="year"></span> INFINITEX. جميع الحقوق محفوظة.</p>
+        <div class="footer-links">
+          <a href="https://infinitex.sa/" target="_blank">المتجر</a>
+          <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank">الضمان الذهبي</a>
+          <a href="https://infinitex.sa/blogs/shipping-policy-saudi-arabia" target="_blank">سياسة الشحن</a>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- Mobile Navigation -->
   <div class="mobile-nav">
     <div class="mobile-nav-bar">
       <a href="index.html">الرئيسية</a>
@@ -954,39 +1423,23 @@
   </div>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Product Tabs
-    const tabs = document.querySelectorAll('.product-tab');
-    const pages = document.querySelectorAll('.product-page');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const product = tab.dataset.product;
-
-        tabs.forEach(t => t.classList.remove('active', 'force'));
-        tab.classList.add('active');
-        if (product === 'soundforce') tab.classList.add('force');
-
-        pages.forEach(p => p.classList.remove('active'));
-        document.getElementById(product).classList.add('active');
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    });
-
-    // FAQ
-    document.querySelectorAll('.faq-q').forEach(btn => {
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
-        const answer = item.querySelector('.faq-a');
+        const answer = item.querySelector('.faq-answer');
         const isOpen = item.classList.contains('open');
 
+        // Close all
         document.querySelectorAll('.faq-item').forEach(i => {
           i.classList.remove('open');
-          i.querySelector('.faq-a').style.maxHeight = '0';
+          i.querySelector('.faq-answer').style.maxHeight = '0';
         });
 
+        // Open clicked if was closed
         if (!isOpen) {
           item.classList.add('open');
           answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -995,45 +1448,65 @@
     });
 
     // Scroll Reveal
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Form Handler
-    function handleForm(e, type) {
+    // Waitlist Form Handler
+    function handleWaitlist(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
 
       btn.textContent = 'جاري التسجيل...';
       btn.disabled = true;
 
+      // Simulate submission (replace with actual API call)
       setTimeout(() => {
         btn.textContent = 'تم التسجيل!';
+        btn.style.background = 'linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85))';
+
         setTimeout(() => {
           btn.textContent = originalText;
           btn.disabled = false;
-          e.target.reset();
+          form.reset();
         }, 2000);
       }, 1000);
 
       return false;
     }
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function(e) {
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
     });
   </script>
 
-  <script src='https://app.trypopcorn.ai/loader.js' data-url='https://app.trypopcorn.ai' data-api-url='https://api.trypopcorn.ai' data-agent='' data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'></script>
+  <!-- INFINITEX Support Chat (Popcorn) -->
+  <script
+    src='https://app.trypopcorn.ai/loader.js'
+    data-url='https://app.trypopcorn.ai'
+    data-api-url='https://api.trypopcorn.ai'
+    data-agent=''
+    data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'>
+  </script>
 </body>
 </html>
