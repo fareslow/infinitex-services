@@ -218,47 +218,53 @@
     }
 
     .form-card {
-      background: rgba(0,0,0,.4);
+      background: rgba(0,0,0,.45);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px 20px;
+      border-radius: 22px;
+      padding: 22px;
     }
 
     .chat-log {
-      height: min(52vh, 520px);
+      height: min(66vh, 680px);
       overflow: auto;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
-      padding: 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(400px 240px at 85% 0%, rgba(57,255,20,.08), transparent 60%),
+        rgba(3,4,5,.85);
+      padding: 16px;
       scrollbar-width: thin;
     }
 
     .msg {
-      max-width: 92%;
-      padding: 10px 12px;
-      border-radius: 14px;
-      margin: 8px 0;
+      max-width: 84%;
+      padding: 12px 14px;
+      border-radius: 18px;
+      margin: 10px 0;
       font-size: 13px;
       line-height: 1.8;
       border: 1px solid rgba(255,255,255,.10);
+      position: relative;
     }
 
     .msg.me {
       margin-left: auto;
-      background: rgba(57,255,20,.10);
-      border-color: rgba(57,255,20,.28);
+      background: rgba(57,255,20,.16);
+      border-color: rgba(57,255,20,.35);
+      border-bottom-right-radius: 6px;
     }
 
     .msg.bot {
       margin-right: auto;
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.04);
+      border-bottom-left-radius: 6px;
     }
 
     .chat-row {
       display: flex;
       gap: 10px;
-      margin-top: 10px;
+      margin-top: 14px;
+      align-items: flex-end;
     }
 
     .chat-row input {
@@ -275,9 +281,9 @@
     .form-group input {
       width: 100%;
       padding: 12px 14px;
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.04);
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 14px;
       color: var(--text);
       font-family: inherit;
       font-size: 14px;
@@ -460,7 +466,7 @@
             <button class="btn primary" type="button" id="sendBtn">إرسال</button>
           </div>
 
-          <p class="hint">إذا عندك رقم طلب، اكتبه هنا وسنساعدك مباشرة.</p>
+          <p class="hint">إذا عندك رقم طلب، اكتبه هنا وسنساعدك مباشرة عبر الربط في نتلفاي.</p>
         </div>
       </div>
     </section>
