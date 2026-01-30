@@ -11,8 +11,8 @@
 
   <link rel="icon" href="assets/icons/icon-192.png" />
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
-  <title>INFINITEX — تواصل معنا</title>
-  <meta name="description" content="تواصل معنا مباشرة عبر شات INFINITEX المدعوم بـ Popcorn." />
+  <title>INFINITEX — مساعدة</title>
+  <meta name="description" content="مساعدة مباشرة عبر شات INFINITEX بتصميم مدمج." />
 
   <link rel="preload" href="assets/fonts/avenir-black-arabic.otf" as="font" type="font/otf" crossorigin>
 
@@ -38,7 +38,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: #000; width: 100%; }
+    html { scroll-behavior: smooth; background: #000; width: 100%; overflow-x: hidden; }
 
     body {
       font-family: "AvenirBlackArabic", system-ui, sans-serif;
@@ -47,6 +47,7 @@
       overflow-x: hidden;
       max-width: 100vw;
       width: 100%;
+      position: relative;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
@@ -60,7 +61,8 @@
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
 
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; width: 100%; }
+    main { width: 100%; overflow-x: hidden; }
     section { padding: 40px 0; }
 
     .h1 { font-size: clamp(24px, 7vw, 40px); line-height: 1.15; }
@@ -215,6 +217,84 @@
       margin-bottom: 24px;
     }
 
+    .form-card {
+      background: rgba(0,0,0,.4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+    }
+
+    .chat-log {
+      height: min(52vh, 520px);
+      overflow: auto;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      padding: 12px;
+      scrollbar-width: thin;
+    }
+
+    .msg {
+      max-width: 92%;
+      padding: 10px 12px;
+      border-radius: 14px;
+      margin: 8px 0;
+      font-size: 13px;
+      line-height: 1.8;
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .msg.me {
+      margin-left: auto;
+      background: rgba(57,255,20,.10);
+      border-color: rgba(57,255,20,.28);
+    }
+
+    .msg.bot {
+      margin-right: auto;
+      background: rgba(255,255,255,.03);
+    }
+
+    .chat-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .chat-row input {
+      flex: 1;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: rgba(57,255,20,.4);
+    }
+
+    .hint {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted2);
+      line-height: 1.9;
+    }
+
     .faq-list { display: flex; flex-direction: column; gap: 10px; }
     .faq-item {
       background: rgba(0,0,0,.3);
@@ -270,6 +350,11 @@
       color: var(--muted);
       text-decoration: none;
     }
+    .footer-links a.store {
+      color: #061006;
+      background: rgba(57,255,20,.9);
+      border-color: rgba(57,255,20,.75);
+    }
 
     .mobile-nav {
       position: fixed;
@@ -278,15 +363,17 @@
       bottom: 10px;
       z-index: 200;
       display: none;
+      overflow: hidden;
     }
     .mobile-nav-bar {
-      background: rgba(5,6,7,.92);
+      background: rgba(5,6,7,.68);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 18px;
       padding: 8px;
       display: flex;
       gap: 6px;
+      width: 100%;
     }
     .mobile-nav-bar a {
       flex: 1;
@@ -302,6 +389,11 @@
     .mobile-nav-bar a.active {
       border-color: rgba(57,255,20,.35);
       color: var(--text);
+    }
+    .mobile-nav-bar a.store {
+      color: #061006;
+      background: rgba(57,255,20,.9);
+      border-color: rgba(57,255,20,.75);
     }
 
     @media (max-width: 768px) {
@@ -327,10 +419,10 @@
         <div class="brand"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></div>
         <div class="navlinks">
           <a href="index.html">الرئيسية</a>
-          <a href="track.html">تتبع الطلب</a>
-          <a href="returns.html">الاسترجاع</a>
+          <a href="track.html">التتبع</a>
+          <a href="returns.html">الإسترجاع</a>
           <a href="products.html">المنتجات</a>
-          <a href="contact.html" class="active">تواصل معنا</a>
+          <a href="contact.html" class="active">مساعدة</a>
         </div>
       </nav>
     </div>
@@ -340,15 +432,35 @@
     <section class="hero">
       <div class="wrap">
         <div class="hero-content">
-          <div class="chip"><span class="dot"></span> دعم مباشر</div>
-          <h1 class="h1" style="margin-top: 16px;">تواصل معنا بسهولة</h1>
+          <div class="chip"><span class="dot"></span> مساعدة مباشرة</div>
+          <h1 class="h1" style="margin-top: 16px;">مساعدة سريعة</h1>
           <p class="hero-subtitle">شات فوري مرتب لكل استفساراتك.</p>
           <p class="hero-desc">افتح الشات وقدّم استفسارك — فريق INFINITEX حاضر لخدمتك بأسرع وقت.</p>
 
           <div class="btn-row">
-            <button class="btn primary" id="openChatBtn">ابدأ المحادثة</button>
-            <a href="https://infinitex.sa/" target="_blank" class="btn ghost">زيارة المتجر</a>
+            <button class="btn primary" id="sendBtnTop">ابدأ المحادثة</button>
+            <a href="https://infinitex.sa/" target="_blank" class="btn ghost">أطلب الآن</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="wrap">
+        <div class="form-card">
+          <div id="chatLog" class="chat-log" aria-live="polite">
+            <div class="msg bot">أهلاً! كيف نقدر نساعدك اليوم؟</div>
+          </div>
+
+          <div class="chat-row">
+            <div class="form-group" style="flex:1;">
+              <label for="chatInput">رسالتك</label>
+              <input id="chatInput" name="chatInput" placeholder="اكتب استفسارك هنا..." />
+            </div>
+            <button class="btn primary" type="button" id="sendBtn">إرسال</button>
+          </div>
+
+          <p class="hint">إذا عندك رقم طلب، اكتبه هنا وسنساعدك مباشرة.</p>
         </div>
       </div>
     </section>
@@ -403,7 +515,7 @@
     <section class="closing">
       <div class="wrap">
         <p class="closing-text">نحن هنا عشان نخدمك بسرعة.</p>
-        <button class="btn primary" style="max-width: 280px; margin: 0 auto;" id="openChatBtnBottom">ابدأ المحادثة</button>
+        <button class="btn primary" style="max-width: 280px; margin: 0 auto;" id="sendBtnBottom">ابدأ المحادثة</button>
       </div>
     </section>
   </main>
@@ -413,7 +525,7 @@
       <div class="footer-brand">INFINITEX</div>
       <p class="footer-copy">© <span id="year"></span> INFINITEX. جميع الحقوق محفوظة.</p>
       <div class="footer-links">
-        <a href="https://infinitex.sa/" target="_blank">المتجر</a>
+        <a href="https://infinitex.sa/" target="_blank" class="store">أطلب</a>
         <a href="products.html">المنتجات</a>
       </div>
     </div>
@@ -422,52 +534,101 @@
   <div class="mobile-nav">
     <div class="mobile-nav-bar">
       <a href="index.html">الرئيسية</a>
-      <a href="track.html">تتبع</a>
-      <a href="returns.html">استرجاع</a>
+      <a href="track.html">التتبع</a>
+      <a href="returns.html">الإسترجاع</a>
       <a href="products.html">المنتجات</a>
-      <a href="contact.html" class="active">تواصل</a>
+      <a href="contact.html" class="active">مساعدة</a>
+      <a href="https://infinitex.sa/" target="_blank" class="store">أطلب</a>
     </div>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    function findLauncher(){
-      const els = Array.from(document.querySelectorAll('body *'));
-      const cands = els.filter(el => {
-        if(!el || el === document.body || el === document.documentElement) return false;
-        const st = getComputedStyle(el);
-        if(st.position !== 'fixed') return false;
-        const r = el.getBoundingClientRect();
-        if(r.width < 24 || r.height < 24) return false;
-        if(r.width > 360 || r.height > 360) return false;
-        if(r.left < window.innerWidth * 0.35) return false;
-        if(r.top < window.innerHeight * 0.35) return false;
-        if(el.tagName === 'IFRAME') return true;
-        if(el.querySelector && el.querySelector('iframe')) return true;
-        if(['BUTTON','A'].includes(el.tagName)) return true;
-        if(el.getAttribute && el.getAttribute('role') === 'button') return true;
-        if(st.cursor === 'pointer') return true;
-        return false;
-      });
-      if(!cands.length) return null;
-      cands.sort((a,b)=>{
-        const ra=a.getBoundingClientRect(), rb=b.getBoundingClientRect();
-        const areaA=ra.width*ra.height, areaB=rb.width*rb.height;
-        const distA=(window.innerWidth-ra.right)**2 + (window.innerHeight-ra.bottom)**2;
-        const distB=(window.innerWidth-rb.right)**2 + (window.innerHeight-rb.bottom)**2;
-        return (areaA+distA) - (areaB+distB);
-      });
-      return cands[0];
+    const POPCORN_PROXY_URL = window.IX_POPCORN_PROXY_URL || '/api/track';
+    const chatLog = document.getElementById('chatLog');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const sendBtnTop = document.getElementById('sendBtnTop');
+    const sendBtnBottom = document.getElementById('sendBtnBottom');
+
+    const userId = (function(){
+      const k = 'ix_popcorn_uid';
+      const v = localStorage.getItem(k);
+      if(v) return v;
+      const nv = (crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now());
+      localStorage.setItem(k, nv);
+      return nv;
+    })();
+
+    function addMsg(role, text){
+      const el = document.createElement('div');
+      el.className = 'msg ' + (role === 'me' ? 'me' : 'bot');
+      el.textContent = text;
+      chatLog.appendChild(el);
+      chatLog.scrollTop = chatLog.scrollHeight;
     }
 
-    function openChat(){
-      const el = findLauncher();
-      if(el){ try{ el.click(); }catch(_){} }
+    function cleanBotText(input){
+      const s = (input ?? '').toString();
+      if(!s) return '';
+      const marker = '}"';
+      const idx = s.lastIndexOf(marker);
+      if(idx !== -1){
+        let tail = s.slice(idx + marker.length);
+        tail = tail.replace(/^["\\s]+/, '');
+        if(/[A-Za-z؀-ۿ]/.test(tail)) return tail.trim();
+      }
+      return s
+        .replace(/^\\s*\\[.*?\\]\\s*/s, '')
+        .replace(/^\\s*\"\\s*\\{.*?\\}\\s*\"\\s*/s, '')
+        .trim();
     }
 
-    document.getElementById('openChatBtn')?.addEventListener('click', openChat);
-    document.getElementById('openChatBtnBottom')?.addEventListener('click', openChat);
+    async function sendChat(){
+      const text = (chatInput.value || '').trim();
+      if(!text){
+        addMsg('bot', 'اكتب رسالتك أولاً.');
+        return;
+      }
+
+      addMsg('me', text);
+      chatInput.value = '';
+
+      sendBtn.disabled = true;
+      const thinking = document.createElement('div');
+      thinking.className = 'msg bot';
+      thinking.textContent = 'جاري الرد...';
+      chatLog.appendChild(thinking);
+      chatLog.scrollTop = chatLog.scrollHeight;
+
+      try{
+        const res = await fetch(POPCORN_PROXY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId, message: text })
+        });
+
+        const data = await res.json().catch(()=> ({}));
+        thinking.remove();
+
+        if(!res.ok){
+          addMsg('bot', data?.error || 'حصل خطأ في الشات. جرّب مرة ثانية.');
+          return;
+        }
+        addMsg('bot', cleanBotText(data?.response || data?.message || data?.output) || 'تم استلام الرسالة لكن لم يصل رد واضح.');
+      }catch(e){
+        thinking.remove();
+        addMsg('bot', 'تعذر الاتصال بالخدمة. جرّب مرة ثانية.');
+      }finally{
+        sendBtn.disabled = false;
+      }
+    }
+
+    sendBtn?.addEventListener('click', sendChat);
+    sendBtnTop?.addEventListener('click', () => chatInput?.focus());
+    sendBtnBottom?.addEventListener('click', () => chatInput?.focus());
+    chatInput?.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') sendChat(); });
 
     document.querySelectorAll('.faq-q').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -495,7 +656,5 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-
-  <script src='https://app.trypopcorn.ai/loader.js' data-url='https://app.trypopcorn.ai' data-api-url='https://api.trypopcorn.ai' data-agent='' data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'></script>
 </body>
 </html>

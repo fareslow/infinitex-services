@@ -40,7 +40,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: #000; width: 100%; }
+    html { scroll-behavior: smooth; background: #000; width: 100%; overflow-x: hidden; }
 
     body {
       font-family: "AvenirBlackArabic", system-ui, sans-serif;
@@ -49,6 +49,7 @@
       overflow-x: hidden;
       max-width: 100vw;
       width: 100%;
+      position: relative;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
@@ -62,7 +63,8 @@
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
 
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; width: 100%; }
+    main { width: 100%; overflow-x: hidden; }
     section { padding: 40px 0; }
 
     .h1 { font-size: clamp(24px, 7vw, 40px); line-height: 1.15; }
@@ -325,6 +327,11 @@
       color: var(--muted);
       text-decoration: none;
     }
+    .footer-links a.store {
+      color: #061006;
+      background: rgba(57,255,20,.9);
+      border-color: rgba(57,255,20,.75);
+    }
 
     .mobile-nav {
       position: fixed;
@@ -333,15 +340,17 @@
       bottom: 10px;
       z-index: 200;
       display: none;
+      overflow: hidden;
     }
     .mobile-nav-bar {
-      background: rgba(5,6,7,.92);
+      background: rgba(5,6,7,.68);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 18px;
       padding: 8px;
       display: flex;
       gap: 6px;
+      width: 100%;
     }
     .mobile-nav-bar a {
       flex: 1;
@@ -357,6 +366,11 @@
     .mobile-nav-bar a.active {
       border-color: rgba(57,255,20,.35);
       color: var(--text);
+    }
+    .mobile-nav-bar a.store {
+      color: #061006;
+      background: rgba(57,255,20,.9);
+      border-color: rgba(57,255,20,.75);
     }
 
     @media (max-width: 768px) {
@@ -386,10 +400,10 @@
         <div class="brand"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" data-ix-src="global.media.infinitexLogo" /></div>
         <div class="navlinks">
           <a href="index.html" data-ix-text="global.nav.home" data-ix-permission="permissions.showHome">الرئيسية</a>
-          <a href="track.html" data-ix-text="global.nav.track" data-ix-permission="permissions.showTrack">تتبع الطلب</a>
-          <a href="returns.html" class="active" data-ix-text="global.nav.returns" data-ix-permission="permissions.showReturns">الاسترجاع</a>
+          <a href="track.html" data-ix-text="global.nav.track" data-ix-permission="permissions.showTrack">التتبع</a>
+          <a href="returns.html" class="active" data-ix-text="global.nav.returns" data-ix-permission="permissions.showReturns">الإسترجاع</a>
           <a href="products.html" data-ix-text="global.nav.products" data-ix-permission="permissions.showProducts">المنتجات</a>
-          <a href="contact.html">تواصل معنا</a>
+          <a href="contact.html">مساعدة</a>
         </div>
       </nav>
     </div>
@@ -508,7 +522,7 @@
       <div class="footer-brand">INFINITEX</div>
       <p class="footer-copy">© <span id="year"></span> INFINITEX. جميع الحقوق محفوظة.</p>
       <div class="footer-links">
-        <a href="https://infinitex.sa/" target="_blank" data-ix-href="global.links.store" data-ix-text="global.nav.store">المتجر</a>
+        <a href="https://infinitex.sa/" target="_blank" class="store" data-ix-href="global.links.store" data-ix-text="global.nav.store">أطلب</a>
         <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" data-ix-href="global.links.warrantyPolicy" data-ix-text="global.nav.policy">الضمان الذهبي</a>
       </div>
     </div>
@@ -517,11 +531,11 @@
   <div class="mobile-nav" role="navigation" aria-label="تنقل سريع">
     <div class="mobile-nav-bar">
       <a href="index.html" data-ix-text="global.mobileNav.services" data-ix-permission="permissions.showHome">الرئيسية</a>
-      <a href="track.html" data-ix-text="global.mobileNav.track" data-ix-permission="permissions.showTrack">تتبع</a>
-      <a href="returns.html" class="active" data-ix-text="global.mobileNav.returns" data-ix-permission="permissions.showReturns">استرجاع</a>
+      <a href="track.html" data-ix-text="global.mobileNav.track" data-ix-permission="permissions.showTrack">التتبع</a>
+      <a href="returns.html" class="active" data-ix-text="global.mobileNav.returns" data-ix-permission="permissions.showReturns">الإسترجاع</a>
       <a href="products.html" data-ix-text="global.mobileNav.products" data-ix-permission="permissions.showProducts">المنتجات</a>
-      <a href="contact.html">تواصل</a>
-      <a href="https://infinitex.sa/" target="_blank" data-ix-href="global.links.store" data-ix-text="global.mobileNav.store">المتجر</a>
+      <a href="contact.html">مساعدة</a>
+      <a href="https://infinitex.sa/" target="_blank" class="store" data-ix-href="global.links.store" data-ix-text="global.mobileNav.store">أطلب</a>
     </div>
   </div>
 
