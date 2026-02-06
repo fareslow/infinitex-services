@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="INFINITEX" />
+
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <title>INFINITEX — تواصل معنا</title>
+  <meta name="description" content="تواصل مع فريق INFINITEX — نرد عليك بأسرع وقت. دعم فني، استفسارات، واقتراحات." />
+
+  <link rel="preload" href="assets/fonts/avenir-black-arabic.otf" as="font" type="font/otf" crossorigin>
+
+  <style>
+    @font-face {
+      font-family: "AvenirBlackArabic";
+      src: url("assets/fonts/avenir-black-arabic.otf") format("opentype");
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #050607;
+      --text: #eef2f3;
+      --muted: #a7b0b5;
+      --muted2: #7d878d;
+      --line: rgba(255,255,255,.08);
+      --accent: #39ff14;
+      --accent2: #2bdc12;
+      --radius: 20px;
+      --max: 700px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; background: #000; }
+
+    body {
+      font-family: "AvenirBlackArabic", system-ui, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg) 0%, #07090a 100%);
+      overflow-x: hidden;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+    .animate { animation: fadeIn 0.5s ease forwards; opacity: 0; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+    section { padding: 40px 0; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(0,0,0,.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+    .brand img { height: 20px; }
+    .navlinks { display: flex; gap: 6px; }
+    .navlinks a { padding: 8px 12px; border-radius: 10px; color: var(--muted); font-size: 12px; text-decoration: none; }
+    .navlinks a:hover, .navlinks a.active { color: var(--text); background: rgba(255,255,255,.05); }
+
+    .hero {
+      text-align: center;
+      padding: 50px 0 20px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(57,255,20,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero h1 {
+      font-size: clamp(24px, 7vw, 40px);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 450px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    /* Chat Container */
+    .chat-section {
+      padding: 20px 0 40px;
+    }
+
+    .chat-container {
+      background: rgba(0,0,0,.4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0,0,0,.3);
+    }
+
+    .chat-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(57,255,20,.2), rgba(57,255,20,.05));
+      border: 1px solid rgba(57,255,20,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .chat-header-info h3 {
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .chat-header-info p {
+      font-size: 11px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .chat-header-info .online-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 350px;
+      max-height: 450px;
+      overflow-y: auto;
+    }
+
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-track { background: transparent; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 4px; }
+
+    .message {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.8;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .message.bot {
+      align-self: flex-start;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      border-bottom-right: 4px;
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background: rgba(57,255,20,.1);
+      border: 1px solid rgba(57,255,20,.2);
+      border-bottom-left: 4px;
+    }
+
+    .message .time {
+      font-size: 10px;
+      color: var(--muted2);
+      margin-top: 6px;
+      display: block;
+    }
+
+    .typing-indicator {
+      align-self: flex-start;
+      padding: 12px 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      display: none;
+    }
+
+    .typing-indicator span {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--muted);
+      margin: 0 2px;
+      animation: typingBounce 1.4s infinite;
+    }
+
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-6px); }
+    }
+
+    .chat-input-area {
+      padding: 14px 16px;
+      border-top: 1px solid var(--line);
+      background: rgba(0,0,0,.3);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      padding: 12px 16px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .chat-input-area input:focus {
+      border-color: rgba(57,255,20,.4);
+    }
+
+    .chat-input-area input::placeholder {
+      color: var(--muted2);
+    }
+
+    .send-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85));
+      border: 1px solid rgba(57,255,20,.6);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+
+    .send-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(57,255,20,.3); }
+    .send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .send-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #061006;
+      transform: scaleX(-1);
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 20px 16px;
+    }
+
+    .quick-btn {
+      padding: 8px 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .quick-btn:hover {
+      border-color: rgba(57,255,20,.3);
+      color: var(--text);
+      background: rgba(57,255,20,.05);
+    }
+
+    /* Contact Info Cards */
+    .contact-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .contact-card:hover {
+      border-color: rgba(57,255,20,.2);
+      transform: translateY(-2px);
+    }
+
+    .contact-card .icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .contact-card h3 {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .contact-card p {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    footer {
+      background: #000;
+      padding: 24px 0 100px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+    .footer-brand { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .footer-copy { font-size: 11px; color: var(--muted2); }
+    .footer-links { display: flex; justify-content: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+    .footer-links a {
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      z-index: 200;
+      display: none;
+    }
+    .mobile-nav-bar {
+      background: rgba(5,6,7,.92);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 18px;
+      padding: 8px;
+      display: flex;
+      gap: 6px;
+    }
+    .mobile-nav-bar a {
+      flex: 1;
+      text-align: center;
+      padding: 10px 6px;
+      border-radius: 12px;
+      background: rgba(0,0,0,.3);
+      border: 1px solid rgba(255,255,255,.06);
+      font-size: 10px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .mobile-nav-bar a.active {
+      border-color: rgba(57,255,20,.35);
+      color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      .navlinks { display: none; }
+      .mobile-nav { display: block; }
+      section { padding: 35px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 0 14px; }
+      .contact-cards { grid-template-columns: 1fr; }
+    }
+
+    .reveal { opacity: 0; transform: translateY(15px); transition: all 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <nav class="nav">
+        <div class="brand"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></div>
+        <div class="navlinks">
+          <a href="index.html">الرئيسية</a>
+          <a href="track.html">تتبع الطلب</a>
+          <a href="returns.html">الاسترجاع</a>
+          <a href="products.html">المنتجات</a>
+          <a href="contact.html" class="active">تواصل معنا</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-content animate">
+          <div class="chip"><span class="dot"></span> نرد عليك بسرعة</div>
+          <h1>تواصل معنا</h1>
+          <p>عندك سؤال؟ استفسار؟ أو حتى اقتراح؟ كلّمنا وبنرد عليك بأسرع وقت.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chat-section">
+      <div class="wrap">
+        <div class="chat-container animate delay-1">
+          <div class="chat-header">
+            <div class="chat-avatar">IX</div>
+            <div class="chat-header-info">
+              <h3>دعم INFINITEX</h3>
+              <p><span class="online-dot"></span> متصل الآن</p>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+              أهلاً فيك! أنا مساعد INFINITEX الذكي. كيف أقدر أساعدك اليوم؟
+              <span class="time" id="botTime"></span>
+            </div>
+          </div>
+
+          <div class="quick-actions" id="quickActions">
+            <button class="quick-btn" data-msg="عندي مشكلة بالسماعة">مشكلة بالسماعة</button>
+            <button class="quick-btn" data-msg="وش حالة طلبي؟">حالة الطلب</button>
+            <button class="quick-btn" data-msg="ابي استرجع المنتج">استرجاع</button>
+            <button class="quick-btn" data-msg="ابي اعرف عن الضمان الذهبي">الضمان الذهبي</button>
+          </div>
+
+          <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="اكتب رسالتك هنا..." autocomplete="off" />
+            <button class="send-btn" id="sendBtn" type="button">
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="contact-cards animate delay-2">
+          <a href="https://infinitex.sa/" target="_blank" class="contact-card">
+            <div class="icon">🛒</div>
+            <h3>المتجر</h3>
+            <p>تصفّح منتجاتنا</p>
+          </a>
+          <a href="track.html" class="contact-card">
+            <div class="icon">📦</div>
+            <h3>تتبع الطلب</h3>
+            <p>وين وصل طلبك؟</p>
+          </a>
+          <a href="returns.html" class="contact-card">
+            <div class="icon">🔄</div>
+            <h3>الاسترجاع</h3>
+            <p>سياسة الاسترجاع</p>
+          </a>
+          <a href="products.html" class="contact-card">
+            <div class="icon">🎧</div>
+            <h3>المنتجات</h3>
+            <p>تعرّف على سماعاتنا</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-brand">INFINITEX</div>
+      <p class="footer-copy">© <span id="year"></span> INFINITEX. جميع الحقوق محفوظة.</p>
+      <div class="footer-links">
+        <a href="https://infinitex.sa/" target="_blank">المتجر</a>
+        <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank">الضمان الذهبي</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-nav">
+    <div class="mobile-nav-bar">
+      <a href="index.html">الرئيسية</a>
+      <a href="track.html">تتبع</a>
+      <a href="returns.html">استرجاع</a>
+      <a href="products.html">المنتجات</a>
+      <a href="contact.html" class="active">تواصل</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Set initial bot message time
+    document.getElementById('botTime').textContent = new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
+
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const quickActions = document.getElementById('quickActions');
+
+    const API_URL = '/chat';
+
+    function getTime() {
+      return new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function addMessage(text, type) {
+      const msg = document.createElement('div');
+      msg.className = 'message ' + type;
+      msg.innerHTML = text + '<span class="time">' + getTime() + '</span>';
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showTyping() {
+      const typing = document.createElement('div');
+      typing.className = 'typing-indicator';
+      typing.id = 'typingIndicator';
+      typing.style.display = 'block';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      chatMessages.appendChild(typing);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function hideTyping() {
+      const typing = document.getElementById('typingIndicator');
+      if (typing) typing.remove();
+    }
+
+    async function sendMessage(text) {
+      if (!text.trim()) return;
+
+      addMessage(text, 'user');
+      chatInput.value = '';
+      sendBtn.disabled = true;
+      quickActions.style.display = 'none';
+
+      showTyping();
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text })
+        });
+
+        hideTyping();
+
+        if (response.ok) {
+          const data = await response.json();
+          const reply = data.reply || data.message || data.response || 'شكراً لتواصلك! بنرد عليك بأسرع وقت.';
+          addMessage(reply, 'bot');
+        } else {
+          addMessage('عذراً، حصل خطأ. حاول مرة ثانية أو تواصل معنا عبر المتجر.', 'bot');
+        }
+      } catch (err) {
+        hideTyping();
+        addMessage('عذراً، ما قدرنا نتواصل مع السيرفر. تأكد من اتصالك بالإنترنت وحاول مرة ثانية.', 'bot');
+      }
+
+      sendBtn.disabled = false;
+      chatInput.focus();
+    }
+
+    sendBtn.addEventListener('click', () => sendMessage(chatInput.value));
+
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendMessage(chatInput.value);
+    });
+
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        sendMessage(btn.dataset.msg);
+      });
+    });
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+  <script src='https://app.trypopcorn.ai/loader.js' data-url='https://app.trypopcorn.ai' data-api-url='https://api.trypopcorn.ai' data-agent='' data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'></script>
+</body>
+</html>

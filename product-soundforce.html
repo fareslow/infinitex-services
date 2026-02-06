@@ -9,17 +9,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="apple-mobile-web-app-title" content="INFINITEX" />
 
-  <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="assets/icons/icon-192.png" />
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
-
-  <title>خدمات INFINITEX — ما بعد البيع</title>
-  <meta name="description" content="مركز خدمات INFINITEX لما بعد البيع: تتبع الطلب، الاسترجاع، والمنتجات (قريباً)." />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="خدمات INFINITEX — ما بعد البيع" />
-  <meta property="og:description" content="٣ خطوات بسيطة: تتبع الطلب، الاسترجاع، والمنتجات." />
-  <meta property="og:image" content="assets/images/sound-pro-dark-grey.jpg" />
+  <title>INFINITEX — Sound Force</title>
+  <meta name="description" content="INFINITEX Sound Force — سماعة سلكية USB بصوت محيطي 7.1 وعزل ضوضاء ENC. مصممة في السعودية." />
 
   <link rel="preload" href="assets/fonts/avenir-black-arabic.otf" as="font" type="font/otf" crossorigin>
 
@@ -40,6 +33,7 @@
       --accent2: #2bdc12;
       --gold: #ffd700;
       --red: #ff4757;
+      --purple: #ff3b30;
       --radius: 20px;
       --max: 700px;
     }
@@ -106,6 +100,8 @@
       animation: pulse 2s infinite;
     }
 
+    .dot.purple { background: var(--purple); }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -125,12 +121,12 @@
       width: 100%;
     }
 
-    .btn:hover { transform: translateY(-2px); border-color: rgba(57,255,20,.4); }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(255,59,48,.4); }
 
-    .btn.primary {
-      background: linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85));
-      border-color: rgba(57,255,20,.6);
-      color: #061006;
+    .btn.primary.purple {
+      background: linear-gradient(180deg, rgba(255,59,48,.95), rgba(220,40,30,.85));
+      border-color: rgba(255,59,48,.6);
+      color: #fff;
     }
 
     .btn.ghost { background: transparent; }
@@ -159,26 +155,14 @@
       transition: all 0.3s;
     }
 
-    .feature-card:hover {
-      border-color: rgba(57,255,20,.2);
+    .feature-card.purple:hover {
+      border-color: rgba(255,59,48,.3);
       transform: translateY(-2px);
     }
 
-    .feature-card .emoji {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .feature-card h3 {
-      font-size: 15px;
-      margin-bottom: 8px;
-    }
-
-    .feature-card p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.8;
-    }
+    .feature-card .emoji { font-size: 24px; margin-bottom: 10px; }
+    .feature-card h3 { font-size: 15px; margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; color: var(--muted); line-height: 1.8; }
 
     .hero {
       text-align: center;
@@ -186,7 +170,7 @@
       position: relative;
     }
 
-    .hero::before {
+    .hero.purple::before {
       content: "";
       position: absolute;
       top: -100px;
@@ -194,11 +178,23 @@
       transform: translateX(-50%);
       width: 500px;
       height: 400px;
-      background: radial-gradient(circle, rgba(57,255,20,.12) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(255,59,48,.12) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .hero-content { position: relative; z-index: 1; }
+    .hero-media {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-media img {
+      width: min(100%, 420px);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
 
     .hero-subtitle {
       font-size: clamp(16px, 4.5vw, 22px);
@@ -213,6 +209,20 @@
       margin: 0 auto 20px;
       line-height: 1.9;
     }
+
+    .identity-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+      font-size: 12px;
+      color: var(--muted2);
+    }
+
+    .identity-row span { display: flex; align-items: center; gap: 5px; }
+    .identity-row svg { width: 14px; height: 14px; }
+    .identity-row.purple svg { fill: var(--purple); }
 
     .highlights {
       display: flex;
@@ -233,16 +243,10 @@
       gap: 6px;
     }
 
-    .highlight-chip svg {
-      width: 14px;
-      height: 14px;
-      fill: var(--accent);
-    }
+    .highlight-chip svg { width: 14px; height: 14px; }
+    .highlight-chip.purple svg { fill: var(--purple); }
 
-    .section-header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
+    .section-header { text-align: center; margin-bottom: 24px; }
 
     .gold-card {
       background: linear-gradient(180deg, rgba(255,215,0,.04), rgba(255,215,0,.01));
@@ -263,6 +267,46 @@
       font-size: 12px;
       color: var(--gold);
       margin-bottom: 16px;
+    }
+
+    .compat-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .compat-item {
+      padding: 10px 14px;
+      background: rgba(57,255,20,.05);
+      border: 1px solid rgba(57,255,20,.2);
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--accent);
+    }
+
+    .compat-item.no {
+      background: rgba(255,71,87,.05);
+      border-color: rgba(255,71,87,.2);
+      color: var(--red);
+    }
+
+    .compat-item.purple {
+      background: rgba(255,59,48,.05);
+      border-color: rgba(255,59,48,.2);
+      color: var(--purple);
+    }
+
+    .warning-box {
+      background: rgba(255,71,87,.05);
+      border: 1px solid rgba(255,71,87,.2);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 12px;
+      color: var(--red);
+      text-align: center;
+      margin-top: 16px;
     }
 
     .faq-list { display: flex; flex-direction: column; gap: 10px; }
@@ -354,6 +398,20 @@
       color: var(--text);
     }
 
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+    .back-link:hover { color: var(--text); background: rgba(255,255,255,.05); }
+    .back-link svg { width: 16px; height: 16px; fill: currentColor; }
+
     @media (max-width: 768px) {
       .navlinks { display: none; }
       .mobile-nav { display: block; }
@@ -368,19 +426,32 @@
 
     .reveal { opacity: 0; transform: translateY(15px); transition: all 0.5s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    :root { --chat-launcher-bottom: 24px; }
+    @media (max-width: 720px){
+      :root{ --chat-launcher-bottom: calc(env(safe-area-inset-bottom, 0px) + 140px); }
+    }
+    button[id*="popcorn"],
+    button[class*="popcorn"],
+    a[id*="popcorn"],
+    a[class*="popcorn"],
+    div[id*="popcorn"][role="button"],
+    div[class*="popcorn"][role="button"]{
+      bottom: var(--chat-launcher-bottom) !important;
+    }
   </style>
-  <script src="assets/js/ix-live-content.js" defer></script>
 </head>
+
 <body>
   <header>
     <div class="wrap">
       <nav class="nav">
-        <div class="brand"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" data-ix-src="global.media.infinitexLogo" /></div>
+        <div class="brand"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></div>
         <div class="navlinks">
-          <a href="index.html" class="active" data-ix-text="global.nav.home" data-ix-permission="permissions.showHome">الرئيسية</a>
-          <a href="track.html" data-ix-text="global.nav.track" data-ix-permission="permissions.showTrack">تتبع الطلب</a>
-          <a href="returns.html" data-ix-text="global.nav.returns" data-ix-permission="permissions.showReturns">الاسترجاع</a>
-          <a href="products.html" data-ix-text="global.nav.products" data-ix-permission="permissions.showProducts">المنتجات</a>
+          <a href="index.html">الرئيسية</a>
+          <a href="track.html">تتبع الطلب</a>
+          <a href="returns.html">الاسترجاع</a>
+          <a href="products.html" class="active">المنتجات</a>
           <a href="contact.html">تواصل معنا</a>
         </div>
       </nav>
@@ -388,77 +459,140 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section style="padding: 20px 0 0;">
       <div class="wrap">
-        <div class="hero-content">
-          <div class="chip" id="ix-afterSalesChip" data-ix-chip="global.chipAfterSales"><span class="dot"></span> خدمات ما بعد البيع</div>
-          <h1 class="h1" id="ix-index-title" data-ix-html="pages.index.title" style="margin-top: 16px;">خدمات INFINITEX<br/>بعد الشراء… في ٣ خطوات</h1>
-          <p class="hero-subtitle" id="ix-index-desc" data-ix-text="pages.index.desc">من هنا نرتّب كل شي بعد الشراء: تتبع، استرجاع، ومنتجات جديدة قريباً.</p>
-          <p class="hero-desc" id="ix-index-note" data-ix-html="pages.index.note">هذا الموقع مخصص لخدمات ما بعد البيع. إذا تبغى الشراء مباشرة، زر المتجر الرسمي قدامك.</p>
+        <a href="products.html" class="back-link">
+          <svg viewBox="0 0 24 24"><path d="M10 19l7-7-7-7"/></svg>
+          جميع المنتجات
+        </a>
+      </div>
+    </section>
+
+    <!-- Hero -->
+    <section class="hero purple">
+      <div class="wrap">
+        <div class="hero-content animate">
+          <div class="chip"><span class="dot purple"></span> متوفرة الآن</div>
+
+          <h1 class="h1" style="margin-top: 16px;">INFINITEX SOUND FORCE</h1>
+          <p class="hero-subtitle">سماعة USB — 7.1 صوت محيطي</p>
+
+          <div class="identity-row purple">
+            <span><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg> درايفر 50mm</span>
+            <span><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ضمان ذهبي</span>
+          </div>
+
+          <p class="hero-desc">
+            سماعتك لازم تفهمك… مو تفضحك.<br>
+            إذا ودك بسماعة ما ترفع ضغطك وتعزل صوتك صح… حياك.
+          </p>
 
           <div class="highlights">
-            <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> تتبع فوري</div>
-            <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ضمان ذهبي</div>
-            <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"/></svg> دعم سريع</div>
+            <div class="highlight-chip purple"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ENC عزل ضوضاء</div>
+            <div class="highlight-chip purple"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg> 7.1 محيطي</div>
+            <div class="highlight-chip purple"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"/></svg> Bass Mode</div>
+          </div>
+
+          <div class="hero-media">
+            <img src="assets/images/sound-force-red.svg" alt="سماعة INFINITEX Sound Force باللون الأحمر" loading="lazy" />
           </div>
 
           <div class="btn-row">
-            <a href="track.html" class="btn primary" data-ix-text="pages.index.ctaTrack" data-ix-permission="permissions.showTrack">ابدأ التتبع</a>
-            <a href="returns.html" class="btn ghost" data-ix-text="pages.index.ctaReturns" data-ix-permission="permissions.showReturns">بدء الاسترجاع</a>
-            <a href="products.html" class="btn ghost" data-ix-permission="permissions.showProducts">عرض المنتجات</a>
+            <a href="https://infinitex.sa/" target="_blank" class="btn primary purple">اطلبها الآن</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Features -->
     <section class="reveal">
       <div class="wrap">
-        <div class="section-header">
-          <h2 class="h2">الخدمات الأساسية</h2>
-          <p class="p">رتّبنا لك كل شيء بخطوات واضحة وسريعة.</p>
-        </div>
         <div class="feature-grid">
-          <div class="feature-card">
-            <div class="emoji">📦</div>
-            <h3>تتبع الطلب</h3>
-            <p>ادخل رقم الطلب وبيطلع لك كل التفاصيل فورياً داخل نفس الصفحة.</p>
+          <div class="feature-card purple">
+            <div class="emoji">🔇</div>
+            <h3>تدري ان صياحهم ما يوصل؟</h3>
+            <p>المايك مزود بزر ENC — تضغطه؟ تسكت كل اللي حولك. اللي يصارخ وراك؟ السماعة تتجاهله كأنه مو موجود!</p>
           </div>
-          <div class="feature-card">
-            <div class="emoji">🛡️</div>
-            <h3>الاسترجاع</h3>
-            <p>بوابة استرجاع واضحة مع سياسة الضمان الذهبي الرسمية.</p>
+
+          <div class="feature-card purple">
+            <div class="emoji">🎯</div>
+            <h3>صوت يهز قلبك</h3>
+            <p>درايڤر 50mm وصوت محيطي 7.1 — تسمع خصمك قبل لا يحك خشمه.</p>
           </div>
-          <div class="feature-card">
-            <div class="emoji">🎧</div>
-            <h3>منتجاتنا</h3>
-            <p>تعرف على الإصدارات القادمة والمواصفات أول بأول.</p>
+
+          <div class="feature-card purple">
+            <div class="emoji">🔁</div>
+            <h3>مزاجك؟ نضبطه</h3>
+            <p>زر Bass يحولها من وحش ألعاب إلى جلسة استكنان — صوت أنظف، بيس أعلى، وجو ثاني كليًا.</p>
+          </div>
+
+          <div class="feature-card purple">
+            <div class="emoji">🪶</div>
+            <h3>أخف من الريشة</h3>
+            <p>تلبسها وتنسى — لا ضغط ولا وجع راس. مصممة للي يلعبون بالساعات… مو سماعة تكسر راسك بعد أول ساعة.</p>
+          </div>
+
+          <div class="feature-card purple">
+            <div class="emoji">🧲</div>
+            <h3>تشيل وتحط</h3>
+            <p>وسائد جلد ميموري فوم مريحة بقاعدة مغناطيس — ما يحتاج تتقروش عشان تفكها. شيل وركب بكل سهولة!</p>
+          </div>
+
+          <div class="feature-card purple">
+            <div class="emoji">👂</div>
+            <h3>سماعتهم فضايح</h3>
+            <p>سماعات السوق؟ تنقل كل الأصوات حتى صوت المكيف! سماعتنا؟ تعطي صوتك النقي بس… وتعزز حمايتك من المداهمات.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="reveal">
-      <div class="wrap">
-        <div class="card" style="text-align:center;">
-          <h2 class="h2">بعد الشراء… نخليك مرتاح</h2>
-          <p class="p" style="margin-top: 12px;">كل خدمة مرتبة بنفس أسلوب صفحة المنتجات: أقسام واضحة، وتجربة جوال مظبوطة.</p>
-        </div>
-      </div>
-    </section>
-
+    <!-- Gold Guarantee -->
     <section class="reveal">
       <div class="wrap">
         <div class="gold-card">
-          <div class="gold-badge">🛡 الضمان الذهبي</div>
-          <h2 class="h2">سياسة واضحة بدون لف ودوران</h2>
-          <p class="p">راجع السياسة الرسمية وتأكد أن حقك محفوظ.</p>
-          <div class="btn-row" style="max-width: 300px; margin: 20px auto 0;">
-            <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" class="btn ghost" style="border-color: rgba(255,215,0,.3);" data-ix-href="global.links.warrantyPolicy" data-ix-text="global.nav.policy">سياسة الضمان</a>
+          <div class="gold-badge">🛡 نضمن… لأننا قدها</div>
+          <h2 class="h2">ما سوينا سماعة عشان نبيع ونختفي</h2>
+          <p class="p" style="max-width: 450px; margin: 0 auto;">
+            ما جازت لك أو صار فيها شي؟ نسترجع أو نبدّل — ما نتهرب ونقول "راجع التاجر".
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compatibility -->
+    <section class="reveal">
+      <div class="wrap">
+        <div class="card" style="text-align: center;">
+          <h2 class="h2">التوافق</h2>
+          <p class="p">السماعة تشتغل عبر منفذ USB</p>
+
+          <div class="compat-row">
+            <div class="compat-item purple">PS5 ✓</div>
+            <div class="compat-item purple">PS4 ✓</div>
+            <div class="compat-item purple">PC ✓</div>
+            <div class="compat-item no">Xbox ✗</div>
+          </div>
+
+          <div class="warning-box">
+            ⚠️ السماعة لا تعمل عبر الإكس بوكس بسبب آخر التحديثات
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Closing -->
+    <section class="closing">
+      <div class="wrap">
+        <p class="closing-text">🎤 سماعتك لازم تفهمك… مو تفضحك</p>
+        <p class="p" style="margin-bottom: 20px; max-width: 400px; margin-left: auto; margin-right: auto;">
+          إذا ودك بسماعة ما ترفع ضغطك وتوفر مخباتك وتعزل صوتك صح وتعيش معك سنين… حياك.
+        </p>
+        <a href="https://infinitex.sa/" target="_blank" class="btn primary purple" style="max-width: 280px; margin: 0 auto;">اطلبها الآن</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
     <section class="reveal">
       <div class="wrap">
         <div class="section-header">
@@ -466,25 +600,22 @@
         </div>
         <div class="faq-list">
           <div class="faq-item">
-            <button class="faq-q" type="button"><span>وين أبدأ التتبع؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-            <div class="faq-a"><div class="faq-a-inner">ادخل رقم الطلب من صفحة تتبع الطلب، والنتيجة تظهر مباشرة.</div></div>
+            <button class="faq-q" type="button"><span>هل تشتغل على الجوال؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">السماعة تعمل عبر USB فقط — تحتاج منفذ USB-A.</div></div>
           </div>
           <div class="faq-item">
-            <button class="faq-q" type="button"><span>كيف الاسترجاع يتم؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-            <div class="faq-a"><div class="faq-a-inner">من صفحة الاسترجاع تدخل رقم الطلب والجوال ويتم تحويلك لبوابة يم الرسمية.</div></div>
+            <button class="faq-q" type="button"><span>ليش ما تشتغل على Xbox؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">بسبب تحديثات مايكروسوفت الأخيرة للنظام.</div></div>
           </div>
           <div class="faq-item">
-            <button class="faq-q" type="button"><span>هل المنتجات متوفرة الآن؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-            <div class="faq-a"><div class="faq-a-inner">صفحة المنتجات تعرض الإصدارات الحالية والقادمة مع تفاصيلها.</div></div>
+            <button class="faq-q" type="button"><span>وش الفرق بين وضع Bass والعادي؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">وضع Bass يعزز الترددات المنخفضة — مناسب للموسيقى والأفلام. الوضع العادي أنظف للألعاب التنافسية.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button"><span>هل الوسائد قابلة للتبديل؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
+            <div class="faq-a"><div class="faq-a-inner">نعم! بقاعدة مغناطيس سهلة الفك. وفيه بدائل جاية بالطريق.</div></div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="closing">
-      <div class="wrap">
-        <p class="closing-text">كل خدماتك في مكان واحد — وبطريقة مرتبة.</p>
-        <a href="track.html" class="btn primary" style="max-width: 280px; margin: 0 auto;">ابدأ الآن</a>
       </div>
     </section>
   </main>
@@ -494,18 +625,18 @@
       <div class="footer-brand">INFINITEX</div>
       <p class="footer-copy">© <span id="year"></span> INFINITEX. جميع الحقوق محفوظة.</p>
       <div class="footer-links">
-        <a href="https://infinitex.sa/" target="_blank" data-ix-href="global.links.store" data-ix-text="global.nav.store">المتجر</a>
-        <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" data-ix-href="global.links.warrantyPolicy" data-ix-text="global.nav.policy">الضمان الذهبي</a>
+        <a href="https://infinitex.sa/" target="_blank">المتجر</a>
+        <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank">الضمان الذهبي</a>
       </div>
     </div>
   </footer>
 
   <div class="mobile-nav">
     <div class="mobile-nav-bar">
-      <a href="index.html" class="active" data-ix-text="global.mobileNav.services" data-ix-permission="permissions.showHome">الرئيسية</a>
-      <a href="track.html" data-ix-text="global.mobileNav.track" data-ix-permission="permissions.showTrack">تتبع</a>
-      <a href="returns.html" data-ix-text="global.mobileNav.returns" data-ix-permission="permissions.showReturns">استرجاع</a>
-      <a href="products.html" data-ix-text="global.mobileNav.products" data-ix-permission="permissions.showProducts">المنتجات</a>
+      <a href="index.html">الرئيسية</a>
+      <a href="track.html">تتبع</a>
+      <a href="returns.html">استرجاع</a>
+      <a href="products.html" class="active">المنتجات</a>
       <a href="contact.html">تواصل</a>
     </div>
   </div>
@@ -513,6 +644,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // FAQ
     document.querySelectorAll('.faq-q').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
@@ -531,6 +663,7 @@
       });
     });
 
+    // Scroll Reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
