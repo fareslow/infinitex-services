@@ -494,19 +494,6 @@
     .reveal { opacity: 0; transform: translateY(15px); transition: all 0.5s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* Popcorn launcher above bottom nav */
-    :root { --chat-launcher-bottom: 24px; }
-    @media (max-width: 720px){
-      :root{ --chat-launcher-bottom: calc(env(safe-area-inset-bottom, 0px) + 140px); }
-    }
-    button[id*="popcorn"],
-    button[class*="popcorn"],
-    a[id*="popcorn"],
-    a[class*="popcorn"],
-    div[id*="popcorn"][role="button"],
-    div[class*="popcorn"][role="button"]{
-      bottom: var(--chat-launcher-bottom) !important;
-    }
   </style>
 </head>
 
@@ -748,7 +735,5 @@
       });
     });
   </script>
-
-  <script src='https://app.trypopcorn.ai/loader.js' data-url='https://app.trypopcorn.ai' data-api-url='https://api.trypopcorn.ai' data-agent='' data-id='6e84f91f-4557-46ec-93f7-396599c5f38e'></script>
 </body>
 </html>
