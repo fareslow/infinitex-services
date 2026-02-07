@@ -604,6 +604,154 @@
     .compat-item { transition: all 0.3s; }
     .compat-item:hover { transform: translateY(-2px); }
 
+    /* Store CTA Section */
+    .store-cta {
+      text-align: center;
+      padding: 50px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .store-cta::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(57,255,20,.08) 0%, transparent 60%);
+      pointer-events: none;
+      animation: gradientShift 6s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    .store-card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(57,255,20,.06) 0%, rgba(57,255,20,.02) 50%, rgba(43,220,18,.04) 100%);
+      border: 1px solid rgba(57,255,20,.25);
+      border-radius: var(--radius);
+      padding: 36px 24px;
+      text-align: center;
+      animation: glowPulse 4s ease infinite;
+      transition: all 0.4s;
+    }
+
+    .store-card:hover {
+      border-color: rgba(57,255,20,.5);
+      box-shadow: 0 12px 50px rgba(57,255,20,.15), 0 0 80px rgba(57,255,20,.05);
+      transform: translateY(-3px);
+    }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(57,255,20,.12);
+      border: 1px solid rgba(57,255,20,.3);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 18px;
+      animation: borderGlow 3s ease infinite;
+    }
+
+    .store-badge .store-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 8px rgba(57,255,20,.6);
+    }
+
+    .store-title {
+      font-size: clamp(20px, 6vw, 30px);
+      line-height: 1.2;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, var(--accent) 0%, #7fff50 30%, var(--accent) 60%, #50ff80 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+
+    .store-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 420px;
+      margin: 0 auto 24px;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 36px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85));
+      border: 1px solid rgba(57,255,20,.6);
+      color: #061006;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.4s;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .store-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+
+    .store-btn:hover::after {
+      transform: translateX(100%);
+    }
+
+    .store-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(57,255,20,.4), 0 0 80px rgba(57,255,20,.15);
+    }
+
+    .store-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #061006;
+    }
+
+    .store-features {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .store-feat {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: rgba(57,255,20,.7);
+    }
+
+    .store-feat svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--accent);
+    }
+
   </style>
 </head>
 
@@ -778,6 +926,25 @@
           <div class="faq-item">
             <button class="faq-q" type="button"><span>هل الوسائد قابلة للتبديل؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
             <div class="faq-a"><div class="faq-a-inner">نعم! بقاعدة مغناطيس سهلة الفك. وفيه بدائل جاية بالطريق.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Store CTA -->
+    <section class="store-cta reveal">
+      <div class="wrap">
+        <div class="store-card">
+          <div class="store-badge"><span class="store-dot"></span> المتجر الرسمي</div>
+          <h2 class="store-title">تصفّح منتجاتنا واطلب الآن</h2>
+          <p class="store-desc">اكتشف سماعات INFINITEX المصممة بعناية — جودة صوت استثنائية، ضمان ذهبي، وتجربة شراء ما تنسّاها.</p>
+          <a href="https://infinitex.sa/" target="_blank" rel="noopener" class="store-btn">
+            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            زيارة المتجر
+          </a>
+          <div class="store-features">
+            <span class="store-feat"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> شحن سريع</span>
+            <span class="store-feat"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ضمان ذهبي</span>
+            <span class="store-feat"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> دفع آمن</span>
           </div>
         </div>
       </div>
