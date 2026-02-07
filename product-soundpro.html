@@ -97,14 +97,27 @@
 
     /* Header */
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      background: rgba(0,0,0,.9);
+      background: rgba(0,0,0,.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--line);
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
+    }
+
+    header.header-hidden {
+      transform: translateY(-100%);
+    }
+
+    .header-spacer {
+      height: 52px;
     }
     .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+    .brand { text-decoration: none; }
     .brand img { height: 20px; }
     .navlinks { display: flex; gap: 6px; }
     .navlinks a { padding: 8px 12px; border-radius: 10px; color: var(--muted); font-size: 12px; text-decoration: none; }
@@ -859,7 +872,7 @@
   <header>
     <div class="wrap">
       <nav class="nav">
-        <div class="brand"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></div>
+        <a href="index.html" class="brand"><img src="assets/brands/infinitex-logo.png" alt="INFINITEX" /></a>
         <div class="navlinks">
           <a href="index.html">الرئيسية</a>
           <a href="track.html">تتبع الطلب</a>
@@ -873,6 +886,7 @@
       </nav>
     </div>
   </header>
+  <div class="header-spacer"></div>
 
   <main>
     <section style="padding: 20px 0 0;">
@@ -1223,6 +1237,46 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Smart Header: show on scroll up, hide on scroll down
+    (function() {
+      const header = document.querySelector('header');
+      let lastY = 0;
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            const y = window.scrollY;
+            if (y > lastY && y > 60) {
+              header.classList.add('header-hidden');
+            } else {
+              header.classList.remove('header-hidden');
+            }
+            lastY = y;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    })();
+
+    // FAQ
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-a');
+        const isOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-a').style.maxHeight = '0';
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
     // Scroll Reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
