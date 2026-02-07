@@ -661,6 +661,63 @@
       fill: var(--accent);
     }
 
+    /* Header Store Button */
+    .nav-store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(57,255,20,.95), rgba(43,220,18,.85));
+      border: 1px solid rgba(57,255,20,.6);
+      color: #061006;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      box-shadow: 0 0 15px rgba(57,255,20,.2);
+      animation: storeBtnPulse 3s ease infinite;
+    }
+
+    .nav-store-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+      transform: translateX(-100%);
+      animation: storeBtnSweep 3s ease-in-out infinite;
+    }
+
+    .nav-store-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(57,255,20,.5), 0 0 30px rgba(57,255,20,.2);
+    }
+
+    .nav-store-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: #061006;
+    }
+
+    @keyframes storeBtnPulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(57,255,20,.2); }
+      50% { box-shadow: 0 0 25px rgba(57,255,20,.4), 0 0 40px rgba(57,255,20,.1); }
+    }
+
+    @keyframes storeBtnSweep {
+      0%, 100% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-store-btn { padding: 7px 12px; font-size: 11px; }
+    }
+
   </style>
 </head>
 
@@ -676,6 +733,10 @@
           <a href="products.html" class="active">المنتجات</a>
           <a href="contact.html">تواصل معنا</a>
         </div>
+        <a href="https://infinitex.sa/" target="_blank" rel="noopener" class="nav-store-btn">
+          <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          المتجر
+        </a>
       </nav>
     </div>
   </header>
