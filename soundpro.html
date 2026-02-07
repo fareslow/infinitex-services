@@ -12,7 +12,7 @@
   <link rel="icon" href="assets/icons/icon-192.png" />
   <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
   <title>INFINITEX — Sound Pro 2.0v</title>
-  <meta name="description" content="INFINITEX Sound Pro 2.0v — سماعة لاسلكية بتقنية BT / 2.4GHz / USB-C. مصممة في السعودية." />
+  <meta name="description" content="INFINITEX Sound Pro 2.0v — سماعة لاسلكية بتقنية BT 6.0 / 2.4GHz / AUX. أكبر بطارية في سماعة قيمنق في العالم. مصممة في السعودية." />
 
   <link rel="preload" href="assets/fonts/avenir-black-arabic.otf" as="font" type="font/otf" crossorigin>
 
@@ -61,6 +61,9 @@
     @keyframes floatUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
     @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 15px rgba(57,255,20,.1), 0 0 30px rgba(57,255,20,.05); } 50% { box-shadow: 0 0 25px rgba(57,255,20,.2), 0 0 50px rgba(57,255,20,.1); } }
+    @keyframes goldGlowPulse { 0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,.1), 0 0 40px rgba(255,215,0,.05); } 50% { box-shadow: 0 0 35px rgba(255,215,0,.2), 0 0 60px rgba(255,215,0,.1); } }
+    @keyframes countUp { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+    @keyframes borderGlow { 0%, 100% { border-color: rgba(57,255,20,.3); } 50% { border-color: rgba(57,255,20,.6); } }
 
     body::before {
       content: "";
@@ -224,9 +227,10 @@
     .hero-content { position: relative; z-index: 1; }
 
     .hero-subtitle {
-      font-size: clamp(16px, 4.5vw, 22px);
-      color: var(--muted);
-      margin: 8px 0 16px;
+      font-size: clamp(14px, 3.5vw, 18px);
+      color: var(--accent);
+      margin: 12px 0 8px;
+      letter-spacing: 1px;
     }
 
     .hero-desc {
@@ -237,80 +241,215 @@
       line-height: 1.9;
     }
 
-    .identity-row {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin: 16px 0;
-      font-size: 12px;
-      color: var(--muted2);
+    /* Stats Section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
 
-    .identity-row span {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .identity-row svg {
-      width: 14px;
-      height: 14px;
-      fill: var(--accent);
-    }
-
-    /* Highlight chips */
-    .highlights {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin: 20px 0;
-    }
-
-    .highlight-chip {
-      padding: 10px 14px;
-      background: rgba(255,255,255,.03);
+    .stat-card {
+      background: rgba(0,0,0,.3);
       border: 1px solid var(--line);
-      border-radius: 12px;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .highlight-chip svg {
-      width: 14px;
-      height: 14px;
-      fill: var(--accent);
-    }
-
-    /* Section */
-    .section-header {
+      border-radius: 16px;
+      padding: 24px 16px;
       text-align: center;
-      margin-bottom: 24px;
+      transition: all 0.4s;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(57,255,20,.25);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(57,255,20,.08);
+    }
+
+    .stat-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: inline-block;
+      animation: floatUp 3s ease-in-out infinite;
+    }
+
+    .stat-number {
+      font-size: clamp(28px, 8vw, 42px);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Power Section (Battery, Sound, etc.) */
+    .power-section {
+      text-align: center;
+    }
+
+    .power-section .icon-large {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: inline-block;
+      animation: floatUp 4s ease-in-out infinite;
+    }
+
+    /* Build Cards */
+    .build-card {
+      background: rgba(0,0,0,.3);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 12px;
+      transition: all 0.4s;
+    }
+
+    .build-card:hover {
+      border-color: rgba(57,255,20,.2);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(57,255,20,.06);
+    }
+
+    .build-card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .build-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    /* Connectivity Grid */
+    .conn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .conn-card {
+      background: rgba(0,0,0,.3);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 14px;
+      text-align: center;
+      transition: all 0.4s;
+    }
+
+    .conn-card:hover {
+      border-color: rgba(57,255,20,.25);
+      transform: translateY(-2px);
+    }
+
+    .conn-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .conn-card h4 {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .conn-card p {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
     }
 
     /* Gold Section */
     .gold-card {
-      background: linear-gradient(180deg, rgba(255,215,0,.04), rgba(255,215,0,.01));
-      border: 1px solid rgba(255,215,0,.2);
+      background: linear-gradient(180deg, rgba(255,215,0,.06), rgba(255,215,0,.02));
+      border: 1px solid rgba(255,215,0,.25);
       border-radius: var(--radius);
-      padding: 28px 20px;
+      padding: 32px 20px;
       text-align: center;
+      animation: goldGlowPulse 4s ease infinite;
+      transition: all 0.4s;
+    }
+
+    .gold-card:hover {
+      box-shadow: 0 12px 50px rgba(255,215,0,.12);
+      transform: translateY(-3px);
+      border-color: rgba(255,215,0,.4);
     }
 
     .gold-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 14px;
-      background: rgba(255,215,0,.1);
-      border: 1px solid rgba(255,215,0,.25);
+      padding: 8px 16px;
+      background: rgba(255,215,0,.12);
+      border: 1px solid rgba(255,215,0,.3);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .gold-card .h2 {
+      color: var(--gold);
+    }
+
+    .gold-subtitle {
+      font-size: clamp(14px, 4vw, 17px);
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .gold-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      padding: 10px 16px;
+      background: rgba(255,215,0,.06);
+      border: 1px solid rgba(255,215,0,.15);
       border-radius: 10px;
       font-size: 12px;
       color: var(--gold);
-      margin-bottom: 16px;
+    }
+
+    /* Specs Table */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .specs-table tr {
+      border-bottom: 1px solid var(--line);
+      transition: background 0.3s;
+    }
+
+    .specs-table tr:hover {
+      background: rgba(57,255,20,.03);
+    }
+
+    .specs-table td {
+      padding: 14px 12px;
+      font-size: 13px;
+      vertical-align: top;
+    }
+
+    .specs-table td:first-child {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+      width: 35%;
+    }
+
+    .specs-table td:last-child {
+      color: var(--muted);
+    }
+
+    /* Section */
+    .section-header {
+      text-align: center;
+      margin-bottom: 24px;
     }
 
     /* Waitlist Form */
@@ -339,6 +478,7 @@
     .form-group input:focus, .form-group select:focus {
       outline: none;
       border-color: rgba(57,255,20,.4);
+      box-shadow: 0 0 15px rgba(57,255,20,.08);
     }
     .form-group select {
       cursor: pointer;
@@ -349,35 +489,6 @@
     }
     .form-note { font-size: 11px; color: var(--muted2); margin-top: 12px; }
 
-    /* FAQ */
-    .faq-list { display: flex; flex-direction: column; gap: 10px; }
-    .faq-item {
-      background: rgba(0,0,0,.3);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .faq-q {
-      width: 100%;
-      padding: 14px 16px;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 700;
-      text-align: right;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .faq-q svg { width: 16px; height: 16px; fill: var(--muted); transition: transform 0.3s; }
-    .faq-item.open .faq-q svg { transform: rotate(180deg); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s; }
-    .faq-a-inner { padding: 0 16px 14px; color: var(--muted); font-size: 13px; line-height: 1.85; }
-
     /* Closing */
     .closing {
       text-align: center;
@@ -387,6 +498,19 @@
     .closing-text {
       font-size: clamp(18px, 5vw, 24px);
       margin-bottom: 16px;
+    }
+
+    .saudi-pride {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 10px 18px;
+      background: rgba(57,255,20,.06);
+      border: 1px solid rgba(57,255,20,.2);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--accent);
     }
 
     /* Back link */
@@ -461,12 +585,14 @@
       .navlinks { display: none; }
       .mobile-nav { display: block; }
       section { padding: 35px 0; }
+      .conn-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 480px) {
       .wrap { padding: 0 14px; }
       .card { padding: 20px 16px; }
       .feature-card { padding: 18px 14px; }
+      .conn-grid { grid-template-columns: 1fr; }
     }
 
     /* Scroll Reveal */
@@ -496,9 +622,6 @@
     .feature-card:nth-child(2) .emoji { animation-delay: 0.5s; }
     .feature-card:nth-child(3) .emoji { animation-delay: 1s; }
 
-    .gold-card { animation: glowPulse 4s ease infinite; transition: all 0.4s; }
-    .gold-card:hover { box-shadow: 0 8px 40px rgba(255,215,0,.12); transform: translateY(-2px); }
-
     .btn.primary { position: relative; overflow: hidden; }
     .btn.primary::after {
       content: ""; position: absolute; inset: 0;
@@ -513,9 +636,6 @@
     .chip { transition: all 0.3s; }
     .chip:hover { border-color: rgba(57,255,20,.3); box-shadow: 0 0 15px rgba(57,255,20,.1); }
 
-    .highlight-chip { transition: all 0.3s; }
-    .highlight-chip:hover { border-color: rgba(57,255,20,.3); background: rgba(57,255,20,.05); transform: translateY(-2px); }
-
     .hero::before { animation: gradientShift 8s ease infinite; background-size: 200% 200%; }
 
     .footer-links a { transition: all 0.3s; }
@@ -524,14 +644,8 @@
     .mobile-nav-bar a { transition: all 0.3s; }
     .mobile-nav-bar a.active { box-shadow: 0 0 12px rgba(57,255,20,.15); }
 
-    .faq-item { transition: all 0.3s; }
-    .faq-item:hover { border-color: rgba(57,255,20,.2); }
-    .faq-item.open { border-color: rgba(57,255,20,.25); box-shadow: 0 4px 20px rgba(57,255,20,.06); }
-
     .form-card { transition: all 0.4s; }
     .form-card:hover { border-color: rgba(57,255,20,.15); }
-
-    .form-group input:focus, .form-group select:focus { box-shadow: 0 0 15px rgba(57,255,20,.08); }
 
     /* Store CTA Section */
     .store-cta {
@@ -709,101 +823,277 @@
       </div>
     </section>
 
-    <!-- Hero -->
+    <!-- 1. Hero Section -->
     <section class="hero">
       <div class="wrap">
         <div class="hero-content">
-          <div class="chip"><span class="dot"></span> قريباً — الإصدار الثاني</div>
+          <div class="chip"><span class="dot"></span> قريباً</div>
 
-          <h1 class="h1" style="margin-top: 16px;">INFINITEX SOUND PRO 2.0v</h1>
-          <p class="hero-subtitle">مو تحديث… هذا إصدار يرفع السقف.</p>
-
-          <div class="identity-row">
-            <span><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> مصمّمة في السعودية</span>
-            <span><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> تصميم موثوق</span>
-          </div>
+          <h1 class="h1" style="margin-top: 16px;">ما صنعناه هذي المرة…<br>مختلف تماماً</h1>
+          <p class="hero-subtitle">INFINITEX SOUND PRO 2.0V — قريباً</p>
 
           <p class="hero-desc">
-            سوّينا سماعة تعيش معك، وتفهم وش يعني صوت مضبوط…<br>مو بس "يمشي الحال".
+            أخذنا كل ملاحظة. كسرنا كل حد. وأعدنا بناء كل شيء من الصفر.<br>
+            الإصدار الثاني مو تحديث — هو إعادة تعريف كاملة لتجربة الصوت.
           </p>
 
-          <div class="highlights">
-            <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ضمان ذهبي</div>
-            <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M17 4h-3V2h-4v2H7v18h10V4z"/></svg> بطارية تجلس</div>
-            <div class="highlight-chip"><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z"/></svg> صوت متوازن</div>
+          <div class="btn-row" style="max-width: 400px; margin: 20px auto 0;">
+            <a href="#waitlist-pro" class="btn primary">سجّل الآن وكن أول من يعرف موعد الإطلاق</a>
           </div>
-
-          <div class="btn-row">
-            <a href="#waitlist-pro" class="btn primary">ادخل قائمة الانتظار</a>
-            <a href="#waitlist-pro" class="btn ghost">علّمني وقت الإطلاق</a>
-          </div>
-
-          <p class="form-note" style="margin-top: 16px;">رسالة وحدة وقت الإطلاق. بدون إزعاج.</p>
         </div>
       </div>
     </section>
 
-    <!-- Features -->
+    <!-- 2. Social Proof Section -->
     <section class="reveal">
       <div class="wrap">
         <div class="section-header">
-          <h2 class="h2">ثلاث أشياء… والباقي تفاصيل.</h2>
+          <h2 class="h2">الإصدار الأول كان مجرد البداية</h2>
         </div>
 
-        <div class="feature-grid">
-          <div class="feature-card">
-            <div class="emoji">🛡</div>
-            <h3>الضمان الذهبي</h3>
-            <p>جرّب وأنت مرتاح. إذا ما عجبك؟ الموضوع واضح.</p>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-number">225</div>
+            <div class="stat-label">تقييم 5 نجوم على الإصدار التجريبي V1.0</div>
           </div>
-          <div class="feature-card">
-            <div class="emoji">🎵</div>
-            <h3>هندسة صوت جدّية</h3>
-            <p>ما نبي صوت "يصرخ". نبي صوت يثبت نفسه.</p>
+          <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-number">65%</div>
+            <div class="stat-label">من المبيعات بدون أي إعلان — توصيات عملاء فقط</div>
           </div>
-          <div class="feature-card">
-            <div class="emoji">🔋</div>
-            <h3>بطارية تفكّك من هم الشحن</h3>
-            <p>الاستخدام الحقيقي هو الحكم… وصدقني بيبان.</p>
+          <div class="stat-card">
+            <div class="stat-icon">🔁</div>
+            <div class="stat-number">نفدت بالكامل</div>
+            <div class="stat-label">الكمية الأولى اختفت من السوق</div>
           </div>
+        </div>
+
+        <div class="card" style="text-align: center; margin-top: 16px;">
+          <p class="p">
+            لما 65% من مبيعاتك تجي من توصيات العملاء بدون ريال واحد إعلانات — هذا مو تسويق، هذا ثقة حقيقية.<br>
+            الإصدار الثاني بُني على هالثقة… وأضاف فوقها كل شيء طلبتوه.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Voice -->
+    <!-- 3. Battery Section -->
     <section class="reveal">
       <div class="wrap">
-        <div class="card" style="text-align: center;">
-          <h2 class="h2">فيه سماعات تسوّق…<br>وفيه سماعات تفرض نفسها.</h2>
-          <p class="p" style="margin: 16px auto; max-width: 450px;">
-            ساوند برو 2.0 ما جت تستأذن أحد.<br>جت تقول: هذا المستوى اللي المفروض تعوّدنا عليه.
+        <div class="power-section">
+          <div class="icon-large">🔋</div>
+          <h2 class="h2">أكبر سعة بطارية في سماعة قيمنق…<br>في العالم</h2>
+          <p class="p" style="max-width: 480px; margin: 16px auto 0;">
+            انسَ القلق من الشحن في نص الجيم.<br>
+            SOUND PRO 2.0V تحمل أكبر بطارية تم تركيبها في سماعة قيمنق على مستوى العالم.<br>
+            جلسات ماراثونية؟ بثوث طويلة؟ استخدام يومي بدون توقف؟ مغطيك.
           </p>
-          <div class="chip" style="margin-top: 12px;">اللي يبي "يمشي حاله" بغيرها… الله يوفقه.</div>
         </div>
       </div>
     </section>
 
-    <!-- Gold Guarantee -->
+    <!-- 4. Sound Quality Section -->
+    <section class="reveal">
+      <div class="wrap">
+        <div class="power-section">
+          <div class="icon-large">🎵</div>
+          <h2 class="h2">صوت ما تسمعه — تحسّه</h2>
+          <p class="hero-subtitle" style="font-size: 15px; margin: 8px 0 16px;">درايفر Hi-End مصمم خصيصاً لكل استخدام</p>
+          <p class="p" style="max-width: 480px; margin: 0 auto;">
+            ما اعتمدنا على ذوق شخصي. اعتمدنا على لغة الأرقام.<br>
+            أكثر من <strong style="color: var(--accent);">100 عيّنة</strong> تم اختبارها وتحليلها حتى وصلنا للنتيجة اللي ما تقبل المقارنة.<br>
+            درايفر صوتي واحد يقدم أداء استثنائي سواء كنت في قيم تنافسي، تسمع موسيقى، أو تشتغل على مونتاج.
+          </p>
+        </div>
+
+        <!-- Visual: 100 sample journey -->
+        <div class="card" style="text-align: center; margin-top: 20px; border-color: rgba(57,255,20,.15);">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+            <div style="text-align: center;">
+              <div style="font-size: 32px; color: var(--muted2);">100+</div>
+              <div style="font-size: 11px; color: var(--muted);">عيّنة مختبرة</div>
+            </div>
+            <div style="font-size: 20px; color: var(--accent);">→</div>
+            <div style="text-align: center;">
+              <div style="font-size: 32px; color: var(--muted);">🔬</div>
+              <div style="font-size: 11px; color: var(--muted);">تحليل دقيق</div>
+            </div>
+            <div style="font-size: 20px; color: var(--accent);">→</div>
+            <div style="text-align: center;">
+              <div style="font-size: 32px; color: var(--accent);">1</div>
+              <div style="font-size: 11px; color: var(--accent);">درايفر مثالي</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Design & Build Section -->
+    <section class="reveal">
+      <div class="wrap">
+        <div class="section-header">
+          <h2 class="h2">مصنوعة عشان تعيش معك سنين</h2>
+        </div>
+
+        <div class="build-card">
+          <h3>🔩 شوك ألمنيوم قابل للالتفاف</h3>
+          <p>تصميم جديد بالكامل بأجود أنواع الألمنيوم — ينثني معك بدون ما ينكسر. مصمم للاستخدام اليومي القاسي ويضمن لك عمر طويل.</p>
+        </div>
+
+        <div class="build-card">
+          <h3>🎧 هيد باند بتصميم عصري</h3>
+          <p>قالب جديد كلياً يجمع بين الشكل المتناسق والمواد الممتازة — مصنوع من خامة POK المعروفة بمتانتها وخفتها.</p>
+        </div>
+
+        <div class="build-card">
+          <h3>✨ جودة بناء مختلف مستواها</h3>
+          <p>كل تفصيلة في الإصدار الثاني تمت ترقيتها. اللمسة، الوزن، الحركة — كلها تقول لك: هذي سماعة فئة مختلفة.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Ear Cushion Section -->
+    <section class="reveal">
+      <div class="wrap">
+        <div class="power-section">
+          <div class="icon-large">🛋️</div>
+          <h2 class="h2">سنة كاملة من التطوير…<br>عشان أذنك ما تحس بشيء</h2>
+          <p class="p" style="max-width: 480px; margin: 16px auto 0;">
+            وسادة الأذن في SOUND PRO 2.0V مرّت بسنة كاملة من البحث والتطوير.<br>
+            النتيجة؟ تهوية مستمرة تمنع الحرارة والعرق، وراحة نضمنها حتى في أطول الجلسات.<br>
+            ما نبيك تحس بالسماعة على راسك — نبيك تنسى إنها موجودة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Connectivity Section -->
+    <section class="reveal">
+      <div class="wrap">
+        <div class="section-header">
+          <h2 class="h2">طريقة وصل وحدة؟ عندك أربع</h2>
+        </div>
+
+        <div class="conn-grid">
+          <div class="conn-card">
+            <div class="conn-icon">🔵</div>
+            <h4>Bluetooth 6.0</h4>
+            <p>أحدث إصدار — اتصال ذكي ومستقر</p>
+          </div>
+          <div class="conn-card">
+            <div class="conn-icon">⚡</div>
+            <h4>2.4GHz دونقل</h4>
+            <p>USB-A & USB-C — تأخير أقل من 10ms</p>
+          </div>
+          <div class="conn-card">
+            <div class="conn-icon">🔌</div>
+            <h4>AUX سلكي</h4>
+            <p>صوت خام بدون أي تأخير</p>
+          </div>
+          <div class="conn-card">
+            <div class="conn-icon">🔄</div>
+            <h4>تبديل فوري</h4>
+            <p>كل الخيارات متاحة ومتوافقة</p>
+          </div>
+        </div>
+
+        <div class="card" style="text-align: center; margin-top: 16px;">
+          <p class="p">
+            بلوتوث 6.0 للحياة اليومية. 2.4GHz بتأخير أقل من 10 ملي ثانية للقيمنق التنافسي. AUX للاستخدام الكلاسيكي.<br>
+            سواء كنت على PC، بلايستيشن، جوال، أو أي جهاز — SOUND PRO 2.0V جاهزة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Gold Warranty Section -->
     <section class="reveal">
       <div class="wrap">
         <div class="gold-card">
-          <div class="gold-badge">🛡 الضمان الذهبي</div>
-          <h2 class="h2">لأننا قد كلامنا.</h2>
-          <p class="p">نبيك تشتري وأنت مطمّن. التفاصيل وقت الإطلاق.</p>
+          <div class="gold-badge">🏆 الضمان الذهبي</div>
+          <h2 class="h2">الضمان الذهبي</h2>
+          <p class="gold-subtitle">مو جوك؟ فلوسك كاملة ترجع لك. بدون أسئلة.</p>
+          <p class="p" style="max-width: 460px; margin: 0 auto;">
+            ثقتنا في المنتج وصلت لمرحلة إننا نقول لك:<br>
+            <strong style="color: var(--gold);">جرّبها. عيشها. وإذا حسّيت إنها مو لك — نرجع لك كل ريال.</strong>
+          </p>
+          <p class="p" style="max-width: 460px; margin: 12px auto 0;">
+            هذا مو ضمان عادي. هذا وعد من INFINITEX إنك ما تخاطر بشيء.<br>
+            لأننا نعرف إنك بمجرد ما تجربها — ما راح تفكر ترجعها.
+          </p>
+          <div class="gold-note">
+            ⚠️ عرض الضمان الذهبي ينطبق حصرياً على INFINITEX SOUND PRO 2.0V
+          </div>
           <div class="btn-row" style="max-width: 300px; margin: 20px auto 0;">
-            <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" class="btn ghost" style="border-color: rgba(255,215,0,.3);">سياسة الضمان</a>
+            <a href="https://infinitex.sa/blogs/gold-warranty-policy" target="_blank" class="btn ghost" style="border-color: rgba(255,215,0,.3); color: var(--gold);">سياسة الضمان الذهبي</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Waitlist -->
-    <section class="reveal" id="waitlist-pro">
+    <!-- 9. Specs Strip Section -->
+    <section class="reveal">
       <div class="wrap">
-        <div class="form-card">
+        <div class="section-header">
+          <h2 class="h2">ملخص المواصفات</h2>
+        </div>
+
+        <div class="card" style="padding: 8px 16px;">
+          <table class="specs-table">
+            <tr>
+              <td>البطارية</td>
+              <td>الأكبر في العالم لسماعات القيمنق</td>
+            </tr>
+            <tr>
+              <td>الدرايفر</td>
+              <td>Hi-End — 100+ عيّنة اختبار</td>
+            </tr>
+            <tr>
+              <td>البلوتوث</td>
+              <td>الإصدار 6.0</td>
+            </tr>
+            <tr>
+              <td>الاتصال اللاسلكي</td>
+              <td>2.4GHz (USB-A + USB-C) — أقل من 10ms</td>
+            </tr>
+            <tr>
+              <td>الاتصال السلكي</td>
+              <td>AUX</td>
+            </tr>
+            <tr>
+              <td>الشوك</td>
+              <td>ألمنيوم قابل للالتفاف</td>
+            </tr>
+            <tr>
+              <td>الهيد باند</td>
+              <td>تصميم جديد — خامة POK</td>
+            </tr>
+            <tr>
+              <td>وسادة الأذن</td>
+              <td>سنة تطوير — تهوية مستمرة</td>
+            </tr>
+            <tr>
+              <td>الضمان</td>
+              <td>ذهبي — استرجاع كامل</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Closing CTA Section -->
+    <section class="closing" id="waitlist-pro">
+      <div class="wrap">
+        <p class="closing-text">الإصدار الأول نفد. الإصدار الثاني أقوى.<br>والكمية محدودة.</p>
+        <p class="p" style="max-width: 440px; margin: 0 auto 20px;">
+          INFINITEX SOUND PRO 2.0V قادمة قريباً.<br>
+          سجّل الآن عشان توصلك أخبار الإطلاق قبل الكل — وتضمن مكانك.
+        </p>
+
+        <div class="form-card" style="max-width: 420px; margin: 0 auto;">
           <div class="chip"><span class="dot"></span> قائمة الانتظار</div>
-          <h2 class="h2" style="margin-top: 16px;">كن أول واحد يعرف</h2>
-          <p class="p">أولوية + مزايا خاصة وقت الإطلاق</p>
+          <h2 class="h2" style="margin-top: 16px;">سجّل اهتمامك الآن</h2>
 
           <form class="waitlist-form" onsubmit="return handleForm(event, 'pro')">
             <div class="form-group">
@@ -818,43 +1108,15 @@
               <label>طريقة التواصل</label>
               <select><option value="whatsapp">واتساب</option><option value="sms">SMS</option></select>
             </div>
-            <button type="submit" class="btn primary" style="margin-top: 8px;">ثبّت مقعدي</button>
+            <button type="submit" class="btn primary" style="margin-top: 8px;">سجّل اهتمامك الآن</button>
             <p class="form-note">رسالة وحدة وقت الإطلاق. بدون إزعاج.</p>
           </form>
         </div>
+
+        <div class="saudi-pride">🇸🇦 فخر صناعة سعودية — صُممت في السعودية للعالم</div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="reveal">
-      <div class="wrap">
-        <div class="section-header">
-          <h2 class="h2">أسئلة شائعة</h2>
-        </div>
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-q" type="button"><span>متى الإطلاق؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-            <div class="faq-a"><div class="faq-a-inner">قريب. بنعلن لأهل قائمة الانتظار أول.</div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button"><span>هل المواصفات نهائية؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-            <div class="faq-a"><div class="faq-a-inner">التفاصيل النهائية تُعلن وقت الإطلاق.</div></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" type="button"><span>فيه ميزة للمنتظرين؟</span><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></button>
-            <div class="faq-a"><div class="faq-a-inner">نعم. أولوية + مزايا خاصة.</div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Closing -->
-    <section class="closing">
-      <div class="wrap">
-        <p class="closing-text">ساوند برو 2.0… اللي بعدها مو زي قبل.</p>
-        <a href="#waitlist-pro" class="btn primary" style="max-width: 280px; margin: 0 auto;">ادخل قائمة الانتظار</a>
-      </div>
-    </section>
     <!-- Store CTA -->
     <section class="store-cta reveal">
       <div class="wrap">
@@ -899,25 +1161,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // FAQ
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const answer = item.querySelector('.faq-a');
-        const isOpen = item.classList.contains('open');
-
-        document.querySelectorAll('.faq-item').forEach(i => {
-          i.classList.remove('open');
-          i.querySelector('.faq-a').style.maxHeight = '0';
-        });
-
-        if (!isOpen) {
-          item.classList.add('open');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-        }
-      });
-    });
 
     // Scroll Reveal
     const observer = new IntersectionObserver((entries) => {
